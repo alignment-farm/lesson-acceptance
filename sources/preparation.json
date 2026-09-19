@@ -1,0 +1,28 @@
+{
+  "prepared_at": "2026-09-19T23:29:33.472655+00:00",
+  "root_git_head": "c95253a8dfd47fbb7eb4879c7986b458c002acfd",
+  "root_has_uncommitted_preparation": true,
+  "root_inputs_sha256": {
+    "notes/LESSON_ACCEPTANCE.md": "8a43d4b89f34f357ff7fe99f8965ee54fdc7cbd8e618fed1ae9ec093592d4730",
+    "notes/FEEDBACK_DECISIONS.md": "f3eaaf12735300d59336f8d042e8dda4964c27adcccf7b2e11de5b7fff862c61",
+    "sources/2026-09-19-lesson-acceptance-selection/README.md": "5ceab1b7302f096b1987937cc32f92177cb6ad3d0015e9cba57a51dccadbb555",
+    "sources/2026-09-19-runtime-memory-review/README.md": "a07bd6aa8fed7c898b43c39f09309e7e7bcca63314248cbc109069271d96c6c4"
+  },
+  "runtime_revision": "09f66837ca76db1f674ee3372d734219ad0f3e27",
+  "runtime_checkout": ".deps/construct-runtime",
+  "runtime_checkout_clean": true,
+  "runtime_source": "local lab clone; commit API returned HTTP 422 at preparation",
+  "runtime_upstream": "https://github.com/alignment-farm/construct-runtime",
+  "paper_versions": [
+    "2609.11060v1",
+    "2609.02074v1",
+    "2606.08275v1",
+    "2609.15364v1",
+    "2508.19828v5"
+  ],
+  "discovery_only": [
+    "2605.23723v1"
+  ],
+  "experiments_started": false,
+  "agent_session_started": false
+}

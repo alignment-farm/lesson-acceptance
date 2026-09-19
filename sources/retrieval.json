@@ -1,0 +1,26 @@
+{
+  "url": "https://export.arxiv.org/api/query?id_list=2609.11060v1%2C2609.15364v1%2C2605.23723",
+  "retrieved_at": "2026-09-19T23:24:58.440031+00:00",
+  "sha256": "99f7b98d38092529fb7a8f0adf98a500b11e893cd5d3ec8429a68a3974f29c96",
+  "headers": {
+    "Connection": "close",
+    "Content-Length": "8361",
+    "via": "1.1 google, 1.1 varnish, 1.1 varnish, 1.1 varnish",
+    "x-cloud-trace-context": "8e27804fe829822ca00db25338b197f7",
+    "content-type": "application/atom+xml; charset=utf-8",
+    "server": "Google Frontend",
+    "Accept-Ranges": "bytes",
+    "Age": "0",
+    "Date": "Sat, 19 Sep 2026 23:24:58 GMT",
+    "X-Served-By": "cache-lga-kjfk8660066-LGA, cache-lga-kjfk8660066-LGA, cache-lga-kjfk8660066-LGA, cache-mia-kfll1870073-MIA",
+    "X-Cache": "MISS, MISS, MISS",
+    "X-Cache-Hits": "0, 0, 0",
+    "X-Timer": "S1789860298.287424,VS0,VE131",
+    "Strict-Transport-Security": "max-age=300"
+  },
+  "discovery_queries": [
+    "site.arxiv.org agent memory lesson verification counterexample admission cost",
+    "site.arxiv.org \"Grounding Agent Memory\" \"2609.11060\"",
+    "site.arxiv.org \"MemAudit\""
+  ]
+}

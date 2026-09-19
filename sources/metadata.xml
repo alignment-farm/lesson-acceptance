@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/oCWtehedu0eQFPDsSBzuAfLJkJw</id>
+  <title>arXiv Query: search_query=&amp;id_list=2609.11060v1,2609.15364v1,2605.23723&amp;start=0&amp;max_results=10</title>
+  <updated>2026-09-19T23:24:58Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=&amp;start=0&amp;max_results=10&amp;id_list=2609.11060v1,2609.15364v1,2605.23723" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+  <opensearch:totalResults>3</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2605.23723v1</id>
+    <title>MemAudit: Post-hoc Auditing of Poisoned Agent Memory via Causal Attribution and Structural Anomaly Detection</title>
+    <updated>2026-05-22T15:03:13Z</updated>
+    <link href="https://arxiv.org/abs/2605.23723v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2605.23723v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Large language model agents increasingly rely on persistent memory to store past interactions, retrieve relevant demonstrations, and improve long-horizon task execution. However, this memory mechanism also creates a practical security vulnerability: an adversarial user may inject malicious records into the agent's memory through ordinary interaction, and these records can later be retrieved to steer the agent's reasoning and actions. Existing defenses primarily focus on online intervention, such as prompt filtering or output blocking, but they do not address the post-hoc question of which stored memories are responsible after harmful behavior has already been observed. We propose \textbf{MemAudit}, a post-hoc causal memory auditing framework for memory-augmented LLM agents. The framework combines two complementary signals: (1) a counterfactual memory influence score that measures each memory's causal contribution to harmful outputs, and (2) a memory consistency graph that identifies structurally anomalous memories within the broader memory store. We evaluate MemAudit against MINJA, a query-only memory injection attack in which malicious records are generated and stored through normal agent interactions rather than direct memory-bank modification. Across both QA and reasoning-agent settings, MemAudit substantially reduces attack success rates under realistic post-hoc auditing scenarios. The results show that QA attack success is reduced from $70\%$ to $0\%$, while RAP attack success drops from $83.3\%$ to $0\%$.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-05-22T15:03:13Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Zhewen Tan</name>
+    </author>
+    <author>
+      <name>Yilun Yao</name>
+    </author>
+    <author>
+      <name>Huiyan Jin</name>
+    </author>
+    <author>
+      <name>Wenhan Yu</name>
+    </author>
+    <author>
+      <name>Guoan Wang</name>
+    </author>
+    <author>
+      <name>Mengyuan Fan</name>
+    </author>
+    <author>
+      <name>liang lu</name>
+    </author>
+    <author>
+      <name>Feng Liu</name>
+    </author>
+    <author>
+      <name>Xiangzheng Zhang</name>
+    </author>
+    <author>
+      <name>Duohe Ma</name>
+    </author>
+    <author>
+      <name>Tong Yang</name>
+    </author>
+    <author>
+      <name>Lin Sun</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.15364v1</id>
+    <title>RSIAgent: Autonomous Exploration for Recursive Self-improvement in New Environments</title>
+    <updated>2026-09-14T10:46:40Z</updated>
+    <link href="https://arxiv.org/abs/2609.15364v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.15364v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Digital agents must often adapt to new environments whose interfaces, tools, and failure modes are not fully captured by pretrained models. We introduce \textbf{RSIAgent}, a training-free multi-agent framework for recursive self-improvement through autonomous memory construction. RSIAgent coordinates curriculum, actor, and verifier agents to continually explore the environment, validate outcomes, and retain environment-specific knowledge, including reusable causal relationships between actions, conditions, and consequences. It further adopts a \textbf{broad-then-deep} exploration strategy, combining parallel broad recursive self-exploration for discovering diverse environment structures with focused deep self-exploration for uncovering hard cases, hidden constraints, boundary conditions, and previously unknown causal dependencies. The resulting memory is frozen and can be directly reused for downstream tasks without updating model parameters. Experiments on OSWorld-v2 and Agent's Last Exam show that RSIAgent substantially improves strong open-source models, enabling Kimi-K3 and GLM-5.3 to outperform frontier closed-source models including GPT-6.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CL" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-14T10:46:40Z</published>
+    <arxiv:comment>49 pages</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Sibo Zhu</name>
+    </author>
+    <author>
+      <name>Shicheng Fan</name>
+    </author>
+    <author>
+      <name>Xinyue Wang</name>
+    </author>
+    <author>
+      <name>Wenyi Wu</name>
+    </author>
+    <author>
+      <name>Kun Zhou</name>
+    </author>
+    <author>
+      <name>Biwei Huang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2609.11060v1</id>
+    <title>Grounding Agent Memory: Environment-Probing Curation for Enterprise Agents</title>
+    <updated>2026-09-10T04:06:16Z</updated>
+    <link href="https://arxiv.org/abs/2609.11060v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2609.11060v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Persistent memory is entering production-oriented agent platforms to help long-horizon agents accumulate experience across sessions. Yet a post-task curator agent restricted to completed trajectories can preserve errors, overgeneralize partial evidence, or retain stale knowledge. We introduce environment-probing curation, a deployment-compatible extension that gives an existing asynchronous curator agent least-privilege, read-only world tools to check, scope, and refresh candidate memories. It requires no model retraining and leaves the task agent, retriever, memory representation, and production write authority unchanged. In a production-like GitHub Copilot (GHCP) harness built on its SDK, we compare stateless execution, full in-context learning, GHCP + Mem, and GHCP + Mem (w/ Env Probing) on CLBench database exploration and 90 adapted APEX management-consulting tasks. On CLBench, probing raises pass rate from 39% to 73% and pass-discounted reward from 8.60 to 22.60 while reducing queries from 8.8 to 4.7 per question and task-agent cost from \$3.38 to \$1.68. Across six APEX worlds, all 18 memory-versus-baseline mean reward comparisons are positive and task-agent tool calls fall by 16--75%; probing gives the best task-agent reward gain per dollar in five worlds. Probing also attains higher mean reward than GHCP + Mem on both Sonnet 4.6 and Opus 4.7 without schema drift. Environment probing therefore turns existing agent-memory curation into an environment-informed, auditable process while preserving a compact task-time interface.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.SE" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-09-10T04:06:16Z</published>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Susheel Suresh</name>
+    </author>
+    <author>
+      <name>Hazel Mak</name>
+    </author>
+    <author>
+      <name>Sahil Bhatnagar</name>
+    </author>
+    <author>
+      <name>Chhaya Methani</name>
+    </author>
+    <author>
+      <name>Alejandro Gutierrez Munoz</name>
+    </author>
+  </entry>
+</feed>
