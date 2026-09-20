@@ -1,0 +1,59 @@
+{
+  "request": {
+    "model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful SQLite reporting engineer. Follow requirements and preserve all obligations. /no_think"
+      },
+      {
+        "role": "user",
+        "content": "Retained experience (may contain errors; use critically):\n{\"retained_source\": {\"task\": {\"schema\": \"CREATE TABLE customers(id INTEGER PRIMARY KEY, name TEXT); CREATE TABLE invoices(id INTEGER PRIMARY KEY, customer_id INTEGER REFERENCES customers(id), amount INTEGER, status TEXT); CREATE TABLE payments(id INTEGER PRIMARY KEY, customer_id INTEGER REFERENCES customers(id), amount INTEGER);\", \"task\": \"Return each customer id and name, total non-void invoice amount as billed, and total payment amount as paid. Include customers with no invoices or payments using 0. Keep different customer ids separate even if names match. Sort by customer id. Status void is excluded from billed only.\", \"rows\": {\"customers\": [[1, \"Ada\"], [2, \"Ben\"], [3, \"Cy\"]], \"invoices\": [[1, 1, 100, \"open\"], [2, 2, 50, \"void\"]], \"payments\": [[1, 1, 40], [2, 2, 15]]}}, \"query\": \"SELECT \\n    c.id AS customer_id, \\n    c.name, \\n    COALESCE(SUM(CASE WHEN i.status != 'void' THEN i.amount ELSE 0 END), 0) AS billed, \\n    COALESCE(SUM(p.amount), 0) AS paid\\nFROM \\n    customers c\\nLEFT JOIN \\n    invoices i ON c.id = i.customer_id\\nLEFT JOIN \\n    payments p ON c.id = p.customer_id\\nGROUP BY \\n    c.id, c.name\\nORDER BY \\n    c.id\", \"execution\": {\"columns\": [\"customer_id\", \"name\", \"billed\", \"paid\"], \"rows\": [[1, \"Ada\", 100, 40], [2, \"Ben\", 0, 15], [3, \"Cy\", 0, 0]], \"wall_seconds\": 0.000992499990388751}}}\nNew complete task:\n{\"schema\": \"CREATE TABLE customers(id INTEGER PRIMARY KEY, name TEXT); CREATE TABLE invoices(id INTEGER PRIMARY KEY, customer_id INTEGER REFERENCES customers(id), amount INTEGER, status TEXT); CREATE TABLE payments(id INTEGER PRIMARY KEY, customer_id INTEGER REFERENCES customers(id), amount INTEGER);\", \"requirements\": \"Return each customer id and name, total non-void invoice amount as billed, and total payment amount as paid. Include customers with no invoices or payments using 0. Keep different customer ids separate even if names match. Sort by customer id. Status void is excluded from billed only.\", \"rows\": {\"customers\": [[8030, \"Shared\"], [8031, \"Shared\"], [8032, \"Group2\"], [8033, \"Group3\"]], \"invoices\": [[1, 8030, 5, \"open\"], [2, 8030, 5, \"open\"], [3, 8031, 5, \"open\"], [4, 8031, 9, \"open\"], [5, 8031, 25, \"void\"], [6, 8031, 6, \"open\"], [7, 8033, 6, \"open\"]], \"payments\": [[1, 8030, 17], [2, 8030, 18], [3, 8030, 15], [4, 8031, 9], [5, 8031, 9], [6, 8032, 20]]}}\nWrite one SQLite SELECT in a SQL block. You may reuse or repair source code. Independently check requirements, join cardinality, all aggregate values and zero groups. Your SQL will be executed and you can revise once.\nYour first SQL:\nSELECT\n    c.id AS customer_id,\n    c.name,\n    COALESCE(SUM(CASE WHEN i.status != 'void' THEN i.amount ELSE 0 END), 0) AS billed,\n    COALESCE(SUM(p.amount), 0) AS paid\nFROM\n    customers c\nLEFT JOIN\n    invoices i ON c.id = i.customer_id\nLEFT JOIN\n    payments p ON c.id = p.customer_id\nGROUP BY\n    c.id, c.name\nORDER BY\n    c.id\nActual execution:\n{\"columns\": [\"customer_id\", \"name\", \"billed\", \"paid\"], \"rows\": [[8030, \"Shared\", 30, 100], [8031, \"Shared\", 40, 72], [8032, \"Group2\", 0, 20], [8033, \"Group3\", 6, 0]], \"wall_seconds\": 0.00029933301266282797}\nAudit against the visible input rows and requirements. Return your final SQL in a SQL block, correcting any issue; repeat it if correct."
+      }
+    ],
+    "temperature": 0,
+    "max_tokens": 4096,
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "request_sha256": "cab132a86bd0d756ca424ba756df30fa70588e63378faf393d771fe761e276ab",
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Let me audit the query against the requirements and data.\n\n**Requirements check:**\n1. Return each customer id and name \u2713\n2. Total non-void invoice amount as billed \u2713\n3. Total payment amount as paid \u2713\n4. Include customers with no invoices or payments using 0 \u2713\n5. Keep different customer ids separate even if names match \u2713\n6. Sort by customer id \u2713\n7. Status void is excluded from billed only \u2713\n\n**Join cardinality check:**\nThe query uses two LEFT JOINs (invoices and payments) on the same customer. This creates a cross-product between invoices and payments for each customer. Let me verify:\n\n- Customer 8030: 2 invoices \u00d7 3 payments = 6 rows\n  - billed: SUM(CASE WHEN status != 'void' THEN amount ELSE 0 END) over 6 rows = (5+5)*3 = 30 \u2713\n  - paid: SUM(p.amount) over 6 rows = (17+18+15)*2 = 100 \u2713\n\n- Customer 8031: 4 invoices \u00d7 2 payments = 8 rows\n  - billed: (5+9+0+6)*2 = 40 \u2713 (void invoice contributes 0)\n  - paid: (9+9)*4 = 72 \u2713\n\n- Customer 8032: 0 invoices \u00d7 1 payment = 0 rows (LEFT JOIN gives 1 row with NULL invoice)\n  - billed: 0 \u2713\n  - paid: 20 \u2713\n\n- Customer 8033: 1 invoice \u00d7 0 payments = 0 rows (LEFT JOIN gives 1 row with NULL payment)\n  - billed: 6 \u2713\n  - paid: 0 \u2713\n\nWait \u2014 the cross-product issue: when a customer has multiple invoices AND multiple payments, the SUM of invoice amounts gets multiplied by the number of payments, and SUM of payment amounts gets multiplied by the number of invoices. This is a classic fan-out problem.\n\nLet me re-check:\n- Customer 8030: 2 invoices, 3 payments \u2192 6 joined rows\n  - billed = (5+5) * 3 = 30, but correct should be 10\n  - paid = (17+18+15) * 2 = 100, but correct should be 50\n\n- Customer 8031: 4 invoices, 2 payments \u2192 8 joined rows\n  - billed = (5+9+0+6) * 2 = 40, but correct should be 20\n  - paid = (9+9) * 4 = 72, but correct should be 18\n\nThe results are wrong due to the fan-out. I need to fix this by using subqueries or aggregating separately before joining.\n\n```sql\nSELECT\n    c.id AS customer_id,\n    c.name,\n    COALESCE(inv.billed, 0) AS billed,\n    COALESCE(pay.paid, 0) AS paid\nFROM\n    customers c\nLEFT JOIN (\n    SELECT customer_id, SUM(CASE WHEN status != 'void' THEN amount ELSE 0 END) AS billed\n    FROM invoices\n    GROUP BY customer_id\n) inv ON c.id = inv.customer_id\nLEFT JOIN (\n    SELECT customer_id, SUM(amount) AS paid\n    FROM payments\n    GROUP BY customer_id\n) pay ON c.id = pay.customer_id\nORDER BY\n    c.id\n```"
+        }
+      }
+    ],
+    "created": 1789862939,
+    "model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+    "system_fingerprint": "b1-72874f5",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 765,
+      "prompt_tokens": 1132,
+      "total_tokens": 1897,
+      "prompt_tokens_details": {
+        "cached_tokens": 24
+      }
+    },
+    "id": "chatcmpl-GXE4ifJA7F1kzLJnW5IlwyveXwEp3iKx",
+    "timings": {
+      "cache_n": 24,
+      "prompt_n": 1108,
+      "prompt_ms": 6040.994,
+      "prompt_per_token_ms": 5.452160649819494,
+      "prompt_per_second": 183.4135243305986,
+      "predicted_n": 765,
+      "predicted_ms": 40450.222,
+      "predicted_per_token_ms": 52.87610718954249,
+      "predicted_per_second": 18.912133535385788
+    }
+  },
+  "text": "Let me audit the query against the requirements and data.\n\n**Requirements check:**\n1. Return each customer id and name \u2713\n2. Total non-void invoice amount as billed \u2713\n3. Total payment amount as paid \u2713\n4. Include customers with no invoices or payments using 0 \u2713\n5. Keep different customer ids separate even if names match \u2713\n6. Sort by customer id \u2713\n7. Status void is excluded from billed only \u2713\n\n**Join cardinality check:**\nThe query uses two LEFT JOINs (invoices and payments) on the same customer. This creates a cross-product between invoices and payments for each customer. Let me verify:\n\n- Customer 8030: 2 invoices \u00d7 3 payments = 6 rows\n  - billed: SUM(CASE WHEN status != 'void' THEN amount ELSE 0 END) over 6 rows = (5+5)*3 = 30 \u2713\n  - paid: SUM(p.amount) over 6 rows = (17+18+15)*2 = 100 \u2713\n\n- Customer 8031: 4 invoices \u00d7 2 payments = 8 rows\n  - billed: (5+9+0+6)*2 = 40 \u2713 (void invoice contributes 0)\n  - paid: (9+9)*4 = 72 \u2713\n\n- Customer 8032: 0 invoices \u00d7 1 payment = 0 rows (LEFT JOIN gives 1 row with NULL invoice)\n  - billed: 0 \u2713\n  - paid: 20 \u2713\n\n- Customer 8033: 1 invoice \u00d7 0 payments = 0 rows (LEFT JOIN gives 1 row with NULL payment)\n  - billed: 6 \u2713\n  - paid: 0 \u2713\n\nWait \u2014 the cross-product issue: when a customer has multiple invoices AND multiple payments, the SUM of invoice amounts gets multiplied by the number of payments, and SUM of payment amounts gets multiplied by the number of invoices. This is a classic fan-out problem.\n\nLet me re-check:\n- Customer 8030: 2 invoices, 3 payments \u2192 6 joined rows\n  - billed = (5+5) * 3 = 30, but correct should be 10\n  - paid = (17+18+15) * 2 = 100, but correct should be 50\n\n- Customer 8031: 4 invoices, 2 payments \u2192 8 joined rows\n  - billed = (5+9+0+6) * 2 = 40, but correct should be 20\n  - paid = (9+9) * 4 = 72, but correct should be 18\n\nThe results are wrong due to the fan-out. I need to fix this by using subqueries or aggregating separately before joining.\n\n```sql\nSELECT\n    c.id AS customer_id,\n    c.name,\n    COALESCE(inv.billed, 0) AS billed,\n    COALESCE(pay.paid, 0) AS paid\nFROM\n    customers c\nLEFT JOIN (\n    SELECT customer_id, SUM(CASE WHEN status != 'void' THEN amount ELSE 0 END) AS billed\n    FROM invoices\n    GROUP BY customer_id\n) inv ON c.id = inv.customer_id\nLEFT JOIN (\n    SELECT customer_id, SUM(amount) AS paid\n    FROM payments\n    GROUP BY customer_id\n) pay ON c.id = pay.customer_id\nORDER BY\n    c.id\n```",
+  "wall_seconds": 46.53699687498738
+}

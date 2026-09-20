@@ -1,0 +1,10 @@
+{
+  "phase": "investigator competence diagnosis before final evaluation",
+  "source": "calls/billing-cheap-27b-direct.json",
+  "check": "execute first returned SQL block on already-existing billing development probe",
+  "actual_rows": [[11, "Probe", 50, 14], [12, "Empty", 0, 0]],
+  "independent_reference_rows": [[11, "Probe", 50, 14], [12, "Empty", 0, 0]],
+  "sqlite_wall_seconds": 0.0004531670128926635,
+  "exposed_to_models": false,
+  "deployment_cheap_arm_evidence": false
+}

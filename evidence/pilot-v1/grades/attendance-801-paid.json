@@ -1,0 +1,157 @@
+{
+  "history": "attendance",
+  "seed": 801,
+  "arm": "paid",
+  "input": {
+    "events": [
+      [
+        8010,
+        "Shared"
+      ],
+      [
+        8011,
+        "Shared"
+      ],
+      [
+        8012,
+        "Group2"
+      ],
+      [
+        8013,
+        "Group3"
+      ]
+    ],
+    "registrations": [
+      [
+        1,
+        8010,
+        5,
+        "confirmed"
+      ],
+      [
+        2,
+        8011,
+        5,
+        "confirmed"
+      ],
+      [
+        3,
+        8013,
+        13,
+        "confirmed"
+      ]
+    ],
+    "tags": [
+      [
+        1,
+        8010,
+        "tag0"
+      ],
+      [
+        2,
+        8012,
+        "tag0"
+      ]
+    ]
+  },
+  "initial_sql": "SELECT\n    e.id,\n    e.title,\n    COALESCE(r.seats, 0) AS seats,\n    COALESCE(t.tags, 0) AS tags\nFROM\n    events e\nLEFT JOIN (\n    SELECT event_id, SUM(seats) AS seats\n    FROM registrations\n    WHERE status = 'confirmed'\n    GROUP BY event_id\n) r ON e.id = r.event_id\nLEFT JOIN (\n    SELECT event_id, COUNT(*) AS tags\n    FROM tags\n    GROUP BY event_id\n) t ON e.id = t.event_id\nORDER BY\n    e.id",
+  "initial_execution": {
+    "columns": [
+      "id",
+      "title",
+      "seats",
+      "tags"
+    ],
+    "rows": [
+      [
+        8010,
+        "Shared",
+        5,
+        1
+      ],
+      [
+        8011,
+        "Shared",
+        5,
+        0
+      ],
+      [
+        8012,
+        "Group2",
+        0,
+        1
+      ],
+      [
+        8013,
+        "Group3",
+        13,
+        0
+      ]
+    ],
+    "wall_seconds": 0.0017546669987495989
+  },
+  "final_sql": "SELECT\n    e.id,\n    e.title,\n    COALESCE(r.seats, 0) AS seats,\n    COALESCE(t.tags, 0) AS tags\nFROM\n    events e\nLEFT JOIN (\n    SELECT event_id, SUM(seats) AS seats\n    FROM registrations\n    WHERE status = 'confirmed'\n    GROUP BY event_id\n) r ON e.id = r.event_id\nLEFT JOIN (\n    SELECT event_id, COUNT(*) AS tags\n    FROM tags\n    GROUP BY event_id\n) t ON e.id = t.event_id\nORDER BY\n    e.id",
+  "final_execution": {
+    "columns": [
+      "id",
+      "title",
+      "seats",
+      "tags"
+    ],
+    "rows": [
+      [
+        8010,
+        "Shared",
+        5,
+        1
+      ],
+      [
+        8011,
+        "Shared",
+        5,
+        0
+      ],
+      [
+        8012,
+        "Group2",
+        0,
+        1
+      ],
+      [
+        8013,
+        "Group3",
+        13,
+        0
+      ]
+    ],
+    "wall_seconds": 0.0013846670044586062
+  },
+  "expected": [
+    [
+      8010,
+      "Shared",
+      5,
+      1
+    ],
+    [
+      8011,
+      "Shared",
+      5,
+      0
+    ],
+    [
+      8012,
+      "Group2",
+      0,
+      1
+    ],
+    [
+      8013,
+      "Group3",
+      13,
+      0
+    ]
+  ],
+  "initial_pass": true,
+  "final_pass": true
+}

@@ -1,0 +1,79 @@
+{
+  "task": {
+    "schema": "CREATE TABLE customers(id INTEGER PRIMARY KEY, name TEXT); CREATE TABLE invoices(id INTEGER PRIMARY KEY, customer_id INTEGER REFERENCES customers(id), amount INTEGER, status TEXT); CREATE TABLE payments(id INTEGER PRIMARY KEY, customer_id INTEGER REFERENCES customers(id), amount INTEGER);",
+    "task": "Return each customer id and name, total non-void invoice amount as billed, and total payment amount as paid. Include customers with no invoices or payments using 0. Keep different customer ids separate even if names match. Sort by customer id. Status void is excluded from billed only.",
+    "rows": {
+      "customers": [
+        [
+          1,
+          "Ada"
+        ],
+        [
+          2,
+          "Ben"
+        ],
+        [
+          3,
+          "Cy"
+        ]
+      ],
+      "invoices": [
+        [
+          1,
+          1,
+          100,
+          "open"
+        ],
+        [
+          2,
+          2,
+          50,
+          "void"
+        ]
+      ],
+      "payments": [
+        [
+          1,
+          1,
+          40
+        ],
+        [
+          2,
+          2,
+          15
+        ]
+      ]
+    }
+  },
+  "query": "SELECT \n    c.id AS customer_id, \n    c.name, \n    COALESCE(SUM(CASE WHEN i.status != 'void' THEN i.amount ELSE 0 END), 0) AS billed, \n    COALESCE(SUM(p.amount), 0) AS paid\nFROM \n    customers c\nLEFT JOIN \n    invoices i ON c.id = i.customer_id\nLEFT JOIN \n    payments p ON c.id = p.customer_id\nGROUP BY \n    c.id, c.name\nORDER BY \n    c.id",
+  "execution": {
+    "columns": [
+      "customer_id",
+      "name",
+      "billed",
+      "paid"
+    ],
+    "rows": [
+      [
+        1,
+        "Ada",
+        100,
+        40
+      ],
+      [
+        2,
+        "Ben",
+        0,
+        15
+      ],
+      [
+        3,
+        "Cy",
+        0,
+        0
+      ]
+    ],
+    "wall_seconds": 0.000992499990388751
+  },
+  "proposal": "**Lesson 1: Use of COALESCE and Conditional Aggregation Ensures Accurate Zero Values for Non-Existing Data**  \n*Evidence:* The query correctly returns `0` for customers with no invoices or payments by using `COALESCE` and conditional aggregation. For example, customer 2 (Ben) has no invoices (excluding the void one) and a payment of 15, which is accurately reflected in the `billed` and `paid` columns. This ensures that even if a customer has no associated data, the result is still meaningful and zero-filled.  \n*Scope:* This approach is essential when dealing with optional or sparse data in relational databases, especially when reporting on financial or transactional metrics.\n\n**Lesson 2: Proper Use of LEFT JOIN and GROUP BY Ensures All Customers Are Included, Even with Matching Names**  \n*Evidence:* The query includes all customers, including those with no invoices or payments, by using `LEFT JOIN` and grouping by `c.id` and `c.name`. This ensures that customer 3 (Cy), who has no invoices or payments, is still included in the result set.  \n*Scope:* This is critical when customer names may not be unique, and the reporting must distinguish between customers based on their IDs, even if names are the same. It ensures data integrity and accurate reporting across all customer records."
+}

@@ -1,0 +1,79 @@
+{
+  "task": {
+    "schema": "CREATE TABLE events(id INTEGER PRIMARY KEY, title TEXT); CREATE TABLE registrations(id INTEGER PRIMARY KEY, event_id INTEGER REFERENCES events(id), seats INTEGER, status TEXT); CREATE TABLE tags(id INTEGER PRIMARY KEY, event_id INTEGER REFERENCES events(id), label TEXT);",
+    "task": "Return each event id and title, total seats for confirmed registrations as seats, and number of tag records as tags. Include events without registrations or tags using 0. Keep different event ids separate even if titles match. Sort by event id. Only confirmed registrations contribute seats; all tags count.",
+    "rows": {
+      "events": [
+        [
+          1,
+          "Talk"
+        ],
+        [
+          2,
+          "Lab"
+        ],
+        [
+          3,
+          "Walk"
+        ]
+      ],
+      "registrations": [
+        [
+          1,
+          1,
+          5,
+          "confirmed"
+        ],
+        [
+          2,
+          2,
+          3,
+          "cancelled"
+        ]
+      ],
+      "tags": [
+        [
+          1,
+          1,
+          "science"
+        ],
+        [
+          2,
+          2,
+          "social"
+        ]
+      ]
+    }
+  },
+  "query": "SELECT \n    e.id, \n    e.title, \n    COALESCE(SUM(CASE WHEN r.status = 'confirmed' THEN r.seats ELSE 0 END), 0) AS seats, \n    COALESCE(COUNT(t.id), 0) AS tags\nFROM \n    events e\nLEFT JOIN \n    registrations r ON e.id = r.event_id\nLEFT JOIN \n    tags t ON e.id = t.event_id\nGROUP BY \n    e.id, e.title\nORDER BY \n    e.id",
+  "execution": {
+    "columns": [
+      "id",
+      "title",
+      "seats",
+      "tags"
+    ],
+    "rows": [
+      [
+        1,
+        "Talk",
+        5,
+        1
+      ],
+      [
+        2,
+        "Lab",
+        0,
+        1
+      ],
+      [
+        3,
+        "Walk",
+        0,
+        0
+      ]
+    ],
+    "wall_seconds": 0.0015795840008649975
+  },
+  "proposal": "**Lesson 1: Use COALESCE and conditional aggregation to handle missing or zero values in joins.**  \n*Evidence:* The query correctly uses `COALESCE` with a `CASE` statement to ensure that only confirmed registrations contribute to the `seats` count, and it defaults to 0 for events with no confirmed registrations. This approach ensures accurate aggregation even when some rows are missing due to left joins.  \n*Scope:* This technique is applicable in any scenario where you need to aggregate values from joined tables and ensure that missing data is treated as zero or a default value.\n\n**Lesson 2: Group by both id and title to avoid ambiguity when titles are not unique.**  \n*Evidence:* The query groups by both `e.id` and `e.title`, which is necessary because titles may not be unique across events. This ensures that each event is treated as a separate row, even if two events share the same title.  \n*Scope:* This grouping strategy is essential in any query where the primary key is not the same as the title, especially when titles are used for display purposes but the actual identifier is the ID."
+}

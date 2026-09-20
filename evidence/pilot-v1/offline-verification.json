@@ -1,0 +1,3886 @@
+{
+  "source_and_probe": [
+    {
+      "history": "billing",
+      "split": "source",
+      "oracle": [
+        [
+          1,
+          "Ada",
+          100,
+          40
+        ],
+        [
+          2,
+          "Ben",
+          0,
+          15
+        ],
+        [
+          3,
+          "Cy",
+          0,
+          0
+        ]
+      ],
+      "oracle_execution": {
+        "columns": [
+          "id",
+          "name",
+          "COALESCE((SELECT SUM(i.amount) FROM invoices i WHERE i.customer_id=c.id AND i.status <> 'void'),0)",
+          "COALESCE((SELECT SUM(p.amount) FROM payments p WHERE p.customer_id=c.id),0)"
+        ],
+        "rows": [
+          [
+            1,
+            "Ada",
+            100,
+            40
+          ],
+          [
+            2,
+            "Ben",
+            0,
+            15
+          ],
+          [
+            3,
+            "Cy",
+            0,
+            0
+          ]
+        ],
+        "wall_seconds": 0.0003449999785516411
+      },
+      "acquired": {
+        "columns": [
+          "customer_id",
+          "name",
+          "billed",
+          "paid"
+        ],
+        "rows": [
+          [
+            1,
+            "Ada",
+            100,
+            40
+          ],
+          [
+            2,
+            "Ben",
+            0,
+            15
+          ],
+          [
+            3,
+            "Cy",
+            0,
+            0
+          ]
+        ],
+        "wall_seconds": 0.00016112500452436507
+      },
+      "pass": true
+    },
+    {
+      "history": "billing",
+      "split": "probe",
+      "oracle": [
+        [
+          11,
+          "Probe",
+          50,
+          14
+        ],
+        [
+          12,
+          "Empty",
+          0,
+          0
+        ]
+      ],
+      "oracle_execution": {
+        "columns": [
+          "id",
+          "name",
+          "COALESCE((SELECT SUM(i.amount) FROM invoices i WHERE i.customer_id=c.id AND i.status <> 'void'),0)",
+          "COALESCE((SELECT SUM(p.amount) FROM payments p WHERE p.customer_id=c.id),0)"
+        ],
+        "rows": [
+          [
+            11,
+            "Probe",
+            50,
+            14
+          ],
+          [
+            12,
+            "Empty",
+            0,
+            0
+          ]
+        ],
+        "wall_seconds": 0.00010587499127723277
+      },
+      "acquired": {
+        "columns": [
+          "customer_id",
+          "name",
+          "billed",
+          "paid"
+        ],
+        "rows": [
+          [
+            11,
+            "Probe",
+            100,
+            42
+          ],
+          [
+            12,
+            "Empty",
+            0,
+            0
+          ]
+        ],
+        "wall_seconds": 0.00010804200428538024
+      },
+      "pass": false
+    },
+    {
+      "history": "attendance",
+      "split": "source",
+      "oracle": [
+        [
+          1,
+          "Talk",
+          5,
+          1
+        ],
+        [
+          2,
+          "Lab",
+          0,
+          1
+        ],
+        [
+          3,
+          "Walk",
+          0,
+          0
+        ]
+      ],
+      "oracle_execution": {
+        "columns": [
+          "id",
+          "title",
+          "COALESCE((SELECT SUM(r.seats) FROM registrations r WHERE r.event_id=e.id AND r.status='confirmed'),0)",
+          "(SELECT COUNT(*) FROM tags t WHERE t.event_id=e.id)"
+        ],
+        "rows": [
+          [
+            1,
+            "Talk",
+            5,
+            1
+          ],
+          [
+            2,
+            "Lab",
+            0,
+            1
+          ],
+          [
+            3,
+            "Walk",
+            0,
+            0
+          ]
+        ],
+        "wall_seconds": 0.0001066249969881028
+      },
+      "acquired": {
+        "columns": [
+          "id",
+          "title",
+          "seats",
+          "tags"
+        ],
+        "rows": [
+          [
+            1,
+            "Talk",
+            5,
+            1
+          ],
+          [
+            2,
+            "Lab",
+            0,
+            1
+          ],
+          [
+            3,
+            "Walk",
+            0,
+            0
+          ]
+        ],
+        "wall_seconds": 0.00010229198960587382
+      },
+      "pass": true
+    },
+    {
+      "history": "attendance",
+      "split": "probe",
+      "oracle": [
+        [
+          11,
+          "Probe",
+          9,
+          2
+        ],
+        [
+          12,
+          "Empty",
+          0,
+          0
+        ]
+      ],
+      "oracle_execution": {
+        "columns": [
+          "id",
+          "title",
+          "COALESCE((SELECT SUM(r.seats) FROM registrations r WHERE r.event_id=e.id AND r.status='confirmed'),0)",
+          "(SELECT COUNT(*) FROM tags t WHERE t.event_id=e.id)"
+        ],
+        "rows": [
+          [
+            11,
+            "Probe",
+            9,
+            2
+          ],
+          [
+            12,
+            "Empty",
+            0,
+            0
+          ]
+        ],
+        "wall_seconds": 8.616599370725453e-05
+      },
+      "acquired": {
+        "columns": [
+          "id",
+          "title",
+          "seats",
+          "tags"
+        ],
+        "rows": [
+          [
+            11,
+            "Probe",
+            18,
+            6
+          ],
+          [
+            12,
+            "Empty",
+            0,
+            0
+          ]
+        ],
+        "wall_seconds": 9.399998816661537e-05
+      },
+      "pass": false
+    }
+  ],
+  "final_checks": [
+    {
+      "file": "attendance-801-cheap.json",
+      "history": "attendance",
+      "replay_pass": true,
+      "independent_behavior_pass": [
+        true,
+        true
+      ],
+      "oracle_execution": {
+        "columns": [
+          "id",
+          "title",
+          "COALESCE((SELECT SUM(r.seats) FROM registrations r WHERE r.event_id=e.id AND r.status='confirmed'),0)",
+          "(SELECT COUNT(*) FROM tags t WHERE t.event_id=e.id)"
+        ],
+        "rows": [
+          [
+            8010,
+            "Shared",
+            5,
+            1
+          ],
+          [
+            8011,
+            "Shared",
+            5,
+            0
+          ],
+          [
+            8012,
+            "Group2",
+            0,
+            1
+          ],
+          [
+            8013,
+            "Group3",
+            13,
+            0
+          ]
+        ],
+        "wall_seconds": 0.00010320899309590459
+      },
+      "replay_execution": {
+        "columns": [
+          "id",
+          "title",
+          "seats",
+          "tags"
+        ],
+        "rows": [
+          [
+            8010,
+            "Shared",
+            5,
+            1
+          ],
+          [
+            8011,
+            "Shared",
+            5,
+            0
+          ],
+          [
+            8012,
+            "Group2",
+            0,
+            1
+          ],
+          [
+            8013,
+            "Group3",
+            13,
+            0
+          ]
+        ],
+        "wall_seconds": 0.00013954201131127775
+      },
+      "behavior_executions": [
+        {
+          "seed": 907,
+          "execution": {
+            "columns": [
+              "id",
+              "title",
+              "seats",
+              "tags"
+            ],
+            "rows": [
+              [
+                9070,
+                "Shared",
+                48,
+                3
+              ],
+              [
+                9071,
+                "Shared",
+                44,
+                2
+              ],
+              [
+                9072,
+                "Group2",
+                0,
+                1
+              ],
+              [
+                9073,
+                "Group3",
+                11,
+                0
+              ]
+            ],
+            "wall_seconds": 0.0001102499954868108
+          }
+        },
+        {
+          "seed": 911,
+          "execution": {
+            "columns": [
+              "id",
+              "title",
+              "seats",
+              "tags"
+            ],
+            "rows": [
+              [
+                9110,
+                "Shared",
+                32,
+                3
+              ],
+              [
+                9111,
+                "Shared",
+                59,
+                2
+              ],
+              [
+                9112,
+                "Group2",
+                0,
+                1
+              ],
+              [
+                9113,
+                "Group3",
+                7,
+                0
+              ]
+            ],
+            "wall_seconds": 0.00010475001181475818
+          }
+        }
+      ]
+    },
+    {
+      "file": "attendance-801-paid.json",
+      "history": "attendance",
+      "replay_pass": true,
+      "independent_behavior_pass": [
+        true,
+        true
+      ],
+      "oracle_execution": {
+        "columns": [
+          "id",
+          "title",
+          "COALESCE((SELECT SUM(r.seats) FROM registrations r WHERE r.event_id=e.id AND r.status='confirmed'),0)",
+          "(SELECT COUNT(*) FROM tags t WHERE t.event_id=e.id)"
+        ],
+        "rows": [
+          [
+            8010,
+            "Shared",
+            5,
+            1
+          ],
+          [
+            8011,
+            "Shared",
+            5,
+            0
+          ],
+          [
+            8012,
+            "Group2",
+            0,
+            1
+          ],
+          [
+            8013,
+            "Group3",
+            13,
+            0
+          ]
+        ],
+        "wall_seconds": 9.045799379236996e-05
+      },
+      "replay_execution": {
+        "columns": [
+          "id",
+          "title",
+          "seats",
+          "tags"
+        ],
+        "rows": [
+          [
+            8010,
+            "Shared",
+            5,
+            1
+          ],
+          [
+            8011,
+            "Shared",
+            5,
+            0
+          ],
+          [
+            8012,
+            "Group2",
+            0,
+            1
+          ],
+          [
+            8013,
+            "Group3",
+            13,
+            0
+          ]
+        ],
+        "wall_seconds": 9.679197682999074e-05
+      },
+      "behavior_executions": [
+        {
+          "seed": 907,
+          "execution": {
+            "columns": [
+              "id",
+              "title",
+              "seats",
+              "tags"
+            ],
+            "rows": [
+              [
+                9070,
+                "Shared",
+                48,
+                3
+              ],
+              [
+                9071,
+                "Shared",
+                44,
+                2
+              ],
+              [
+                9072,
+                "Group2",
+                0,
+                1
+              ],
+              [
+                9073,
+                "Group3",
+                11,
+                0
+              ]
+            ],
+            "wall_seconds": 0.0001010000123642385
+          }
+        },
+        {
+          "seed": 911,
+          "execution": {
+            "columns": [
+              "id",
+              "title",
+              "seats",
+              "tags"
+            ],
+            "rows": [
+              [
+                9110,
+                "Shared",
+                32,
+                3
+              ],
+              [
+                9111,
+                "Shared",
+                59,
+                2
+              ],
+              [
+                9112,
+                "Group2",
+                0,
+                1
+              ],
+              [
+                9113,
+                "Group3",
+                7,
+                0
+              ]
+            ],
+            "wall_seconds": 9.812499047257006e-05
+          }
+        }
+      ]
+    },
+    {
+      "file": "attendance-801-raw.json",
+      "history": "attendance",
+      "replay_pass": true,
+      "independent_behavior_pass": [
+        true,
+        true
+      ],
+      "oracle_execution": {
+        "columns": [
+          "id",
+          "title",
+          "COALESCE((SELECT SUM(r.seats) FROM registrations r WHERE r.event_id=e.id AND r.status='confirmed'),0)",
+          "(SELECT COUNT(*) FROM tags t WHERE t.event_id=e.id)"
+        ],
+        "rows": [
+          [
+            8010,
+            "Shared",
+            5,
+            1
+          ],
+          [
+            8011,
+            "Shared",
+            5,
+            0
+          ],
+          [
+            8012,
+            "Group2",
+            0,
+            1
+          ],
+          [
+            8013,
+            "Group3",
+            13,
+            0
+          ]
+        ],
+        "wall_seconds": 8.754199370741844e-05
+      },
+      "replay_execution": {
+        "columns": [
+          "id",
+          "title",
+          "seats",
+          "tags"
+        ],
+        "rows": [
+          [
+            8010,
+            "Shared",
+            5,
+            1
+          ],
+          [
+            8011,
+            "Shared",
+            5,
+            0
+          ],
+          [
+            8012,
+            "Group2",
+            0,
+            1
+          ],
+          [
+            8013,
+            "Group3",
+            13,
+            0
+          ]
+        ],
+        "wall_seconds": 8.270802209153771e-05
+      },
+      "behavior_executions": [
+        {
+          "seed": 907,
+          "execution": {
+            "columns": [
+              "id",
+              "title",
+              "seats",
+              "tags"
+            ],
+            "rows": [
+              [
+                9070,
+                "Shared",
+                48,
+                3
+              ],
+              [
+                9071,
+                "Shared",
+                44,
+                2
+              ],
+              [
+                9072,
+                "Group2",
+                0,
+                1
+              ],
+              [
+                9073,
+                "Group3",
+                11,
+                0
+              ]
+            ],
+            "wall_seconds": 8.549998165108263e-05
+          }
+        },
+        {
+          "seed": 911,
+          "execution": {
+            "columns": [
+              "id",
+              "title",
+              "seats",
+              "tags"
+            ],
+            "rows": [
+              [
+                9110,
+                "Shared",
+                32,
+                3
+              ],
+              [
+                9111,
+                "Shared",
+                59,
+                2
+              ],
+              [
+                9112,
+                "Group2",
+                0,
+                1
+              ],
+              [
+                9113,
+                "Group3",
+                7,
+                0
+              ]
+            ],
+            "wall_seconds": 8.49170028232038e-05
+          }
+        }
+      ]
+    },
+    {
+      "file": "attendance-802-cheap.json",
+      "history": "attendance",
+      "replay_pass": true,
+      "independent_behavior_pass": [
+        true,
+        true
+      ],
+      "oracle_execution": {
+        "columns": [
+          "id",
+          "title",
+          "COALESCE((SELECT SUM(r.seats) FROM registrations r WHERE r.event_id=e.id AND r.status='confirmed'),0)",
+          "(SELECT COUNT(*) FROM tags t WHERE t.event_id=e.id)"
+        ],
+        "rows": [
+          [
+            8020,
+            "Shared",
+            38,
+            2
+          ],
+          [
+            8021,
+            "Shared",
+            25,
+            0
+          ],
+          [
+            8022,
+            "Group2",
+            0,
+            2
+          ],
+          [
+            8023,
+            "Group3",
+            28,
+            0
+          ]
+        ],
+        "wall_seconds": 8.704100036993623e-05
+      },
+      "replay_execution": {
+        "columns": [
+          "id",
+          "title",
+          "seats",
+          "tags"
+        ],
+        "rows": [
+          [
+            8020,
+            "Shared",
+            38,
+            2
+          ],
+          [
+            8021,
+            "Shared",
+            25,
+            0
+          ],
+          [
+            8022,
+            "Group2",
+            0,
+            2
+          ],
+          [
+            8023,
+            "Group3",
+            28,
+            0
+          ]
+        ],
+        "wall_seconds": 9.545800276100636e-05
+      },
+      "behavior_executions": [
+        {
+          "seed": 907,
+          "execution": {
+            "columns": [
+              "id",
+              "title",
+              "seats",
+              "tags"
+            ],
+            "rows": [
+              [
+                9070,
+                "Shared",
+                48,
+                3
+              ],
+              [
+                9071,
+                "Shared",
+                44,
+                2
+              ],
+              [
+                9072,
+                "Group2",
+                0,
+                1
+              ],
+              [
+                9073,
+                "Group3",
+                11,
+                0
+              ]
+            ],
+            "wall_seconds": 9.920800221152604e-05
+          }
+        },
+        {
+          "seed": 911,
+          "execution": {
+            "columns": [
+              "id",
+              "title",
+              "seats",
+              "tags"
+            ],
+            "rows": [
+              [
+                9110,
+                "Shared",
+                32,
+                3
+              ],
+              [
+                9111,
+                "Shared",
+                59,
+                2
+              ],
+              [
+                9112,
+                "Group2",
+                0,
+                1
+              ],
+              [
+                9113,
+                "Group3",
+                7,
+                0
+              ]
+            ],
+            "wall_seconds": 9.608297841623425e-05
+          }
+        }
+      ]
+    },
+    {
+      "file": "attendance-802-paid.json",
+      "history": "attendance",
+      "replay_pass": true,
+      "independent_behavior_pass": [
+        true,
+        true
+      ],
+      "oracle_execution": {
+        "columns": [
+          "id",
+          "title",
+          "COALESCE((SELECT SUM(r.seats) FROM registrations r WHERE r.event_id=e.id AND r.status='confirmed'),0)",
+          "(SELECT COUNT(*) FROM tags t WHERE t.event_id=e.id)"
+        ],
+        "rows": [
+          [
+            8020,
+            "Shared",
+            38,
+            2
+          ],
+          [
+            8021,
+            "Shared",
+            25,
+            0
+          ],
+          [
+            8022,
+            "Group2",
+            0,
+            2
+          ],
+          [
+            8023,
+            "Group3",
+            28,
+            0
+          ]
+        ],
+        "wall_seconds": 8.908400195650756e-05
+      },
+      "replay_execution": {
+        "columns": [
+          "id",
+          "title",
+          "seats",
+          "tags"
+        ],
+        "rows": [
+          [
+            8020,
+            "Shared",
+            38,
+            2
+          ],
+          [
+            8021,
+            "Shared",
+            25,
+            0
+          ],
+          [
+            8022,
+            "Group2",
+            0,
+            2
+          ],
+          [
+            8023,
+            "Group3",
+            28,
+            0
+          ]
+        ],
+        "wall_seconds": 9.579199831932783e-05
+      },
+      "behavior_executions": [
+        {
+          "seed": 907,
+          "execution": {
+            "columns": [
+              "id",
+              "title",
+              "seats",
+              "tags"
+            ],
+            "rows": [
+              [
+                9070,
+                "Shared",
+                48,
+                3
+              ],
+              [
+                9071,
+                "Shared",
+                44,
+                2
+              ],
+              [
+                9072,
+                "Group2",
+                0,
+                1
+              ],
+              [
+                9073,
+                "Group3",
+                11,
+                0
+              ]
+            ],
+            "wall_seconds": 9.549999958835542e-05
+          }
+        },
+        {
+          "seed": 911,
+          "execution": {
+            "columns": [
+              "id",
+              "title",
+              "seats",
+              "tags"
+            ],
+            "rows": [
+              [
+                9110,
+                "Shared",
+                32,
+                3
+              ],
+              [
+                9111,
+                "Shared",
+                59,
+                2
+              ],
+              [
+                9112,
+                "Group2",
+                0,
+                1
+              ],
+              [
+                9113,
+                "Group3",
+                7,
+                0
+              ]
+            ],
+            "wall_seconds": 9.74580179899931e-05
+          }
+        }
+      ]
+    },
+    {
+      "file": "attendance-802-raw.json",
+      "history": "attendance",
+      "replay_pass": true,
+      "independent_behavior_pass": [
+        true,
+        true
+      ],
+      "oracle_execution": {
+        "columns": [
+          "id",
+          "title",
+          "COALESCE((SELECT SUM(r.seats) FROM registrations r WHERE r.event_id=e.id AND r.status='confirmed'),0)",
+          "(SELECT COUNT(*) FROM tags t WHERE t.event_id=e.id)"
+        ],
+        "rows": [
+          [
+            8020,
+            "Shared",
+            38,
+            2
+          ],
+          [
+            8021,
+            "Shared",
+            25,
+            0
+          ],
+          [
+            8022,
+            "Group2",
+            0,
+            2
+          ],
+          [
+            8023,
+            "Group3",
+            28,
+            0
+          ]
+        ],
+        "wall_seconds": 8.62079905346036e-05
+      },
+      "replay_execution": {
+        "columns": [
+          "id",
+          "title",
+          "seats",
+          "tags"
+        ],
+        "rows": [
+          [
+            8020,
+            "Shared",
+            38,
+            2
+          ],
+          [
+            8021,
+            "Shared",
+            25,
+            0
+          ],
+          [
+            8022,
+            "Group2",
+            0,
+            2
+          ],
+          [
+            8023,
+            "Group3",
+            28,
+            0
+          ]
+        ],
+        "wall_seconds": 9.38749872148037e-05
+      },
+      "behavior_executions": [
+        {
+          "seed": 907,
+          "execution": {
+            "columns": [
+              "id",
+              "title",
+              "seats",
+              "tags"
+            ],
+            "rows": [
+              [
+                9070,
+                "Shared",
+                48,
+                3
+              ],
+              [
+                9071,
+                "Shared",
+                44,
+                2
+              ],
+              [
+                9072,
+                "Group2",
+                0,
+                1
+              ],
+              [
+                9073,
+                "Group3",
+                11,
+                0
+              ]
+            ],
+            "wall_seconds": 9.495799895375967e-05
+          }
+        },
+        {
+          "seed": 911,
+          "execution": {
+            "columns": [
+              "id",
+              "title",
+              "seats",
+              "tags"
+            ],
+            "rows": [
+              [
+                9110,
+                "Shared",
+                32,
+                3
+              ],
+              [
+                9111,
+                "Shared",
+                59,
+                2
+              ],
+              [
+                9112,
+                "Group2",
+                0,
+                1
+              ],
+              [
+                9113,
+                "Group3",
+                7,
+                0
+              ]
+            ],
+            "wall_seconds": 9.904199396260083e-05
+          }
+        }
+      ]
+    },
+    {
+      "file": "attendance-803-cheap.json",
+      "history": "attendance",
+      "replay_pass": true,
+      "independent_behavior_pass": [
+        true,
+        true
+      ],
+      "oracle_execution": {
+        "columns": [
+          "id",
+          "title",
+          "COALESCE((SELECT SUM(r.seats) FROM registrations r WHERE r.event_id=e.id AND r.status='confirmed'),0)",
+          "(SELECT COUNT(*) FROM tags t WHERE t.event_id=e.id)"
+        ],
+        "rows": [
+          [
+            8030,
+            "Shared",
+            10,
+            3
+          ],
+          [
+            8031,
+            "Shared",
+            40,
+            2
+          ],
+          [
+            8032,
+            "Group2",
+            0,
+            1
+          ],
+          [
+            8033,
+            "Group3",
+            9,
+            0
+          ]
+        ],
+        "wall_seconds": 8.754100417718291e-05
+      },
+      "replay_execution": {
+        "columns": [
+          "id",
+          "title",
+          "seats",
+          "tags"
+        ],
+        "rows": [
+          [
+            8030,
+            "Shared",
+            10,
+            3
+          ],
+          [
+            8031,
+            "Shared",
+            40,
+            2
+          ],
+          [
+            8032,
+            "Group2",
+            0,
+            1
+          ],
+          [
+            8033,
+            "Group3",
+            9,
+            0
+          ]
+        ],
+        "wall_seconds": 9.49589884839952e-05
+      },
+      "behavior_executions": [
+        {
+          "seed": 907,
+          "execution": {
+            "columns": [
+              "id",
+              "title",
+              "seats",
+              "tags"
+            ],
+            "rows": [
+              [
+                9070,
+                "Shared",
+                48,
+                3
+              ],
+              [
+                9071,
+                "Shared",
+                44,
+                2
+              ],
+              [
+                9072,
+                "Group2",
+                0,
+                1
+              ],
+              [
+                9073,
+                "Group3",
+                11,
+                0
+              ]
+            ],
+            "wall_seconds": 9.812501957640052e-05
+          }
+        },
+        {
+          "seed": 911,
+          "execution": {
+            "columns": [
+              "id",
+              "title",
+              "seats",
+              "tags"
+            ],
+            "rows": [
+              [
+                9110,
+                "Shared",
+                32,
+                3
+              ],
+              [
+                9111,
+                "Shared",
+                59,
+                2
+              ],
+              [
+                9112,
+                "Group2",
+                0,
+                1
+              ],
+              [
+                9113,
+                "Group3",
+                7,
+                0
+              ]
+            ],
+            "wall_seconds": 0.00010116701014339924
+          }
+        }
+      ]
+    },
+    {
+      "file": "attendance-803-paid.json",
+      "history": "attendance",
+      "replay_pass": true,
+      "independent_behavior_pass": [
+        true,
+        true
+      ],
+      "oracle_execution": {
+        "columns": [
+          "id",
+          "title",
+          "COALESCE((SELECT SUM(r.seats) FROM registrations r WHERE r.event_id=e.id AND r.status='confirmed'),0)",
+          "(SELECT COUNT(*) FROM tags t WHERE t.event_id=e.id)"
+        ],
+        "rows": [
+          [
+            8030,
+            "Shared",
+            10,
+            3
+          ],
+          [
+            8031,
+            "Shared",
+            40,
+            2
+          ],
+          [
+            8032,
+            "Group2",
+            0,
+            1
+          ],
+          [
+            8033,
+            "Group3",
+            9,
+            0
+          ]
+        ],
+        "wall_seconds": 9.23750048968941e-05
+      },
+      "replay_execution": {
+        "columns": [
+          "id",
+          "title",
+          "seats",
+          "tags"
+        ],
+        "rows": [
+          [
+            8030,
+            "Shared",
+            10,
+            3
+          ],
+          [
+            8031,
+            "Shared",
+            40,
+            2
+          ],
+          [
+            8032,
+            "Group2",
+            0,
+            1
+          ],
+          [
+            8033,
+            "Group3",
+            9,
+            0
+          ]
+        ],
+        "wall_seconds": 9.575000149197876e-05
+      },
+      "behavior_executions": [
+        {
+          "seed": 907,
+          "execution": {
+            "columns": [
+              "id",
+              "title",
+              "seats",
+              "tags"
+            ],
+            "rows": [
+              [
+                9070,
+                "Shared",
+                48,
+                3
+              ],
+              [
+                9071,
+                "Shared",
+                44,
+                2
+              ],
+              [
+                9072,
+                "Group2",
+                0,
+                1
+              ],
+              [
+                9073,
+                "Group3",
+                11,
+                0
+              ]
+            ],
+            "wall_seconds": 9.412498911842704e-05
+          }
+        },
+        {
+          "seed": 911,
+          "execution": {
+            "columns": [
+              "id",
+              "title",
+              "seats",
+              "tags"
+            ],
+            "rows": [
+              [
+                9110,
+                "Shared",
+                32,
+                3
+              ],
+              [
+                9111,
+                "Shared",
+                59,
+                2
+              ],
+              [
+                9112,
+                "Group2",
+                0,
+                1
+              ],
+              [
+                9113,
+                "Group3",
+                7,
+                0
+              ]
+            ],
+            "wall_seconds": 9.420898277312517e-05
+          }
+        }
+      ]
+    },
+    {
+      "file": "attendance-803-raw.json",
+      "history": "attendance",
+      "replay_pass": true,
+      "independent_behavior_pass": [
+        true,
+        true
+      ],
+      "oracle_execution": {
+        "columns": [
+          "id",
+          "title",
+          "COALESCE((SELECT SUM(r.seats) FROM registrations r WHERE r.event_id=e.id AND r.status='confirmed'),0)",
+          "(SELECT COUNT(*) FROM tags t WHERE t.event_id=e.id)"
+        ],
+        "rows": [
+          [
+            8030,
+            "Shared",
+            10,
+            3
+          ],
+          [
+            8031,
+            "Shared",
+            40,
+            2
+          ],
+          [
+            8032,
+            "Group2",
+            0,
+            1
+          ],
+          [
+            8033,
+            "Group3",
+            9,
+            0
+          ]
+        ],
+        "wall_seconds": 8.774999878369272e-05
+      },
+      "replay_execution": {
+        "columns": [
+          "id",
+          "title",
+          "seats",
+          "tags"
+        ],
+        "rows": [
+          [
+            8030,
+            "Shared",
+            10,
+            3
+          ],
+          [
+            8031,
+            "Shared",
+            40,
+            2
+          ],
+          [
+            8032,
+            "Group2",
+            0,
+            1
+          ],
+          [
+            8033,
+            "Group3",
+            9,
+            0
+          ]
+        ],
+        "wall_seconds": 9.804198634810746e-05
+      },
+      "behavior_executions": [
+        {
+          "seed": 907,
+          "execution": {
+            "columns": [
+              "id",
+              "title",
+              "seats",
+              "tags"
+            ],
+            "rows": [
+              [
+                9070,
+                "Shared",
+                48,
+                3
+              ],
+              [
+                9071,
+                "Shared",
+                44,
+                2
+              ],
+              [
+                9072,
+                "Group2",
+                0,
+                1
+              ],
+              [
+                9073,
+                "Group3",
+                11,
+                0
+              ]
+            ],
+            "wall_seconds": 9.575000149197876e-05
+          }
+        },
+        {
+          "seed": 911,
+          "execution": {
+            "columns": [
+              "id",
+              "title",
+              "seats",
+              "tags"
+            ],
+            "rows": [
+              [
+                9110,
+                "Shared",
+                32,
+                3
+              ],
+              [
+                9111,
+                "Shared",
+                59,
+                2
+              ],
+              [
+                9112,
+                "Group2",
+                0,
+                1
+              ],
+              [
+                9113,
+                "Group3",
+                7,
+                0
+              ]
+            ],
+            "wall_seconds": 9.56250005401671e-05
+          }
+        }
+      ]
+    },
+    {
+      "file": "billing-801-cheap.json",
+      "history": "billing",
+      "replay_pass": true,
+      "independent_behavior_pass": [
+        true,
+        true
+      ],
+      "oracle_execution": {
+        "columns": [
+          "id",
+          "name",
+          "COALESCE((SELECT SUM(i.amount) FROM invoices i WHERE i.customer_id=c.id AND i.status <> 'void'),0)",
+          "COALESCE((SELECT SUM(p.amount) FROM payments p WHERE p.customer_id=c.id),0)"
+        ],
+        "rows": [
+          [
+            8010,
+            "Shared",
+            5,
+            8
+          ],
+          [
+            8011,
+            "Shared",
+            5,
+            0
+          ],
+          [
+            8012,
+            "Group2",
+            0,
+            5
+          ],
+          [
+            8013,
+            "Group3",
+            27,
+            0
+          ]
+        ],
+        "wall_seconds": 8.779100608080626e-05
+      },
+      "replay_execution": {
+        "columns": [
+          "customer_id",
+          "name",
+          "billed",
+          "paid"
+        ],
+        "rows": [
+          [
+            8010,
+            "Shared",
+            5,
+            8
+          ],
+          [
+            8011,
+            "Shared",
+            5,
+            0
+          ],
+          [
+            8012,
+            "Group2",
+            0,
+            5
+          ],
+          [
+            8013,
+            "Group3",
+            27,
+            0
+          ]
+        ],
+        "wall_seconds": 9.954100823961198e-05
+      },
+      "behavior_executions": [
+        {
+          "seed": 907,
+          "execution": {
+            "columns": [
+              "customer_id",
+              "name",
+              "billed",
+              "paid"
+            ],
+            "rows": [
+              [
+                9070,
+                "Shared",
+                48,
+                20
+              ],
+              [
+                9071,
+                "Shared",
+                52,
+                15
+              ],
+              [
+                9072,
+                "Group2",
+                0,
+                17
+              ],
+              [
+                9073,
+                "Group3",
+                4,
+                0
+              ]
+            ],
+            "wall_seconds": 0.00010024997754953802
+          }
+        },
+        {
+          "seed": 911,
+          "execution": {
+            "columns": [
+              "customer_id",
+              "name",
+              "billed",
+              "paid"
+            ],
+            "rows": [
+              [
+                9110,
+                "Shared",
+                32,
+                27
+              ],
+              [
+                9111,
+                "Shared",
+                57,
+                23
+              ],
+              [
+                9112,
+                "Group2",
+                0,
+                4
+              ],
+              [
+                9113,
+                "Group3",
+                19,
+                0
+              ]
+            ],
+            "wall_seconds": 9.920800221152604e-05
+          }
+        }
+      ]
+    },
+    {
+      "file": "billing-801-paid.json",
+      "history": "billing",
+      "replay_pass": true,
+      "independent_behavior_pass": [
+        true,
+        true
+      ],
+      "oracle_execution": {
+        "columns": [
+          "id",
+          "name",
+          "COALESCE((SELECT SUM(i.amount) FROM invoices i WHERE i.customer_id=c.id AND i.status <> 'void'),0)",
+          "COALESCE((SELECT SUM(p.amount) FROM payments p WHERE p.customer_id=c.id),0)"
+        ],
+        "rows": [
+          [
+            8010,
+            "Shared",
+            5,
+            8
+          ],
+          [
+            8011,
+            "Shared",
+            5,
+            0
+          ],
+          [
+            8012,
+            "Group2",
+            0,
+            5
+          ],
+          [
+            8013,
+            "Group3",
+            27,
+            0
+          ]
+        ],
+        "wall_seconds": 8.508400060236454e-05
+      },
+      "replay_execution": {
+        "columns": [
+          "customer_id",
+          "name",
+          "billed",
+          "paid"
+        ],
+        "rows": [
+          [
+            8010,
+            "Shared",
+            5,
+            8
+          ],
+          [
+            8011,
+            "Shared",
+            5,
+            0
+          ],
+          [
+            8012,
+            "Group2",
+            0,
+            5
+          ],
+          [
+            8013,
+            "Group3",
+            27,
+            0
+          ]
+        ],
+        "wall_seconds": 9.308301378041506e-05
+      },
+      "behavior_executions": [
+        {
+          "seed": 907,
+          "execution": {
+            "columns": [
+              "customer_id",
+              "name",
+              "billed",
+              "paid"
+            ],
+            "rows": [
+              [
+                9070,
+                "Shared",
+                48,
+                20
+              ],
+              [
+                9071,
+                "Shared",
+                52,
+                15
+              ],
+              [
+                9072,
+                "Group2",
+                0,
+                17
+              ],
+              [
+                9073,
+                "Group3",
+                4,
+                0
+              ]
+            ],
+            "wall_seconds": 9.59169992711395e-05
+          }
+        },
+        {
+          "seed": 911,
+          "execution": {
+            "columns": [
+              "customer_id",
+              "name",
+              "billed",
+              "paid"
+            ],
+            "rows": [
+              [
+                9110,
+                "Shared",
+                32,
+                27
+              ],
+              [
+                9111,
+                "Shared",
+                57,
+                23
+              ],
+              [
+                9112,
+                "Group2",
+                0,
+                4
+              ],
+              [
+                9113,
+                "Group3",
+                19,
+                0
+              ]
+            ],
+            "wall_seconds": 9.654101449996233e-05
+          }
+        }
+      ]
+    },
+    {
+      "file": "billing-801-raw.json",
+      "history": "billing",
+      "replay_pass": true,
+      "independent_behavior_pass": [
+        false,
+        false
+      ],
+      "oracle_execution": {
+        "columns": [
+          "id",
+          "name",
+          "COALESCE((SELECT SUM(i.amount) FROM invoices i WHERE i.customer_id=c.id AND i.status <> 'void'),0)",
+          "COALESCE((SELECT SUM(p.amount) FROM payments p WHERE p.customer_id=c.id),0)"
+        ],
+        "rows": [
+          [
+            8010,
+            "Shared",
+            5,
+            8
+          ],
+          [
+            8011,
+            "Shared",
+            5,
+            0
+          ],
+          [
+            8012,
+            "Group2",
+            0,
+            5
+          ],
+          [
+            8013,
+            "Group3",
+            27,
+            0
+          ]
+        ],
+        "wall_seconds": 8.445800631307065e-05
+      },
+      "replay_execution": {
+        "columns": [
+          "customer_id",
+          "name",
+          "billed",
+          "paid"
+        ],
+        "rows": [
+          [
+            8010,
+            "Shared",
+            5,
+            8
+          ],
+          [
+            8011,
+            "Shared",
+            5,
+            0
+          ],
+          [
+            8012,
+            "Group2",
+            0,
+            5
+          ],
+          [
+            8013,
+            "Group3",
+            27,
+            0
+          ]
+        ],
+        "wall_seconds": 9.116702130995691e-05
+      },
+      "behavior_executions": [
+        {
+          "seed": 907,
+          "execution": {
+            "columns": [
+              "customer_id",
+              "name",
+              "billed",
+              "paid"
+            ],
+            "rows": [
+              [
+                9070,
+                "Shared",
+                144,
+                40
+              ],
+              [
+                9071,
+                "Shared",
+                104,
+                60
+              ],
+              [
+                9072,
+                "Group2",
+                0,
+                17
+              ],
+              [
+                9073,
+                "Group3",
+                4,
+                0
+              ]
+            ],
+            "wall_seconds": 9.445799514651299e-05
+          }
+        },
+        {
+          "seed": 911,
+          "execution": {
+            "columns": [
+              "customer_id",
+              "name",
+              "billed",
+              "paid"
+            ],
+            "rows": [
+              [
+                9110,
+                "Shared",
+                96,
+                54
+              ],
+              [
+                9111,
+                "Shared",
+                114,
+                92
+              ],
+              [
+                9112,
+                "Group2",
+                0,
+                4
+              ],
+              [
+                9113,
+                "Group3",
+                19,
+                0
+              ]
+            ],
+            "wall_seconds": 9.449999197386205e-05
+          }
+        }
+      ]
+    },
+    {
+      "file": "billing-802-cheap.json",
+      "history": "billing",
+      "replay_pass": true,
+      "independent_behavior_pass": [
+        true,
+        true
+      ],
+      "oracle_execution": {
+        "columns": [
+          "id",
+          "name",
+          "COALESCE((SELECT SUM(i.amount) FROM invoices i WHERE i.customer_id=c.id AND i.status <> 'void'),0)",
+          "COALESCE((SELECT SUM(p.amount) FROM payments p WHERE p.customer_id=c.id),0)"
+        ],
+        "rows": [
+          [
+            8020,
+            "Shared",
+            38,
+            25
+          ],
+          [
+            8021,
+            "Shared",
+            39,
+            0
+          ],
+          [
+            8022,
+            "Group2",
+            0,
+            20
+          ],
+          [
+            8023,
+            "Group3",
+            23,
+            0
+          ]
+        ],
+        "wall_seconds": 8.591701043769717e-05
+      },
+      "replay_execution": {
+        "columns": [
+          "customer_id",
+          "name",
+          "billed",
+          "paid"
+        ],
+        "rows": [
+          [
+            8020,
+            "Shared",
+            38,
+            25
+          ],
+          [
+            8021,
+            "Shared",
+            39,
+            0
+          ],
+          [
+            8022,
+            "Group2",
+            0,
+            20
+          ],
+          [
+            8023,
+            "Group3",
+            23,
+            0
+          ]
+        ],
+        "wall_seconds": 9.545902139507234e-05
+      },
+      "behavior_executions": [
+        {
+          "seed": 907,
+          "execution": {
+            "columns": [
+              "customer_id",
+              "name",
+              "billed",
+              "paid"
+            ],
+            "rows": [
+              [
+                9070,
+                "Shared",
+                48,
+                20
+              ],
+              [
+                9071,
+                "Shared",
+                52,
+                15
+              ],
+              [
+                9072,
+                "Group2",
+                0,
+                17
+              ],
+              [
+                9073,
+                "Group3",
+                4,
+                0
+              ]
+            ],
+            "wall_seconds": 9.56250005401671e-05
+          }
+        },
+        {
+          "seed": 911,
+          "execution": {
+            "columns": [
+              "customer_id",
+              "name",
+              "billed",
+              "paid"
+            ],
+            "rows": [
+              [
+                9110,
+                "Shared",
+                32,
+                27
+              ],
+              [
+                9111,
+                "Shared",
+                57,
+                23
+              ],
+              [
+                9112,
+                "Group2",
+                0,
+                4
+              ],
+              [
+                9113,
+                "Group3",
+                19,
+                0
+              ]
+            ],
+            "wall_seconds": 9.687498095445335e-05
+          }
+        }
+      ]
+    },
+    {
+      "file": "billing-802-paid.json",
+      "history": "billing",
+      "replay_pass": true,
+      "independent_behavior_pass": [
+        true,
+        true
+      ],
+      "oracle_execution": {
+        "columns": [
+          "id",
+          "name",
+          "COALESCE((SELECT SUM(i.amount) FROM invoices i WHERE i.customer_id=c.id AND i.status <> 'void'),0)",
+          "COALESCE((SELECT SUM(p.amount) FROM payments p WHERE p.customer_id=c.id),0)"
+        ],
+        "rows": [
+          [
+            8020,
+            "Shared",
+            38,
+            25
+          ],
+          [
+            8021,
+            "Shared",
+            39,
+            0
+          ],
+          [
+            8022,
+            "Group2",
+            0,
+            20
+          ],
+          [
+            8023,
+            "Group3",
+            23,
+            0
+          ]
+        ],
+        "wall_seconds": 8.741600322537124e-05
+      },
+      "replay_execution": {
+        "columns": [
+          "customer_id",
+          "name",
+          "billed",
+          "paid"
+        ],
+        "rows": [
+          [
+            8020,
+            "Shared",
+            38,
+            25
+          ],
+          [
+            8021,
+            "Shared",
+            39,
+            0
+          ],
+          [
+            8022,
+            "Group2",
+            0,
+            20
+          ],
+          [
+            8023,
+            "Group3",
+            23,
+            0
+          ]
+        ],
+        "wall_seconds": 9.499999578110874e-05
+      },
+      "behavior_executions": [
+        {
+          "seed": 907,
+          "execution": {
+            "columns": [
+              "customer_id",
+              "name",
+              "billed",
+              "paid"
+            ],
+            "rows": [
+              [
+                9070,
+                "Shared",
+                48,
+                20
+              ],
+              [
+                9071,
+                "Shared",
+                52,
+                15
+              ],
+              [
+                9072,
+                "Group2",
+                0,
+                17
+              ],
+              [
+                9073,
+                "Group3",
+                4,
+                0
+              ]
+            ],
+            "wall_seconds": 9.600000339560211e-05
+          }
+        },
+        {
+          "seed": 911,
+          "execution": {
+            "columns": [
+              "customer_id",
+              "name",
+              "billed",
+              "paid"
+            ],
+            "rows": [
+              [
+                9110,
+                "Shared",
+                32,
+                27
+              ],
+              [
+                9111,
+                "Shared",
+                57,
+                23
+              ],
+              [
+                9112,
+                "Group2",
+                0,
+                4
+              ],
+              [
+                9113,
+                "Group3",
+                19,
+                0
+              ]
+            ],
+            "wall_seconds": 9.499999578110874e-05
+          }
+        }
+      ]
+    },
+    {
+      "file": "billing-802-raw.json",
+      "history": "billing",
+      "replay_pass": true,
+      "independent_behavior_pass": [
+        true,
+        true
+      ],
+      "oracle_execution": {
+        "columns": [
+          "id",
+          "name",
+          "COALESCE((SELECT SUM(i.amount) FROM invoices i WHERE i.customer_id=c.id AND i.status <> 'void'),0)",
+          "COALESCE((SELECT SUM(p.amount) FROM payments p WHERE p.customer_id=c.id),0)"
+        ],
+        "rows": [
+          [
+            8020,
+            "Shared",
+            38,
+            25
+          ],
+          [
+            8021,
+            "Shared",
+            39,
+            0
+          ],
+          [
+            8022,
+            "Group2",
+            0,
+            20
+          ],
+          [
+            8023,
+            "Group3",
+            23,
+            0
+          ]
+        ],
+        "wall_seconds": 8.645799243822694e-05
+      },
+      "replay_execution": {
+        "columns": [
+          "customer_id",
+          "name",
+          "billed",
+          "paid"
+        ],
+        "rows": [
+          [
+            8020,
+            "Shared",
+            38,
+            25
+          ],
+          [
+            8021,
+            "Shared",
+            39,
+            0
+          ],
+          [
+            8022,
+            "Group2",
+            0,
+            20
+          ],
+          [
+            8023,
+            "Group3",
+            23,
+            0
+          ]
+        ],
+        "wall_seconds": 9.391698404215276e-05
+      },
+      "behavior_executions": [
+        {
+          "seed": 907,
+          "execution": {
+            "columns": [
+              "customer_id",
+              "name",
+              "billed",
+              "paid"
+            ],
+            "rows": [
+              [
+                9070,
+                "Shared",
+                48,
+                20
+              ],
+              [
+                9071,
+                "Shared",
+                52,
+                15
+              ],
+              [
+                9072,
+                "Group2",
+                0,
+                17
+              ],
+              [
+                9073,
+                "Group3",
+                4,
+                0
+              ]
+            ],
+            "wall_seconds": 9.487502393312752e-05
+          }
+        },
+        {
+          "seed": 911,
+          "execution": {
+            "columns": [
+              "customer_id",
+              "name",
+              "billed",
+              "paid"
+            ],
+            "rows": [
+              [
+                9110,
+                "Shared",
+                32,
+                27
+              ],
+              [
+                9111,
+                "Shared",
+                57,
+                23
+              ],
+              [
+                9112,
+                "Group2",
+                0,
+                4
+              ],
+              [
+                9113,
+                "Group3",
+                19,
+                0
+              ]
+            ],
+            "wall_seconds": 9.50419926084578e-05
+          }
+        }
+      ]
+    },
+    {
+      "file": "billing-803-cheap.json",
+      "history": "billing",
+      "replay_pass": true,
+      "independent_behavior_pass": [
+        true,
+        true
+      ],
+      "oracle_execution": {
+        "columns": [
+          "id",
+          "name",
+          "COALESCE((SELECT SUM(i.amount) FROM invoices i WHERE i.customer_id=c.id AND i.status <> 'void'),0)",
+          "COALESCE((SELECT SUM(p.amount) FROM payments p WHERE p.customer_id=c.id),0)"
+        ],
+        "rows": [
+          [
+            8030,
+            "Shared",
+            10,
+            50
+          ],
+          [
+            8031,
+            "Shared",
+            20,
+            18
+          ],
+          [
+            8032,
+            "Group2",
+            0,
+            20
+          ],
+          [
+            8033,
+            "Group3",
+            6,
+            0
+          ]
+        ],
+        "wall_seconds": 8.666599751450121e-05
+      },
+      "replay_execution": {
+        "columns": [
+          "customer_id",
+          "name",
+          "billed",
+          "paid"
+        ],
+        "rows": [
+          [
+            8030,
+            "Shared",
+            10,
+            50
+          ],
+          [
+            8031,
+            "Shared",
+            20,
+            18
+          ],
+          [
+            8032,
+            "Group2",
+            0,
+            20
+          ],
+          [
+            8033,
+            "Group3",
+            6,
+            0
+          ]
+        ],
+        "wall_seconds": 9.499999578110874e-05
+      },
+      "behavior_executions": [
+        {
+          "seed": 907,
+          "execution": {
+            "columns": [
+              "customer_id",
+              "name",
+              "billed",
+              "paid"
+            ],
+            "rows": [
+              [
+                9070,
+                "Shared",
+                48,
+                20
+              ],
+              [
+                9071,
+                "Shared",
+                52,
+                15
+              ],
+              [
+                9072,
+                "Group2",
+                0,
+                17
+              ],
+              [
+                9073,
+                "Group3",
+                4,
+                0
+              ]
+            ],
+            "wall_seconds": 9.449999197386205e-05
+          }
+        },
+        {
+          "seed": 911,
+          "execution": {
+            "columns": [
+              "customer_id",
+              "name",
+              "billed",
+              "paid"
+            ],
+            "rows": [
+              [
+                9110,
+                "Shared",
+                32,
+                27
+              ],
+              [
+                9111,
+                "Shared",
+                57,
+                23
+              ],
+              [
+                9112,
+                "Group2",
+                0,
+                4
+              ],
+              [
+                9113,
+                "Group3",
+                19,
+                0
+              ]
+            ],
+            "wall_seconds": 9.362498531118035e-05
+          }
+        }
+      ]
+    },
+    {
+      "file": "billing-803-paid.json",
+      "history": "billing",
+      "replay_pass": true,
+      "independent_behavior_pass": [
+        true,
+        true
+      ],
+      "oracle_execution": {
+        "columns": [
+          "id",
+          "name",
+          "COALESCE((SELECT SUM(i.amount) FROM invoices i WHERE i.customer_id=c.id AND i.status <> 'void'),0)",
+          "COALESCE((SELECT SUM(p.amount) FROM payments p WHERE p.customer_id=c.id),0)"
+        ],
+        "rows": [
+          [
+            8030,
+            "Shared",
+            10,
+            50
+          ],
+          [
+            8031,
+            "Shared",
+            20,
+            18
+          ],
+          [
+            8032,
+            "Group2",
+            0,
+            20
+          ],
+          [
+            8033,
+            "Group3",
+            6,
+            0
+          ]
+        ],
+        "wall_seconds": 8.608298958279192e-05
+      },
+      "replay_execution": {
+        "columns": [
+          "customer_id",
+          "name",
+          "billed",
+          "paid"
+        ],
+        "rows": [
+          [
+            8030,
+            "Shared",
+            10,
+            50
+          ],
+          [
+            8031,
+            "Shared",
+            20,
+            18
+          ],
+          [
+            8032,
+            "Group2",
+            0,
+            20
+          ],
+          [
+            8033,
+            "Group3",
+            6,
+            0
+          ]
+        ],
+        "wall_seconds": 9.491699165664613e-05
+      },
+      "behavior_executions": [
+        {
+          "seed": 907,
+          "execution": {
+            "columns": [
+              "customer_id",
+              "name",
+              "billed",
+              "paid"
+            ],
+            "rows": [
+              [
+                9070,
+                "Shared",
+                48,
+                20
+              ],
+              [
+                9071,
+                "Shared",
+                52,
+                15
+              ],
+              [
+                9072,
+                "Group2",
+                0,
+                17
+              ],
+              [
+                9073,
+                "Group3",
+                4,
+                0
+              ]
+            ],
+            "wall_seconds": 9.383400902152061e-05
+          }
+        },
+        {
+          "seed": 911,
+          "execution": {
+            "columns": [
+              "customer_id",
+              "name",
+              "billed",
+              "paid"
+            ],
+            "rows": [
+              [
+                9110,
+                "Shared",
+                32,
+                27
+              ],
+              [
+                9111,
+                "Shared",
+                57,
+                23
+              ],
+              [
+                9112,
+                "Group2",
+                0,
+                4
+              ],
+              [
+                9113,
+                "Group3",
+                19,
+                0
+              ]
+            ],
+            "wall_seconds": 9.516699356026947e-05
+          }
+        }
+      ]
+    },
+    {
+      "file": "billing-803-raw.json",
+      "history": "billing",
+      "replay_pass": true,
+      "independent_behavior_pass": [
+        true,
+        true
+      ],
+      "oracle_execution": {
+        "columns": [
+          "id",
+          "name",
+          "COALESCE((SELECT SUM(i.amount) FROM invoices i WHERE i.customer_id=c.id AND i.status <> 'void'),0)",
+          "COALESCE((SELECT SUM(p.amount) FROM payments p WHERE p.customer_id=c.id),0)"
+        ],
+        "rows": [
+          [
+            8030,
+            "Shared",
+            10,
+            50
+          ],
+          [
+            8031,
+            "Shared",
+            20,
+            18
+          ],
+          [
+            8032,
+            "Group2",
+            0,
+            20
+          ],
+          [
+            8033,
+            "Group3",
+            6,
+            0
+          ]
+        ],
+        "wall_seconds": 8.741600322537124e-05
+      },
+      "replay_execution": {
+        "columns": [
+          "customer_id",
+          "name",
+          "billed",
+          "paid"
+        ],
+        "rows": [
+          [
+            8030,
+            "Shared",
+            10,
+            50
+          ],
+          [
+            8031,
+            "Shared",
+            20,
+            18
+          ],
+          [
+            8032,
+            "Group2",
+            0,
+            20
+          ],
+          [
+            8033,
+            "Group3",
+            6,
+            0
+          ]
+        ],
+        "wall_seconds": 9.587500244379044e-05
+      },
+      "behavior_executions": [
+        {
+          "seed": 907,
+          "execution": {
+            "columns": [
+              "customer_id",
+              "name",
+              "billed",
+              "paid"
+            ],
+            "rows": [
+              [
+                9070,
+                "Shared",
+                48,
+                20
+              ],
+              [
+                9071,
+                "Shared",
+                52,
+                15
+              ],
+              [
+                9072,
+                "Group2",
+                0,
+                17
+              ],
+              [
+                9073,
+                "Group3",
+                4,
+                0
+              ]
+            ],
+            "wall_seconds": 9.424999007023871e-05
+          }
+        },
+        {
+          "seed": 911,
+          "execution": {
+            "columns": [
+              "customer_id",
+              "name",
+              "billed",
+              "paid"
+            ],
+            "rows": [
+              [
+                9110,
+                "Shared",
+                32,
+                27
+              ],
+              [
+                9111,
+                "Shared",
+                57,
+                23
+              ],
+              [
+                9112,
+                "Group2",
+                0,
+                4
+              ],
+              [
+                9113,
+                "Group3",
+                19,
+                0
+              ]
+            ],
+            "wall_seconds": 9.74999857135117e-05
+          }
+        }
+      ]
+    }
+  ],
+  "fixed_program_replay": [
+    {
+      "history": "attendance",
+      "seed": 801,
+      "arm": "raw",
+      "query": "SELECT \n    e.id, \n    e.title, \n    COALESCE(SUM(CASE WHEN r.status = 'confirmed' THEN r.seats ELSE 0 END), 0) AS seats, \n    COALESCE(COUNT(t.id), 0) AS tags\nFROM \n    events e\nLEFT JOIN \n    registrations r ON e.id = r.event_id\nLEFT JOIN \n    tags t ON e.id = t.event_id\nGROUP BY \n    e.id, e.title\nORDER BY \n    e.id",
+      "execution": {
+        "columns": [
+          "id",
+          "title",
+          "seats",
+          "tags"
+        ],
+        "rows": [
+          [
+            8010,
+            "Shared",
+            5,
+            1
+          ],
+          [
+            8011,
+            "Shared",
+            5,
+            0
+          ],
+          [
+            8012,
+            "Group2",
+            0,
+            1
+          ],
+          [
+            8013,
+            "Group3",
+            13,
+            0
+          ]
+        ],
+        "wall_seconds": 0.00010812500840984285
+      },
+      "pass": true
+    },
+    {
+      "history": "attendance",
+      "seed": 801,
+      "arm": "cheap",
+      "query": "SELECT \n        e.id, \n        e.title, \n        COALESCE(r.seats, 0) AS seats, \n        COALESCE(t.tag_count, 0) AS tags\n    FROM events e\n    LEFT JOIN (\n        SELECT event_id, SUM(seats) AS seats \n        FROM registrations \n        WHERE status = 'confirmed' \n        GROUP BY event_id\n    ) r ON e.id = r.event_id\n    LEFT JOIN (\n        SELECT event_id, COUNT(*) AS tag_count \n        FROM tags \n        GROUP BY event_id\n    ) t ON e.id = t.event_id\n    ORDER BY e.id",
+      "execution": {
+        "columns": [
+          "id",
+          "title",
+          "seats",
+          "tags"
+        ],
+        "rows": [
+          [
+            8010,
+            "Shared",
+            5,
+            1
+          ],
+          [
+            8011,
+            "Shared",
+            5,
+            0
+          ],
+          [
+            8012,
+            "Group2",
+            0,
+            1
+          ],
+          [
+            8013,
+            "Group3",
+            13,
+            0
+          ]
+        ],
+        "wall_seconds": 0.00010370899690315127
+      },
+      "pass": true
+    },
+    {
+      "history": "attendance",
+      "seed": 801,
+      "arm": "paid",
+      "query": "SELECT \n    e.id, \n    e.title, \n    COALESCE(r.seats, 0) AS seats, \n    COALESCE(t.tags, 0) AS tags\nFROM \n    events e\nLEFT JOIN (\n    SELECT event_id, SUM(seats) AS seats \n    FROM registrations \n    WHERE status = 'confirmed' \n    GROUP BY event_id\n) r ON e.id = r.event_id\nLEFT JOIN (\n    SELECT event_id, COUNT(*) AS tags \n    FROM tags \n    GROUP BY event_id\n) t ON e.id = t.event_id\nORDER BY \n    e.id",
+      "execution": {
+        "columns": [
+          "id",
+          "title",
+          "seats",
+          "tags"
+        ],
+        "rows": [
+          [
+            8010,
+            "Shared",
+            5,
+            1
+          ],
+          [
+            8011,
+            "Shared",
+            5,
+            0
+          ],
+          [
+            8012,
+            "Group2",
+            0,
+            1
+          ],
+          [
+            8013,
+            "Group3",
+            13,
+            0
+          ]
+        ],
+        "wall_seconds": 9.529199451208115e-05
+      },
+      "pass": true
+    },
+    {
+      "history": "attendance",
+      "seed": 802,
+      "arm": "raw",
+      "query": "SELECT \n    e.id, \n    e.title, \n    COALESCE(SUM(CASE WHEN r.status = 'confirmed' THEN r.seats ELSE 0 END), 0) AS seats, \n    COALESCE(COUNT(t.id), 0) AS tags\nFROM \n    events e\nLEFT JOIN \n    registrations r ON e.id = r.event_id\nLEFT JOIN \n    tags t ON e.id = t.event_id\nGROUP BY \n    e.id, e.title\nORDER BY \n    e.id",
+      "execution": {
+        "columns": [
+          "id",
+          "title",
+          "seats",
+          "tags"
+        ],
+        "rows": [
+          [
+            8020,
+            "Shared",
+            76,
+            6
+          ],
+          [
+            8021,
+            "Shared",
+            25,
+            0
+          ],
+          [
+            8022,
+            "Group2",
+            0,
+            2
+          ],
+          [
+            8023,
+            "Group3",
+            28,
+            0
+          ]
+        ],
+        "wall_seconds": 0.00010404101340100169
+      },
+      "pass": false
+    },
+    {
+      "history": "attendance",
+      "seed": 802,
+      "arm": "cheap",
+      "query": "SELECT \n        e.id, \n        e.title, \n        COALESCE(r.seats, 0) AS seats, \n        COALESCE(t.tag_count, 0) AS tags\n    FROM events e\n    LEFT JOIN (\n        SELECT event_id, SUM(seats) AS seats \n        FROM registrations \n        WHERE status = 'confirmed' \n        GROUP BY event_id\n    ) r ON e.id = r.event_id\n    LEFT JOIN (\n        SELECT event_id, COUNT(*) AS tag_count \n        FROM tags \n        GROUP BY event_id\n    ) t ON e.id = t.event_id\n    ORDER BY e.id",
+      "execution": {
+        "columns": [
+          "id",
+          "title",
+          "seats",
+          "tags"
+        ],
+        "rows": [
+          [
+            8020,
+            "Shared",
+            38,
+            2
+          ],
+          [
+            8021,
+            "Shared",
+            25,
+            0
+          ],
+          [
+            8022,
+            "Group2",
+            0,
+            2
+          ],
+          [
+            8023,
+            "Group3",
+            28,
+            0
+          ]
+        ],
+        "wall_seconds": 9.891699301078916e-05
+      },
+      "pass": true
+    },
+    {
+      "history": "attendance",
+      "seed": 802,
+      "arm": "paid",
+      "query": "SELECT \n    e.id, \n    e.title, \n    COALESCE(r.seats, 0) AS seats, \n    COALESCE(t.tags, 0) AS tags\nFROM \n    events e\nLEFT JOIN (\n    SELECT event_id, SUM(seats) AS seats \n    FROM registrations \n    WHERE status = 'confirmed' \n    GROUP BY event_id\n) r ON e.id = r.event_id\nLEFT JOIN (\n    SELECT event_id, COUNT(*) AS tags \n    FROM tags \n    GROUP BY event_id\n) t ON e.id = t.event_id\nORDER BY \n    e.id",
+      "execution": {
+        "columns": [
+          "id",
+          "title",
+          "seats",
+          "tags"
+        ],
+        "rows": [
+          [
+            8020,
+            "Shared",
+            38,
+            2
+          ],
+          [
+            8021,
+            "Shared",
+            25,
+            0
+          ],
+          [
+            8022,
+            "Group2",
+            0,
+            2
+          ],
+          [
+            8023,
+            "Group3",
+            28,
+            0
+          ]
+        ],
+        "wall_seconds": 0.00010545901022851467
+      },
+      "pass": true
+    },
+    {
+      "history": "attendance",
+      "seed": 803,
+      "arm": "raw",
+      "query": "SELECT \n    e.id, \n    e.title, \n    COALESCE(SUM(CASE WHEN r.status = 'confirmed' THEN r.seats ELSE 0 END), 0) AS seats, \n    COALESCE(COUNT(t.id), 0) AS tags\nFROM \n    events e\nLEFT JOIN \n    registrations r ON e.id = r.event_id\nLEFT JOIN \n    tags t ON e.id = t.event_id\nGROUP BY \n    e.id, e.title\nORDER BY \n    e.id",
+      "execution": {
+        "columns": [
+          "id",
+          "title",
+          "seats",
+          "tags"
+        ],
+        "rows": [
+          [
+            8030,
+            "Shared",
+            30,
+            6
+          ],
+          [
+            8031,
+            "Shared",
+            80,
+            8
+          ],
+          [
+            8032,
+            "Group2",
+            0,
+            1
+          ],
+          [
+            8033,
+            "Group3",
+            9,
+            0
+          ]
+        ],
+        "wall_seconds": 0.00010299999848939478
+      },
+      "pass": false
+    },
+    {
+      "history": "attendance",
+      "seed": 803,
+      "arm": "cheap",
+      "query": "SELECT \n        e.id, \n        e.title, \n        COALESCE(r.seats, 0) AS seats, \n        COALESCE(t.tag_count, 0) AS tags\n    FROM events e\n    LEFT JOIN (\n        SELECT event_id, SUM(seats) AS seats \n        FROM registrations \n        WHERE status = 'confirmed' \n        GROUP BY event_id\n    ) r ON e.id = r.event_id\n    LEFT JOIN (\n        SELECT event_id, COUNT(*) AS tag_count \n        FROM tags \n        GROUP BY event_id\n    ) t ON e.id = t.event_id\n    ORDER BY e.id",
+      "execution": {
+        "columns": [
+          "id",
+          "title",
+          "seats",
+          "tags"
+        ],
+        "rows": [
+          [
+            8030,
+            "Shared",
+            10,
+            3
+          ],
+          [
+            8031,
+            "Shared",
+            40,
+            2
+          ],
+          [
+            8032,
+            "Group2",
+            0,
+            1
+          ],
+          [
+            8033,
+            "Group3",
+            9,
+            0
+          ]
+        ],
+        "wall_seconds": 9.929199586622417e-05
+      },
+      "pass": true
+    },
+    {
+      "history": "attendance",
+      "seed": 803,
+      "arm": "paid",
+      "query": "SELECT \n    e.id, \n    e.title, \n    COALESCE(r.seats, 0) AS seats, \n    COALESCE(t.tags, 0) AS tags\nFROM \n    events e\nLEFT JOIN (\n    SELECT event_id, SUM(seats) AS seats \n    FROM registrations \n    WHERE status = 'confirmed' \n    GROUP BY event_id\n) r ON e.id = r.event_id\nLEFT JOIN (\n    SELECT event_id, COUNT(*) AS tags \n    FROM tags \n    GROUP BY event_id\n) t ON e.id = t.event_id\nORDER BY \n    e.id",
+      "execution": {
+        "columns": [
+          "id",
+          "title",
+          "seats",
+          "tags"
+        ],
+        "rows": [
+          [
+            8030,
+            "Shared",
+            10,
+            3
+          ],
+          [
+            8031,
+            "Shared",
+            40,
+            2
+          ],
+          [
+            8032,
+            "Group2",
+            0,
+            1
+          ],
+          [
+            8033,
+            "Group3",
+            9,
+            0
+          ]
+        ],
+        "wall_seconds": 9.67090018093586e-05
+      },
+      "pass": true
+    },
+    {
+      "history": "billing",
+      "seed": 801,
+      "arm": "raw",
+      "query": "SELECT \n    c.id AS customer_id, \n    c.name, \n    COALESCE(SUM(CASE WHEN i.status != 'void' THEN i.amount ELSE 0 END), 0) AS billed, \n    COALESCE(SUM(p.amount), 0) AS paid\nFROM \n    customers c\nLEFT JOIN \n    invoices i ON c.id = i.customer_id\nLEFT JOIN \n    payments p ON c.id = p.customer_id\nGROUP BY \n    c.id, c.name\nORDER BY \n    c.id",
+      "execution": {
+        "columns": [
+          "customer_id",
+          "name",
+          "billed",
+          "paid"
+        ],
+        "rows": [
+          [
+            8010,
+            "Shared",
+            5,
+            8
+          ],
+          [
+            8011,
+            "Shared",
+            5,
+            0
+          ],
+          [
+            8012,
+            "Group2",
+            0,
+            5
+          ],
+          [
+            8013,
+            "Group3",
+            27,
+            0
+          ]
+        ],
+        "wall_seconds": 9.354099165648222e-05
+      },
+      "pass": true
+    },
+    {
+      "history": "billing",
+      "seed": 801,
+      "arm": "cheap",
+      "query": "SELECT \n    c.id AS customer_id, \n    c.name, \n    COALESCE(inv.billed, 0) AS billed, \n    COALESCE(pay.paid, 0) AS paid\nFROM \n    customers c\nLEFT JOIN \n    (SELECT customer_id, SUM(CASE WHEN status != 'void' THEN amount ELSE 0 END) AS billed \n     FROM invoices \n     GROUP BY customer_id) inv ON c.id = inv.customer_id\nLEFT JOIN \n    (SELECT customer_id, SUM(amount) AS paid \n     FROM payments \n     GROUP BY customer_id) pay ON c.id = pay.customer_id\nORDER BY \n    c.id",
+      "execution": {
+        "columns": [
+          "customer_id",
+          "name",
+          "billed",
+          "paid"
+        ],
+        "rows": [
+          [
+            8010,
+            "Shared",
+            5,
+            8
+          ],
+          [
+            8011,
+            "Shared",
+            5,
+            0
+          ],
+          [
+            8012,
+            "Group2",
+            0,
+            5
+          ],
+          [
+            8013,
+            "Group3",
+            27,
+            0
+          ]
+        ],
+        "wall_seconds": 9.704101830720901e-05
+      },
+      "pass": true
+    },
+    {
+      "history": "billing",
+      "seed": 801,
+      "arm": "paid",
+      "query": "SELECT \n    c.id AS customer_id, \n    c.name, \n    COALESCE(inv.billed, 0) AS billed, \n    COALESCE(pay.paid, 0) AS paid\nFROM \n    customers c\nLEFT JOIN \n    (SELECT customer_id, SUM(CASE WHEN status != 'void' THEN amount ELSE 0 END) AS billed \n     FROM invoices \n     GROUP BY customer_id) inv \n    ON c.id = inv.customer_id\nLEFT JOIN \n    (SELECT customer_id, SUM(amount) AS paid \n     FROM payments \n     GROUP BY customer_id) pay \n    ON c.id = pay.customer_id\nORDER BY \n    c.id",
+      "execution": {
+        "columns": [
+          "customer_id",
+          "name",
+          "billed",
+          "paid"
+        ],
+        "rows": [
+          [
+            8010,
+            "Shared",
+            5,
+            8
+          ],
+          [
+            8011,
+            "Shared",
+            5,
+            0
+          ],
+          [
+            8012,
+            "Group2",
+            0,
+            5
+          ],
+          [
+            8013,
+            "Group3",
+            27,
+            0
+          ]
+        ],
+        "wall_seconds": 9.445799514651299e-05
+      },
+      "pass": true
+    },
+    {
+      "history": "billing",
+      "seed": 802,
+      "arm": "raw",
+      "query": "SELECT \n    c.id AS customer_id, \n    c.name, \n    COALESCE(SUM(CASE WHEN i.status != 'void' THEN i.amount ELSE 0 END), 0) AS billed, \n    COALESCE(SUM(p.amount), 0) AS paid\nFROM \n    customers c\nLEFT JOIN \n    invoices i ON c.id = i.customer_id\nLEFT JOIN \n    payments p ON c.id = p.customer_id\nGROUP BY \n    c.id, c.name\nORDER BY \n    c.id",
+      "execution": {
+        "columns": [
+          "customer_id",
+          "name",
+          "billed",
+          "paid"
+        ],
+        "rows": [
+          [
+            8020,
+            "Shared",
+            76,
+            75
+          ],
+          [
+            8021,
+            "Shared",
+            39,
+            0
+          ],
+          [
+            8022,
+            "Group2",
+            0,
+            20
+          ],
+          [
+            8023,
+            "Group3",
+            23,
+            0
+          ]
+        ],
+        "wall_seconds": 9.945899364538491e-05
+      },
+      "pass": false
+    },
+    {
+      "history": "billing",
+      "seed": 802,
+      "arm": "cheap",
+      "query": "SELECT \n    c.id AS customer_id, \n    c.name, \n    COALESCE(inv.billed, 0) AS billed, \n    COALESCE(pay.paid, 0) AS paid\nFROM \n    customers c\nLEFT JOIN \n    (SELECT customer_id, SUM(CASE WHEN status != 'void' THEN amount ELSE 0 END) AS billed \n     FROM invoices \n     GROUP BY customer_id) inv ON c.id = inv.customer_id\nLEFT JOIN \n    (SELECT customer_id, SUM(amount) AS paid \n     FROM payments \n     GROUP BY customer_id) pay ON c.id = pay.customer_id\nORDER BY \n    c.id",
+      "execution": {
+        "columns": [
+          "customer_id",
+          "name",
+          "billed",
+          "paid"
+        ],
+        "rows": [
+          [
+            8020,
+            "Shared",
+            38,
+            25
+          ],
+          [
+            8021,
+            "Shared",
+            39,
+            0
+          ],
+          [
+            8022,
+            "Group2",
+            0,
+            20
+          ],
+          [
+            8023,
+            "Group3",
+            23,
+            0
+          ]
+        ],
+        "wall_seconds": 9.716599015519023e-05
+      },
+      "pass": true
+    },
+    {
+      "history": "billing",
+      "seed": 802,
+      "arm": "paid",
+      "query": "SELECT \n    c.id AS customer_id, \n    c.name, \n    COALESCE(inv.billed, 0) AS billed, \n    COALESCE(pay.paid, 0) AS paid\nFROM \n    customers c\nLEFT JOIN \n    (SELECT customer_id, SUM(CASE WHEN status != 'void' THEN amount ELSE 0 END) AS billed \n     FROM invoices \n     GROUP BY customer_id) inv \n    ON c.id = inv.customer_id\nLEFT JOIN \n    (SELECT customer_id, SUM(amount) AS paid \n     FROM payments \n     GROUP BY customer_id) pay \n    ON c.id = pay.customer_id\nORDER BY \n    c.id",
+      "execution": {
+        "columns": [
+          "customer_id",
+          "name",
+          "billed",
+          "paid"
+        ],
+        "rows": [
+          [
+            8020,
+            "Shared",
+            38,
+            25
+          ],
+          [
+            8021,
+            "Shared",
+            39,
+            0
+          ],
+          [
+            8022,
+            "Group2",
+            0,
+            20
+          ],
+          [
+            8023,
+            "Group3",
+            23,
+            0
+          ]
+        ],
+        "wall_seconds": 9.47499938774854e-05
+      },
+      "pass": true
+    },
+    {
+      "history": "billing",
+      "seed": 803,
+      "arm": "raw",
+      "query": "SELECT \n    c.id AS customer_id, \n    c.name, \n    COALESCE(SUM(CASE WHEN i.status != 'void' THEN i.amount ELSE 0 END), 0) AS billed, \n    COALESCE(SUM(p.amount), 0) AS paid\nFROM \n    customers c\nLEFT JOIN \n    invoices i ON c.id = i.customer_id\nLEFT JOIN \n    payments p ON c.id = p.customer_id\nGROUP BY \n    c.id, c.name\nORDER BY \n    c.id",
+      "execution": {
+        "columns": [
+          "customer_id",
+          "name",
+          "billed",
+          "paid"
+        ],
+        "rows": [
+          [
+            8030,
+            "Shared",
+            30,
+            100
+          ],
+          [
+            8031,
+            "Shared",
+            40,
+            72
+          ],
+          [
+            8032,
+            "Group2",
+            0,
+            20
+          ],
+          [
+            8033,
+            "Group3",
+            6,
+            0
+          ]
+        ],
+        "wall_seconds": 0.00010204198770225048
+      },
+      "pass": false
+    },
+    {
+      "history": "billing",
+      "seed": 803,
+      "arm": "cheap",
+      "query": "SELECT \n    c.id AS customer_id, \n    c.name, \n    COALESCE(inv.billed, 0) AS billed, \n    COALESCE(pay.paid, 0) AS paid\nFROM \n    customers c\nLEFT JOIN \n    (SELECT customer_id, SUM(CASE WHEN status != 'void' THEN amount ELSE 0 END) AS billed \n     FROM invoices \n     GROUP BY customer_id) inv ON c.id = inv.customer_id\nLEFT JOIN \n    (SELECT customer_id, SUM(amount) AS paid \n     FROM payments \n     GROUP BY customer_id) pay ON c.id = pay.customer_id\nORDER BY \n    c.id",
+      "execution": {
+        "columns": [
+          "customer_id",
+          "name",
+          "billed",
+          "paid"
+        ],
+        "rows": [
+          [
+            8030,
+            "Shared",
+            10,
+            50
+          ],
+          [
+            8031,
+            "Shared",
+            20,
+            18
+          ],
+          [
+            8032,
+            "Group2",
+            0,
+            20
+          ],
+          [
+            8033,
+            "Group3",
+            6,
+            0
+          ]
+        ],
+        "wall_seconds": 9.854199015535414e-05
+      },
+      "pass": true
+    },
+    {
+      "history": "billing",
+      "seed": 803,
+      "arm": "paid",
+      "query": "SELECT \n    c.id AS customer_id, \n    c.name, \n    COALESCE(inv.billed, 0) AS billed, \n    COALESCE(pay.paid, 0) AS paid\nFROM \n    customers c\nLEFT JOIN \n    (SELECT customer_id, SUM(CASE WHEN status != 'void' THEN amount ELSE 0 END) AS billed \n     FROM invoices \n     GROUP BY customer_id) inv \n    ON c.id = inv.customer_id\nLEFT JOIN \n    (SELECT customer_id, SUM(amount) AS paid \n     FROM payments \n     GROUP BY customer_id) pay \n    ON c.id = pay.customer_id\nORDER BY \n    c.id",
+      "execution": {
+        "columns": [
+          "customer_id",
+          "name",
+          "billed",
+          "paid"
+        ],
+        "rows": [
+          [
+            8030,
+            "Shared",
+            10,
+            50
+          ],
+          [
+            8031,
+            "Shared",
+            20,
+            18
+          ],
+          [
+            8032,
+            "Group2",
+            0,
+            20
+          ],
+          [
+            8033,
+            "Group3",
+            6,
+            0
+          ]
+        ],
+        "wall_seconds": 9.708400466479361e-05
+      },
+      "pass": true
+    }
+  ]
+}

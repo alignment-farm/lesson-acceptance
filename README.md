@@ -1,10 +1,35 @@
 # What evidence is needed to accept a lesson?
 
 Prepared 19 September 2026 as an independent Construct-2 ancillary study.
-**Status: ready for an investigator; no experiments have run.** Read
+**Status: bounded experimental phase complete; results and reproduction published.** Read
 [AGENTS.md](AGENTS.md) and [sources/README.md](sources/README.md), then proceed
 through bounded workload discovery, development and fresh experiments. You own
 methods, protocols, implementation, resource sizing, diagnosis and publication.
+
+## Current experimental evidence
+
+In two constructed reporting histories, source SQL passed its original slice but
+double-counted under independent child-table multiplicity. Across six later cases
+per arm, cheap schema review and paid probing both achieved 6/6 initial and final
+correct outputs; raw experience achieved 2/6 initially and 6/6 after ordinary
+repair. Independent behavioral checks passed 5/6 raw final programs and all cheap/
+paid programs. Paid probing added no measured benefit over competent cheap review.
+Direct reuse of the cheaply repaired SQL also passed 6/6, requiring no later model
+calls. The phase closes on this schema-solvable workload limit, with all weak-reviewer
+and serving failures preserved. Original LA1–LA3 below remain unchanged; their
+assessments and native-unit costs are in the report.
+
+See the [study report](reports/pilot-v1.md), [initial protocol](protocols/pilot-v1.md),
+[fresh protocol amendment](protocols/fresh-v2.md),
+[serving diagnosis](protocols/serving-repair.md), and
+[public-method ledger](sources/followup-2026-09-19/README.md).
+Offline source/probe verification: `uv run scripts/verify.py`.
+Results/cost reproduction: `uv run scripts/pilot.py summarize` and
+`uv run scripts/costs.py`. The [full report](reports/pilot-v1.md) gives live
+replication commands, the measured three-reuse-per-history horizon, limitations,
+and the assessment of a bounded next step.
+Full source episodes, proposals, review prompts, responses and execution costs are
+preserved in `evidence/pilot-v1/`.
 
 ## Question
 

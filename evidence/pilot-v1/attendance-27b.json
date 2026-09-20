@@ -1,0 +1,75 @@
+{
+  "cheap": "**Audit of SQL and Execution**\n\n**1. Join Cardinality and Row Multiplication Analysis**\n*   **Schema Constraints:**\n    *   `events.id` is `INTEGER PRIMARY KEY` (Unique).\n    *   `registrations.event_id` references `events(id)`. No unique constraint on `event_id`. Cardinality: 1 event to N registrations.\n    *   `tags.event_id` references `events(id)`. No unique constraint on `event_id`. Cardinality: 1 event to M tags.\n*   **Join Logic:**\n    *   `events e LEFT JOIN registrations r ON e.id = r.event_id`\n    *   `... LEFT JOIN tags t ON e.id = t.event_id`\n    *   This creates a Cartesian product between `registrations` and `tags` for each event. If an event has $N$ registrations and $M$ tags, the join produces $N \\times M$ rows for that event.\n*   **Aggregate Impact:**\n    *   **`seats`**: `SUM(CASE WHEN r.status = 'confirmed' THEN r.seats ELSE 0 END)`.\n        *   Because of the cross-join with tags, each registration row is repeated $M$ times (where $M$ is the number of tags for that event).\n        *   Consequently, `SUM` will multiply the actual seat count by the number of tags.\n        *   *Example:* Event 1 has 1 confirmed registration (5 seats) and 1 tag. $1 \\times 1 = 1$ row. Sum = 5. Correct.\n        *   *Hypothetical Failure:* If Event 1 had 1 confirmed registration (5 seats) and 2 tags, the join would produce 2 rows, both with `seats=5`. Sum = 10. Incorrect.\n    *   **`tags`**: `COUNT(t.id)`.\n        *   Because of the cross-join with registrations, each tag row is repeated $N$ times (where $N$ is the number of registrations for that event).\n        *   Consequently, `COUNT` will multiply the actual tag count by the number of registrations.\n        *   *Example:* Event 1 has 1 registration and 1 tag. $1 \\times 1 = 1$ row. Count = 1. Correct.\n        *   *Hypothetical Failure:* If Event 1 had 2 registrations and 1 tag, the join would produce 2 rows, both with `t.id` non-null. Count = 2. Incorrect (should be 1).\n\n**2. Reconciliation with Execution Evidence**\n*   **Input Data:**\n    *   Event 1: 1 registration (confirmed, 5 seats), 1 tag.\n    *   Event 2: 1 registration (cancelled, 3 seats), 1 tag.\n    *   Event 3: 0 registrations, 0 tags.\n*   **Expected Correct Output:**\n    *   Event 1: seats=5, tags=1.\n    *   Event 2: seats=0, tags=1.\n    *   Event 3: seats=0, tags=0.\n*   **Actual Output:**\n    *   `[1, \"Talk\", 5, 1]`\n    *   `[2, \"Lab\", 0, 1]`\n    *   `[3, \"Walk\", 0, 0]`\n*   **Reconciliation:**\n    *   The output matches the expected correct values.\n    *   **Why?** In this specific dataset, every event has at most 1 registration and at most 1 tag. Therefore, the Cartesian product factor is always $1 \\times 1 = 1$. The row multiplication bug is latent but not triggered by this specific input.\n    *   **Conclusion:** The query is **incorrect** in general, but produces **correct results** for this specific input due to the low cardinality of the test data.\n\n**3. Lesson Audit**\n\n**Lesson 1: Use COALESCE and conditional aggregation to handle missing or zero values in joins.**\n*   **Original Wording:** \"The query correctly uses `COALESCE` with a `CASE` statement to ensure that only confirmed registrations contribute to the `seats` count, and it defaults to 0 for events with no confirmed registrations. This approach ensures accurate aggregation even when some rows are missing due to left joins.\"\n*   **Validity:** **Decline**.\n    *   The use of `COALESCE` and `CASE` is syntactically correct for handling NULLs and filtering status. However, the claim that it \"ensures accurate aggregation\" is false due to the row multiplication issue described above. The aggregation is inaccurate if an event has multiple tags or multiple registrations. The lesson ignores the critical flaw in the join structure.\n*   **Revised Scope (if accepted with caveats):** The technique of using `COALESCE` and `CASE` is valid *only* when the join does not cause row multiplication (e.g., if aggregating in subqueries first). As written, it is unsafe.\n\n**Lesson 2: Group by both id and title to avoid ambiguity when titles are not unique.**\n*   **Original Wording:** \"The query groups by both `e.id` and `e.title`, which is necessary because titles may not be unique across events. This ensures that each event is treated as a separate row, even if two events share the same title.\"\n*   **Validity:** **Accept**.\n    *   Grouping by the primary key `e.id` is sufficient to ensure unique rows per event. Including `e.title` is redundant but harmless. It does not cause errors. The reasoning that it \"ensures each event is treated as a separate row\" is correct, though grouping by `e.id` alone would suffice. This lesson is valid and safe.\n\n**4. Safe Code Reuse**\n*   **Safe:** The `GROUP BY e.id` logic.\n*   **Unsafe:** The direct `LEFT JOIN` of two one-to-many tables (`registrations` and `tags`) to the same base table (`events`) without pre-aggregation. This pattern will produce incorrect results if any event has more than one registration or more than one tag.\n*   **Recommendation:** To make the query safe, pre-aggregate `registrations` and `tags` in subqueries or CTEs before joining to `events`.\n\n    *Example Safe Query Structure:*\n    ```sql\n    SELECT \n        e.id, \n        e.title, \n        COALESCE(r.seats, 0) AS seats, \n        COALESCE(t.tag_count, 0) AS tags\n    FROM events e\n    LEFT JOIN (\n        SELECT event_id, SUM(seats) AS seats \n        FROM registrations \n        WHERE status = 'confirmed' \n        GROUP BY event_id\n    ) r ON e.id = r.event_id\n    LEFT JOIN (\n        SELECT event_id, COUNT(*) AS tag_count \n        FROM tags \n        GROUP BY event_id\n    ) t ON e.id = t.event_id\n    ORDER BY e.id;\n    ```",
+  "paid": "### Audit of SQL and Execution Evidence\n\n**1. Join Cardinality and Row Multiplication Analysis**\n*   **Schema Constraints:**\n    *   `events.id` is `PRIMARY KEY` (Unique).\n    *   `registrations.event_id` references `events.id` (Many-to-One).\n    *   `tags.event_id` references `events.id` (Many-to-One).\n*   **Join Logic:**\n    *   `events e LEFT JOIN registrations r ON e.id = r.event_id`: For a single event, this produces $N_r$ rows (where $N_r$ is the number of registrations for that event).\n    *   `... LEFT JOIN tags t ON e.id = t.event_id`: For each of the $N_r$ rows, this joins with $N_t$ tags.\n    *   **Resulting Row Count per Event:** $N_r \\times N_t$.\n*   **Aggregate Impact:**\n    *   **`SUM(CASE WHEN r.status = 'confirmed' THEN r.seats ELSE 0 END)`**: Because the join multiplies registration rows by the number of tags, the `seats` value for a specific registration is repeated $N_t$ times. Consequently, the sum is inflated by a factor of $N_t$.\n    *   **`COUNT(t.id)`**: Because the join multiplies tag rows by the number of registrations, the tag ID is repeated $N_r$ times. Consequently, the count is inflated by a factor of $N_r$.\n\n**2. Reconciliation with Execution Evidence**\n\n**Evidence Set 1 (Original Task):**\n*   **Input:**\n    *   Event 1: 1 registration (confirmed, 5 seats), 1 tag.\n    *   Event 2: 1 registration (cancelled, 3 seats), 1 tag.\n    *   Event 3: 0 registrations, 0 tags.\n*   **Expected Correct Output:**\n    *   Event 1: seats=5, tags=1.\n    *   Event 2: seats=0, tags=1.\n    *   Event 3: seats=0, tags=0.\n*   **Observed Output:** `[[1, \"Talk\", 5, 1], [2, \"Lab\", 0, 1], [3, \"Walk\", 0, 0]]`\n*   **Analysis:** The output matches the expected correct values. However, this is a **false positive** caused by the specific data distribution. Since $N_r=1$ and $N_t=1$ for events with data, the multiplication factor is $1 \\times 1 = 1$. The bug is masked.\n\n**Evidence Set 2 (Investigator-Authored Challenge):**\n*   **Input:**\n    *   Event 11: 3 registrations (2 confirmed: 2 seats, 7 seats; 1 cancelled: 3 seats), 2 tags.\n    *   Event 12: 0 registrations, 0 tags.\n*   **Expected Correct Output:**\n    *   Event 11: seats = $2 + 7 = 9$. Tags = 2.\n    *   Event 12: seats = 0. Tags = 0.\n*   **Observed Output:** `[[11, \"Probe\", 18, 6], [12, \"Empty\", 0, 0]]`\n*   **Analysis:**\n    *   **Seats:** Observed 18. Expected 9.\n        *   Calculation: The join produces $3 \\text{ regs} \\times 2 \\text{ tags} = 6$ rows.\n        *   The confirmed registration with 2 seats appears 2 times (once per tag). Sum contribution: $2 \\times 2 = 4$.\n        *   The confirmed registration with 7 seats appears 2 times (once per tag). Sum contribution: $7 \\times 2 = 14$.\n        *   Total Sum: $4 + 14 = 18$.\n        *   **Verdict:** Incorrect. Inflated by factor of $N_t$ (2).\n    *   **Tags:** Observed 6. Expected 2.\n        *   Calculation: The join produces 6 rows. Each tag ID appears 3 times (once per registration).\n        *   Total Count: 6.\n        *   **Verdict:** Incorrect. Inflated by factor of $N_r$ (3).\n\n**Conclusion:** The SQL query is **invalid** for general cases where an event has more than one registration or more than one tag. It suffers from the \"fan-out\" or \"row multiplication\" problem inherent in joining two one-to-many relationships to a single table without pre-aggregation.\n\n---\n\n### Lesson Audit\n\n**Lesson 1: Use COALESCE and conditional aggregation to handle missing or zero values in joins.**\n*   **Original Wording:** \"The query correctly uses `COALESCE` with a `CASE` statement to ensure that only confirmed registrations contribute to the `seats` count, and it defaults to 0 for events with no confirmed registrations. This approach ensures accurate aggregation even when some rows are missing due to left joins.\"\n*   **Audit:**\n    *   **Validity of Narrow Lesson:** The use of `COALESCE` and `CASE` is syntactically correct and logically sound *in isolation* for handling NULLs and filtering within a single aggregate.\n    *   **Validity of Whole Source Program:** The claim that this \"ensures accurate aggregation\" is **false** in the context of the provided query. As demonstrated by Evidence Set 2, the aggregation is inaccurate due to row multiplication. The `COALESCE`/`CASE` logic does not mitigate the fan-out error.\n    *   **Decision:** **Decline**. The lesson implies the query is correct/accurate, which is factually wrong for the general case.\n*   **Revised Scope (if accepted with correction):** If one were to salvage the *technique* (not the query), the scope would be: \"Use COALESCE and conditional aggregation to handle NULLs in single-table or pre-aggregated subquery contexts. Do not apply directly to multi-join fan-out scenarios without pre-aggregation.\"\n\n**Lesson 2: Group by both id and title to avoid ambiguity when titles are not unique.**\n*   **Original Wording:** \"The query groups by both `e.id` and `e.title`, which is necessary because titles may not be unique across events. This ensures that each event is treated as a separate row, even if two events share the same title.\"\n*   **Audit:**\n    *   **Validity of Narrow Lesson:** Grouping by the primary key (`e.id`) is sufficient to ensure unique rows per event. Including `e.title` in the `GROUP BY` is redundant if `e.id` is present (since `id` determines `title`), but it is not *incorrect* in terms of row separation. It does not cause the row multiplication error.\n    *   **Validity of Whole Source Program:** The lesson is technically valid regarding row separation. It does not contribute to the error. However, it is not the *cause* of the failure, nor does it fix it.\n    *   **Decision:** **Accept**. The statement is factually true: grouping by ID ensures distinct events are kept separate. It is a safe practice, though `GROUP BY e.id` alone would suffice.\n*   **Revised Scope:** None needed. The lesson is valid.\n\n---\n\n### Safe Code Reuse\n\n**Do NOT reuse the provided SQL query.** It produces incorrect results when an event has multiple registrations or multiple tags.\n\n**Safe Pattern for Reuse:**\nTo correctly solve this problem, you must pre-aggregate the one-to-many tables before joining them to the main table, or use subqueries.\n\n**Corrected Query Example:**\n```sql\nSELECT \n    e.id, \n    e.title, \n    COALESCE(r.seats, 0) AS seats, \n    COALESCE(t.tags, 0) AS tags\nFROM \n    events e\nLEFT JOIN (\n    SELECT event_id, SUM(seats) AS seats \n    FROM registrations \n    WHERE status = 'confirmed' \n    GROUP BY event_id\n) r ON e.id = r.event_id\nLEFT JOIN (\n    SELECT event_id, COUNT(*) AS tags \n    FROM tags \n    GROUP BY event_id\n) t ON e.id = t.event_id\nORDER BY \n    e.id\n```\n\n**Why this is safe:**\n1.  The subqueries `r` and `t` reduce the many-to-one relationships to one-to-one relationships (one row per event).\n2.  Joining `events` to these pre-aggregated subqueries does not cause row multiplication.\n3.  `COALESCE` is then correctly applied to handle events with no matching pre-aggregated rows (NULLs).",
+  "probe": {
+    "origin": "investigator-authored development multiplicity challenge",
+    "rows": {
+      "events": [
+        [
+          11,
+          "Probe"
+        ],
+        [
+          12,
+          "Empty"
+        ]
+      ],
+      "registrations": [
+        [
+          11,
+          11,
+          2,
+          "confirmed"
+        ],
+        [
+          12,
+          11,
+          7,
+          "confirmed"
+        ],
+        [
+          13,
+          11,
+          3,
+          "cancelled"
+        ]
+      ],
+      "tags": [
+        [
+          11,
+          11,
+          "a"
+        ],
+        [
+          12,
+          11,
+          "b"
+        ]
+      ]
+    },
+    "query": "SELECT \n    e.id, \n    e.title, \n    COALESCE(SUM(CASE WHEN r.status = 'confirmed' THEN r.seats ELSE 0 END), 0) AS seats, \n    COALESCE(COUNT(t.id), 0) AS tags\nFROM \n    events e\nLEFT JOIN \n    registrations r ON e.id = r.event_id\nLEFT JOIN \n    tags t ON e.id = t.event_id\nGROUP BY \n    e.id, e.title\nORDER BY \n    e.id",
+    "execution": {
+      "columns": [
+        "id",
+        "title",
+        "seats",
+        "tags"
+      ],
+      "rows": [
+        [
+          11,
+          "Probe",
+          18,
+          6
+        ],
+        [
+          12,
+          "Empty",
+          0,
+          0
+        ]
+      ],
+      "wall_seconds": 0.0011856249766424298
+    }
+  }
+}

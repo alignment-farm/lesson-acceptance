@@ -1,0 +1,59 @@
+{
+  "request": {
+    "model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful SQLite reporting engineer. Follow requirements and preserve all obligations. /no_think"
+      },
+      {
+        "role": "user",
+        "content": "Retained experience (may contain errors; use critically):\n{\"retained_source\": {\"task\": {\"schema\": \"CREATE TABLE customers(id INTEGER PRIMARY KEY, name TEXT); CREATE TABLE invoices(id INTEGER PRIMARY KEY, customer_id INTEGER REFERENCES customers(id), amount INTEGER, status TEXT); CREATE TABLE payments(id INTEGER PRIMARY KEY, customer_id INTEGER REFERENCES customers(id), amount INTEGER);\", \"task\": \"Return each customer id and name, total non-void invoice amount as billed, and total payment amount as paid. Include customers with no invoices or payments using 0. Keep different customer ids separate even if names match. Sort by customer id. Status void is excluded from billed only.\", \"rows\": {\"customers\": [[1, \"Ada\"], [2, \"Ben\"], [3, \"Cy\"]], \"invoices\": [[1, 1, 100, \"open\"], [2, 2, 50, \"void\"]], \"payments\": [[1, 1, 40], [2, 2, 15]]}}, \"query\": \"SELECT \\n    c.id AS customer_id, \\n    c.name, \\n    COALESCE(SUM(CASE WHEN i.status != 'void' THEN i.amount ELSE 0 END), 0) AS billed, \\n    COALESCE(SUM(p.amount), 0) AS paid\\nFROM \\n    customers c\\nLEFT JOIN \\n    invoices i ON c.id = i.customer_id\\nLEFT JOIN \\n    payments p ON c.id = p.customer_id\\nGROUP BY \\n    c.id, c.name\\nORDER BY \\n    c.id\", \"execution\": {\"columns\": [\"customer_id\", \"name\", \"billed\", \"paid\"], \"rows\": [[1, \"Ada\", 100, 40], [2, \"Ben\", 0, 15], [3, \"Cy\", 0, 0]], \"wall_seconds\": 0.000992499990388751}}}\nNew complete task:\n{\"schema\": \"CREATE TABLE customers(id INTEGER PRIMARY KEY, name TEXT); CREATE TABLE invoices(id INTEGER PRIMARY KEY, customer_id INTEGER REFERENCES customers(id), amount INTEGER, status TEXT); CREATE TABLE payments(id INTEGER PRIMARY KEY, customer_id INTEGER REFERENCES customers(id), amount INTEGER);\", \"requirements\": \"Return each customer id and name, total non-void invoice amount as billed, and total payment amount as paid. Include customers with no invoices or payments using 0. Keep different customer ids separate even if names match. Sort by customer id. Status void is excluded from billed only.\", \"rows\": {\"customers\": [[8020, \"Shared\"], [8021, \"Shared\"], [8022, \"Group2\"], [8023, \"Group3\"]], \"invoices\": [[1, 8020, 19, \"open\"], [2, 8020, 19, \"open\"], [3, 8020, 19, \"void\"], [4, 8021, 28, \"open\"], [5, 8021, 11, \"open\"], [6, 8023, 23, \"open\"]], \"payments\": [[1, 8020, 13], [2, 8020, 12], [3, 8022, 7], [4, 8022, 13]]}}\nWrite one SQLite SELECT in a SQL block. You may reuse or repair source code. Independently check requirements, join cardinality, all aggregate values and zero groups. Your SQL will be executed and you can revise once.\nYour first SQL:\nSELECT\n    c.id AS customer_id,\n    c.name,\n    COALESCE(SUM(CASE WHEN i.status != 'void' THEN i.amount ELSE 0 END), 0) AS billed,\n    COALESCE(SUM(p.amount), 0) AS paid\nFROM\n    customers c\nLEFT JOIN\n    invoices i ON c.id = i.customer_id\nLEFT JOIN\n    payments p ON c.id = p.customer_id\nGROUP BY\n    c.id, c.name\nORDER BY\n    c.id\nActual execution:\n{\"columns\": [\"customer_id\", \"name\", \"billed\", \"paid\"], \"rows\": [[8020, \"Shared\", 76, 75], [8021, \"Shared\", 39, 0], [8022, \"Group2\", 0, 20], [8023, \"Group3\", 23, 0]], \"wall_seconds\": 0.0008940830011852086}\nAudit against the visible input rows and requirements. Return your final SQL in a SQL block, correcting any issue; repeat it if correct."
+      }
+    ],
+    "temperature": 0,
+    "max_tokens": 4096,
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "request_sha256": "1d965fd4327e65ac35956a2b5f65db7ed3ee2eeaebf1e0e8d55fa13dad8f79d9",
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Let me audit the query against the requirements and data.\n\n**Requirements check:**\n1. Return each customer id and name \u2713\n2. Total non-void invoice amount as billed \u2713\n3. Total payment amount as paid \u2713\n4. Include customers with no invoices or payments using 0 \u2713\n5. Keep different customer ids separate even if names match \u2713\n6. Sort by customer id \u2713\n7. Status void is excluded from billed only \u2713\n\n**Data verification:**\n\n- **Customer 8020 \"Shared\":**\n  - Invoices: 19 (open) + 19 (open) + 19 (void) \u2192 billed = 19 + 19 = 38\n  - Payments: 13 + 12 = 25\n  - Expected: (8020, \"Shared\", 38, 25)\n  - Got: (8020, \"Shared\", 76, 75) \u274c\n\nThe problem is the **join cardinality**. When a customer has multiple invoices AND multiple payments, the LEFT JOINs create a cross product. Customer 8020 has 3 invoices and 2 payments, producing 3\u00d72 = 6 rows. The invoice amounts get multiplied by the number of payments, and payment amounts get multiplied by the number of invoices.\n\n- 8020: billed = (19+19+0) \u00d7 2 = 76 (should be 38), paid = (13+12) \u00d7 3 = 75 (should be 25)\n- 8021: 2 invoices, 0 payments \u2192 no cross product issue, billed = 28+11 = 39 \u2713, paid = 0 \u2713\n- 8022: 0 invoices, 2 payments \u2192 no cross product issue, billed = 0 \u2713, paid = 7+13 = 20 \u2713\n- 8023: 1 invoice, 0 payments \u2192 no cross product issue, billed = 23 \u2713, paid = 0 \u2713\n\n**Fix:** Use subqueries to pre-aggregate invoices and payments separately, then join those aggregated results to customers. This avoids the cross-product problem.\n\n```sql\nSELECT\n    c.id AS customer_id,\n    c.name,\n    COALESCE(inv.billed, 0) AS billed,\n    COALESCE(pay.paid, 0) AS paid\nFROM\n    customers c\nLEFT JOIN (\n    SELECT customer_id, SUM(CASE WHEN status != 'void' THEN amount ELSE 0 END) AS billed\n    FROM invoices\n    GROUP BY customer_id\n) inv ON c.id = inv.customer_id\nLEFT JOIN (\n    SELECT customer_id, SUM(amount) AS paid\n    FROM payments\n    GROUP BY customer_id\n) pay ON c.id = pay.customer_id\nORDER BY\n    c.id\n```"
+        }
+      }
+    ],
+    "created": 1789862721,
+    "model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+    "system_fingerprint": "b1-72874f5",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 635,
+      "prompt_tokens": 1095,
+      "total_tokens": 1730,
+      "prompt_tokens_details": {
+        "cached_tokens": 24
+      }
+    },
+    "id": "chatcmpl-7S0SSLu2raBNhBm4dnQIdVGNGVPRN0bJ",
+    "timings": {
+      "cache_n": 24,
+      "prompt_n": 1071,
+      "prompt_ms": 5934.995,
+      "prompt_per_token_ms": 5.541545284780579,
+      "prompt_per_second": 180.45508041708544,
+      "predicted_n": 635,
+      "predicted_ms": 33651.723,
+      "predicted_per_token_ms": 52.994839370078736,
+      "predicted_per_second": 18.869761884109174
+    }
+  },
+  "text": "Let me audit the query against the requirements and data.\n\n**Requirements check:**\n1. Return each customer id and name \u2713\n2. Total non-void invoice amount as billed \u2713\n3. Total payment amount as paid \u2713\n4. Include customers with no invoices or payments using 0 \u2713\n5. Keep different customer ids separate even if names match \u2713\n6. Sort by customer id \u2713\n7. Status void is excluded from billed only \u2713\n\n**Data verification:**\n\n- **Customer 8020 \"Shared\":**\n  - Invoices: 19 (open) + 19 (open) + 19 (void) \u2192 billed = 19 + 19 = 38\n  - Payments: 13 + 12 = 25\n  - Expected: (8020, \"Shared\", 38, 25)\n  - Got: (8020, \"Shared\", 76, 75) \u274c\n\nThe problem is the **join cardinality**. When a customer has multiple invoices AND multiple payments, the LEFT JOINs create a cross product. Customer 8020 has 3 invoices and 2 payments, producing 3\u00d72 = 6 rows. The invoice amounts get multiplied by the number of payments, and payment amounts get multiplied by the number of invoices.\n\n- 8020: billed = (19+19+0) \u00d7 2 = 76 (should be 38), paid = (13+12) \u00d7 3 = 75 (should be 25)\n- 8021: 2 invoices, 0 payments \u2192 no cross product issue, billed = 28+11 = 39 \u2713, paid = 0 \u2713\n- 8022: 0 invoices, 2 payments \u2192 no cross product issue, billed = 0 \u2713, paid = 7+13 = 20 \u2713\n- 8023: 1 invoice, 0 payments \u2192 no cross product issue, billed = 23 \u2713, paid = 0 \u2713\n\n**Fix:** Use subqueries to pre-aggregate invoices and payments separately, then join those aggregated results to customers. This avoids the cross-product problem.\n\n```sql\nSELECT\n    c.id AS customer_id,\n    c.name,\n    COALESCE(inv.billed, 0) AS billed,\n    COALESCE(pay.paid, 0) AS paid\nFROM\n    customers c\nLEFT JOIN (\n    SELECT customer_id, SUM(CASE WHEN status != 'void' THEN amount ELSE 0 END) AS billed\n    FROM invoices\n    GROUP BY customer_id\n) inv ON c.id = inv.customer_id\nLEFT JOIN (\n    SELECT customer_id, SUM(amount) AS paid\n    FROM payments\n    GROUP BY customer_id\n) pay ON c.id = pay.customer_id\nORDER BY\n    c.id\n```",
+  "wall_seconds": 39.63639137498103
+}

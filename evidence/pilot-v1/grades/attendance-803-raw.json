@@ -1,0 +1,201 @@
+{
+  "history": "attendance",
+  "seed": 803,
+  "arm": "raw",
+  "input": {
+    "events": [
+      [
+        8030,
+        "Shared"
+      ],
+      [
+        8031,
+        "Shared"
+      ],
+      [
+        8032,
+        "Group2"
+      ],
+      [
+        8033,
+        "Group3"
+      ]
+    ],
+    "registrations": [
+      [
+        1,
+        8030,
+        5,
+        "confirmed"
+      ],
+      [
+        2,
+        8030,
+        5,
+        "confirmed"
+      ],
+      [
+        3,
+        8031,
+        17,
+        "confirmed"
+      ],
+      [
+        4,
+        8031,
+        18,
+        "confirmed"
+      ],
+      [
+        5,
+        8031,
+        15,
+        "cancelled"
+      ],
+      [
+        6,
+        8031,
+        5,
+        "confirmed"
+      ],
+      [
+        7,
+        8033,
+        9,
+        "confirmed"
+      ]
+    ],
+    "tags": [
+      [
+        1,
+        8030,
+        "tag0"
+      ],
+      [
+        2,
+        8030,
+        "tag1"
+      ],
+      [
+        3,
+        8030,
+        "tag2"
+      ],
+      [
+        4,
+        8031,
+        "tag0"
+      ],
+      [
+        5,
+        8031,
+        "tag1"
+      ],
+      [
+        6,
+        8032,
+        "tag0"
+      ]
+    ]
+  },
+  "initial_sql": "SELECT\n    e.id,\n    e.title,\n    COALESCE(SUM(CASE WHEN r.status = 'confirmed' THEN r.seats ELSE 0 END), 0) AS seats,\n    COALESCE(COUNT(t.id), 0) AS tags\nFROM\n    events e\nLEFT JOIN\n    registrations r ON e.id = r.event_id\nLEFT JOIN\n    tags t ON e.id = t.event_id\nGROUP BY\n    e.id, e.title\nORDER BY\n    e.id",
+  "initial_execution": {
+    "columns": [
+      "id",
+      "title",
+      "seats",
+      "tags"
+    ],
+    "rows": [
+      [
+        8030,
+        "Shared",
+        30,
+        6
+      ],
+      [
+        8031,
+        "Shared",
+        80,
+        8
+      ],
+      [
+        8032,
+        "Group2",
+        0,
+        1
+      ],
+      [
+        8033,
+        "Group3",
+        9,
+        0
+      ]
+    ],
+    "wall_seconds": 0.0003126670198980719
+  },
+  "final_sql": "SELECT\n    e.id,\n    e.title,\n    COALESCE(r.seats, 0) AS seats,\n    COALESCE(t.tags, 0) AS tags\nFROM\n    events e\nLEFT JOIN (\n    SELECT event_id, SUM(seats) AS seats\n    FROM registrations\n    WHERE status = 'confirmed'\n    GROUP BY event_id\n) r ON e.id = r.event_id\nLEFT JOIN (\n    SELECT event_id, COUNT(*) AS tags\n    FROM tags\n    GROUP BY event_id\n) t ON e.id = t.event_id\nORDER BY\n    e.id",
+  "final_execution": {
+    "columns": [
+      "id",
+      "title",
+      "seats",
+      "tags"
+    ],
+    "rows": [
+      [
+        8030,
+        "Shared",
+        10,
+        3
+      ],
+      [
+        8031,
+        "Shared",
+        40,
+        2
+      ],
+      [
+        8032,
+        "Group2",
+        0,
+        1
+      ],
+      [
+        8033,
+        "Group3",
+        9,
+        0
+      ]
+    ],
+    "wall_seconds": 0.0014743329957127571
+  },
+  "expected": [
+    [
+      8030,
+      "Shared",
+      10,
+      3
+    ],
+    [
+      8031,
+      "Shared",
+      40,
+      2
+    ],
+    [
+      8032,
+      "Group2",
+      0,
+      1
+    ],
+    [
+      8033,
+      "Group3",
+      9,
+      0
+    ]
+  ],
+  "initial_pass": false,
+  "final_pass": true
+}

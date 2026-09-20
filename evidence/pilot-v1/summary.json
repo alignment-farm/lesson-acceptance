@@ -1,0 +1,100 @@
+{
+  "outcomes": {
+    "raw": {
+      "n": 6,
+      "initial_pass": 2,
+      "final_pass": 6
+    },
+    "cheap": {
+      "n": 6,
+      "initial_pass": 6,
+      "final_pass": 6
+    },
+    "paid": {
+      "n": 6,
+      "initial_pass": 6,
+      "final_pass": 6
+    }
+  },
+  "costs": {
+    "acceptance-cheap": {
+      "calls": 2,
+      "wall_seconds": 194.12983125000028,
+      "prompt_tokens": 1695,
+      "completion_tokens": 3486,
+      "cached_prompt_tokens": 0,
+      "money_usd": null
+    },
+    "experimental-search-8b": {
+      "calls": 8,
+      "wall_seconds": 113.7397098330257,
+      "prompt_tokens": 7642,
+      "completion_tokens": 6453,
+      "cached_prompt_tokens": 5447,
+      "money_usd": null
+    },
+    "acceptance-paid": {
+      "calls": 2,
+      "wall_seconds": 215.12694233297952,
+      "prompt_tokens": 2322,
+      "completion_tokens": 3806,
+      "cached_prompt_tokens": 48,
+      "money_usd": null
+    },
+    "shared-proposal": {
+      "calls": 2,
+      "wall_seconds": 10.711844125005882,
+      "prompt_tokens": 928,
+      "completion_tokens": 519,
+      "cached_prompt_tokens": 0,
+      "money_usd": null
+    },
+    "shared-source": {
+      "calls": 2,
+      "wall_seconds": 7.159567624970805,
+      "prompt_tokens": 481,
+      "completion_tokens": 238,
+      "cached_prompt_tokens": 28,
+      "money_usd": null
+    },
+    "experimental-serving-27b": {
+      "calls": 1,
+      "wall_seconds": 232.76318320899736,
+      "prompt_tokens": 912,
+      "completion_tokens": 4096,
+      "cached_prompt_tokens": 0,
+      "money_usd": null
+    },
+    "later-cheap": {
+      "calls": 12,
+      "wall_seconds": 401.5493359170214,
+      "prompt_tokens": 36165,
+      "completion_tokens": 3911,
+      "cached_prompt_tokens": 288,
+      "money_usd": null
+    },
+    "later-paid": {
+      "calls": 12,
+      "wall_seconds": 463.55505708395503,
+      "prompt_tokens": 42014,
+      "completion_tokens": 4463,
+      "cached_prompt_tokens": 288,
+      "money_usd": null
+    },
+    "later-raw": {
+      "calls": 12,
+      "wall_seconds": 339.75152862709365,
+      "prompt_tokens": 11352,
+      "completion_tokens": 5235,
+      "cached_prompt_tokens": 240,
+      "money_usd": null
+    }
+  },
+  "unknown_costs": [
+    "investigator and delegated model tokens/money",
+    "engineering time",
+    "remote energy/hardware cost",
+    "server load and network variance"
+  ],
+  "probe_sql_seconds": 0.0014734999858774245
+}

@@ -1,0 +1,11 @@
+{
+  "attempt": "billing-paid-27b",
+  "status": "client interrupted after prior call returned empty content at length limit",
+  "prior_call": "calls/billing-cheap-27b.json",
+  "request_reconstruction": "competence phase, billing base REVIEW plus saved billing probe, model docker.io/ai/qwen3.8:27b-q4_K_M, temperature 0, max_tokens 4096; no chat_template_kwargs",
+  "calls": 1,
+  "tokens": null,
+  "wall_seconds": null,
+  "money_usd": null,
+  "server_cancellation_confirmed": false
+}

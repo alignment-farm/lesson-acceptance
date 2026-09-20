@@ -1,0 +1,157 @@
+{
+  "history": "attendance",
+  "seed": 801,
+  "arm": "raw",
+  "input": {
+    "events": [
+      [
+        8010,
+        "Shared"
+      ],
+      [
+        8011,
+        "Shared"
+      ],
+      [
+        8012,
+        "Group2"
+      ],
+      [
+        8013,
+        "Group3"
+      ]
+    ],
+    "registrations": [
+      [
+        1,
+        8010,
+        5,
+        "confirmed"
+      ],
+      [
+        2,
+        8011,
+        5,
+        "confirmed"
+      ],
+      [
+        3,
+        8013,
+        13,
+        "confirmed"
+      ]
+    ],
+    "tags": [
+      [
+        1,
+        8010,
+        "tag0"
+      ],
+      [
+        2,
+        8012,
+        "tag0"
+      ]
+    ]
+  },
+  "initial_sql": "SELECT\n    e.id,\n    e.title,\n    COALESCE(SUM(CASE WHEN r.status = 'confirmed' THEN r.seats ELSE 0 END), 0) AS seats,\n    COALESCE(COUNT(t.id), 0) AS tags\nFROM\n    events e\nLEFT JOIN\n    registrations r ON e.id = r.event_id\nLEFT JOIN\n    tags t ON e.id = t.event_id\nGROUP BY\n    e.id, e.title\nORDER BY\n    e.id",
+  "initial_execution": {
+    "columns": [
+      "id",
+      "title",
+      "seats",
+      "tags"
+    ],
+    "rows": [
+      [
+        8010,
+        "Shared",
+        5,
+        1
+      ],
+      [
+        8011,
+        "Shared",
+        5,
+        0
+      ],
+      [
+        8012,
+        "Group2",
+        0,
+        1
+      ],
+      [
+        8013,
+        "Group3",
+        13,
+        0
+      ]
+    ],
+    "wall_seconds": 0.0016367910138797015
+  },
+  "final_sql": "SELECT\n        e.id,\n        e.title,\n        COALESCE((SELECT SUM(r.seats) FROM registrations r WHERE r.event_id = e.id AND r.status = 'confirmed'), 0) AS seats,\n        COALESCE((SELECT COUNT(*) FROM tags t WHERE t.event_id = e.id), 0) AS tags\n    FROM\n        events e\n    ORDER BY\n        e.id",
+  "final_execution": {
+    "columns": [
+      "id",
+      "title",
+      "seats",
+      "tags"
+    ],
+    "rows": [
+      [
+        8010,
+        "Shared",
+        5,
+        1
+      ],
+      [
+        8011,
+        "Shared",
+        5,
+        0
+      ],
+      [
+        8012,
+        "Group2",
+        0,
+        1
+      ],
+      [
+        8013,
+        "Group3",
+        13,
+        0
+      ]
+    ],
+    "wall_seconds": 0.0007701670110691339
+  },
+  "expected": [
+    [
+      8010,
+      "Shared",
+      5,
+      1
+    ],
+    [
+      8011,
+      "Shared",
+      5,
+      0
+    ],
+    [
+      8012,
+      "Group2",
+      0,
+      1
+    ],
+    [
+      8013,
+      "Group3",
+      13,
+      0
+    ]
+  ],
+  "initial_pass": true,
+  "final_pass": true
+}

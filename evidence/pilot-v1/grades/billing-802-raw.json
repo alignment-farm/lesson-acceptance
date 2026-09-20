@@ -1,0 +1,185 @@
+{
+  "history": "billing",
+  "seed": 802,
+  "arm": "raw",
+  "input": {
+    "customers": [
+      [
+        8020,
+        "Shared"
+      ],
+      [
+        8021,
+        "Shared"
+      ],
+      [
+        8022,
+        "Group2"
+      ],
+      [
+        8023,
+        "Group3"
+      ]
+    ],
+    "invoices": [
+      [
+        1,
+        8020,
+        19,
+        "open"
+      ],
+      [
+        2,
+        8020,
+        19,
+        "open"
+      ],
+      [
+        3,
+        8020,
+        19,
+        "void"
+      ],
+      [
+        4,
+        8021,
+        28,
+        "open"
+      ],
+      [
+        5,
+        8021,
+        11,
+        "open"
+      ],
+      [
+        6,
+        8023,
+        23,
+        "open"
+      ]
+    ],
+    "payments": [
+      [
+        1,
+        8020,
+        13
+      ],
+      [
+        2,
+        8020,
+        12
+      ],
+      [
+        3,
+        8022,
+        7
+      ],
+      [
+        4,
+        8022,
+        13
+      ]
+    ]
+  },
+  "initial_sql": "SELECT\n    c.id AS customer_id,\n    c.name,\n    COALESCE(SUM(CASE WHEN i.status != 'void' THEN i.amount ELSE 0 END), 0) AS billed,\n    COALESCE(SUM(p.amount), 0) AS paid\nFROM\n    customers c\nLEFT JOIN\n    invoices i ON c.id = i.customer_id\nLEFT JOIN\n    payments p ON c.id = p.customer_id\nGROUP BY\n    c.id, c.name\nORDER BY\n    c.id",
+  "initial_execution": {
+    "columns": [
+      "customer_id",
+      "name",
+      "billed",
+      "paid"
+    ],
+    "rows": [
+      [
+        8020,
+        "Shared",
+        76,
+        75
+      ],
+      [
+        8021,
+        "Shared",
+        39,
+        0
+      ],
+      [
+        8022,
+        "Group2",
+        0,
+        20
+      ],
+      [
+        8023,
+        "Group3",
+        23,
+        0
+      ]
+    ],
+    "wall_seconds": 0.0008940830011852086
+  },
+  "final_sql": "SELECT\n    c.id AS customer_id,\n    c.name,\n    COALESCE(inv.billed, 0) AS billed,\n    COALESCE(pay.paid, 0) AS paid\nFROM\n    customers c\nLEFT JOIN (\n    SELECT customer_id, SUM(CASE WHEN status != 'void' THEN amount ELSE 0 END) AS billed\n    FROM invoices\n    GROUP BY customer_id\n) inv ON c.id = inv.customer_id\nLEFT JOIN (\n    SELECT customer_id, SUM(amount) AS paid\n    FROM payments\n    GROUP BY customer_id\n) pay ON c.id = pay.customer_id\nORDER BY\n    c.id",
+  "final_execution": {
+    "columns": [
+      "customer_id",
+      "name",
+      "billed",
+      "paid"
+    ],
+    "rows": [
+      [
+        8020,
+        "Shared",
+        38,
+        25
+      ],
+      [
+        8021,
+        "Shared",
+        39,
+        0
+      ],
+      [
+        8022,
+        "Group2",
+        0,
+        20
+      ],
+      [
+        8023,
+        "Group3",
+        23,
+        0
+      ]
+    ],
+    "wall_seconds": 0.00120995900942944
+  },
+  "expected": [
+    [
+      8020,
+      "Shared",
+      38,
+      25
+    ],
+    [
+      8021,
+      "Shared",
+      39,
+      0
+    ],
+    [
+      8022,
+      "Group2",
+      0,
+      20
+    ],
+    [
+      8023,
+      "Group3",
+      23,
+      0
+    ]
+  ],
+  "initial_pass": false,
+  "final_pass": true
+}

@@ -1,0 +1,17 @@
+{
+  "status": "complete",
+  "scope": "bounded constructed SQL feasibility and fresh comparison",
+  "model_requests": 54,
+  "response_artifacts": 53,
+  "empty_content_responses": 1,
+  "interrupted_requests_with_unknown_cost": 1,
+  "fresh_tasks": 18,
+  "source_histories": 2,
+  "reuse_horizon_per_history": 3,
+  "policy_changed_after_final_outcomes": false,
+  "bounded_followup": "pre-registered fixed-program replay, completed",
+  "closure_reason": "schema reasoning settled the defect cheaply; paid probes added no measured benefit and repaired programs solved later unchanged-schema tasks without inference",
+  "remaining_inference_processes_owned_by_study": 0,
+  "unknown_costs_preserved": true,
+  "postrun_code_changes": "evidence-directory environment option, per-directory budget start, interrupted-call budget accounting, and derived cost/reproduction tooling; executed source snapshots retained"
+}

@@ -1,0 +1,59 @@
+{
+  "request": {
+    "model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful SQLite reporting engineer. Follow requirements and preserve all obligations. /no_think"
+      },
+      {
+        "role": "user",
+        "content": "Retained experience (may contain errors; use critically):\n{\"retained_source\": {\"task\": {\"schema\": \"CREATE TABLE customers(id INTEGER PRIMARY KEY, name TEXT); CREATE TABLE invoices(id INTEGER PRIMARY KEY, customer_id INTEGER REFERENCES customers(id), amount INTEGER, status TEXT); CREATE TABLE payments(id INTEGER PRIMARY KEY, customer_id INTEGER REFERENCES customers(id), amount INTEGER);\", \"task\": \"Return each customer id and name, total non-void invoice amount as billed, and total payment amount as paid. Include customers with no invoices or payments using 0. Keep different customer ids separate even if names match. Sort by customer id. Status void is excluded from billed only.\", \"rows\": {\"customers\": [[1, \"Ada\"], [2, \"Ben\"], [3, \"Cy\"]], \"invoices\": [[1, 1, 100, \"open\"], [2, 2, 50, \"void\"]], \"payments\": [[1, 1, 40], [2, 2, 15]]}}, \"query\": \"SELECT \\n    c.id AS customer_id, \\n    c.name, \\n    COALESCE(SUM(CASE WHEN i.status != 'void' THEN i.amount ELSE 0 END), 0) AS billed, \\n    COALESCE(SUM(p.amount), 0) AS paid\\nFROM \\n    customers c\\nLEFT JOIN \\n    invoices i ON c.id = i.customer_id\\nLEFT JOIN \\n    payments p ON c.id = p.customer_id\\nGROUP BY \\n    c.id, c.name\\nORDER BY \\n    c.id\", \"execution\": {\"columns\": [\"customer_id\", \"name\", \"billed\", \"paid\"], \"rows\": [[1, \"Ada\", 100, 40], [2, \"Ben\", 0, 15], [3, \"Cy\", 0, 0]], \"wall_seconds\": 0.000992499990388751}}}\nNew complete task:\n{\"schema\": \"CREATE TABLE customers(id INTEGER PRIMARY KEY, name TEXT); CREATE TABLE invoices(id INTEGER PRIMARY KEY, customer_id INTEGER REFERENCES customers(id), amount INTEGER, status TEXT); CREATE TABLE payments(id INTEGER PRIMARY KEY, customer_id INTEGER REFERENCES customers(id), amount INTEGER);\", \"requirements\": \"Return each customer id and name, total non-void invoice amount as billed, and total payment amount as paid. Include customers with no invoices or payments using 0. Keep different customer ids separate even if names match. Sort by customer id. Status void is excluded from billed only.\", \"rows\": {\"customers\": [[8010, \"Shared\"], [8011, \"Shared\"], [8012, \"Group2\"], [8013, \"Group3\"]], \"invoices\": [[1, 8010, 5, \"open\"], [2, 8011, 5, \"open\"], [3, 8013, 27, \"open\"]], \"payments\": [[1, 8010, 8], [2, 8012, 5]]}}\nWrite one SQLite SELECT in a SQL block. You may reuse or repair source code. Independently check requirements, join cardinality, all aggregate values and zero groups. Your SQL will be executed and you can revise once."
+      }
+    ],
+    "temperature": 0,
+    "max_tokens": 4096,
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "request_sha256": "abc22bd66f59f0c5e749f465d94a896a88807b4f7ea714a98cd8cec966ec70da",
+  "response": {
+    "choices": [
+      {
+        "finish_reason": "stop",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "```sql\nSELECT\n    c.id AS customer_id,\n    c.name,\n    COALESCE(SUM(CASE WHEN i.status != 'void' THEN i.amount ELSE 0 END), 0) AS billed,\n    COALESCE(SUM(p.amount), 0) AS paid\nFROM\n    customers c\nLEFT JOIN\n    invoices i ON c.id = i.customer_id\nLEFT JOIN\n    payments p ON c.id = p.customer_id\nGROUP BY\n    c.id, c.name\nORDER BY\n    c.id\n```"
+        }
+      }
+    ],
+    "created": 1789862556,
+    "model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+    "system_fingerprint": "b1-72874f5",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 116,
+      "prompt_tokens": 755,
+      "total_tokens": 871,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "id": "chatcmpl-EfohFxJKaRABPuRAReDEpQv6xshwEoGC",
+    "timings": {
+      "cache_n": 0,
+      "prompt_n": 755,
+      "prompt_ms": 4361.972,
+      "prompt_per_token_ms": 5.777446357615894,
+      "prompt_per_second": 173.08685154329282,
+      "predicted_n": 116,
+      "predicted_ms": 6119.704,
+      "predicted_per_token_ms": 52.75606896551724,
+      "predicted_per_second": 18.955165151778584
+    }
+  },
+  "text": "```sql\nSELECT\n    c.id AS customer_id,\n    c.name,\n    COALESCE(SUM(CASE WHEN i.status != 'void' THEN i.amount ELSE 0 END), 0) AS billed,\n    COALESCE(SUM(p.amount), 0) AS paid\nFROM\n    customers c\nLEFT JOIN\n    invoices i ON c.id = i.customer_id\nLEFT JOIN\n    payments p ON c.id = p.customer_id\nGROUP BY\n    c.id, c.name\nORDER BY\n    c.id\n```",
+  "wall_seconds": 10.634259334008675
+}

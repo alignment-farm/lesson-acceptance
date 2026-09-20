@@ -1,0 +1,5002 @@
+{
+  "generated_at_utc": "2026-09-20T00:25:02.921691+00:00",
+  "ledger_script": "scripts/costs.py",
+  "ledger_script_sha256": "df0553619dd94da3c08086b1e5d92644013fba1cbe3850fb9d7a6982c816653b",
+  "scope": {
+    "evidence_root": "evidence/pilot-v1",
+    "histories": [
+      "attendance",
+      "billing"
+    ],
+    "model_call_artifacts_read": 53,
+    "sqlite_check_records_counted": 143,
+    "existing_records_modified": false,
+    "native_units": [
+      "model tokens",
+      "model wall seconds",
+      "SQLite wall seconds",
+      "USD"
+    ]
+  },
+  "model_calls": {
+    "categories": {
+      "shared-source": {
+        "calls": 2,
+        "completed_calls": 2,
+        "failed_or_incomplete_calls": 0,
+        "status_counts": {
+          "completed": 2
+        },
+        "prompt_tokens_known": 481,
+        "prompt_tokens_unknown_calls": 0,
+        "completion_tokens_known": 238,
+        "completion_tokens_unknown_calls": 0,
+        "total_tokens_known": 719,
+        "total_tokens_unknown_calls": 0,
+        "cached_prompt_tokens_known": 28,
+        "cached_prompt_tokens_unknown_calls": 0,
+        "uncached_prompt_tokens_known": 453,
+        "uncached_prompt_tokens_unknown_calls": 0,
+        "wall_seconds_known": 7.159567624970805,
+        "wall_seconds_unknown_calls": 0,
+        "money_usd": null,
+        "money_status": "unknown; no price schedule is recorded for this serving path",
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      "shared-proposal": {
+        "calls": 2,
+        "completed_calls": 2,
+        "failed_or_incomplete_calls": 0,
+        "status_counts": {
+          "completed": 2
+        },
+        "prompt_tokens_known": 928,
+        "prompt_tokens_unknown_calls": 0,
+        "completion_tokens_known": 519,
+        "completion_tokens_unknown_calls": 0,
+        "total_tokens_known": 1447,
+        "total_tokens_unknown_calls": 0,
+        "cached_prompt_tokens_known": 0,
+        "cached_prompt_tokens_unknown_calls": 0,
+        "uncached_prompt_tokens_known": 928,
+        "uncached_prompt_tokens_unknown_calls": 0,
+        "wall_seconds_known": 10.711844125005882,
+        "wall_seconds_unknown_calls": 0,
+        "money_usd": null,
+        "money_status": "unknown; no price schedule is recorded for this serving path",
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      "search8b": {
+        "calls": 8,
+        "completed_calls": 8,
+        "failed_or_incomplete_calls": 0,
+        "status_counts": {
+          "completed": 8
+        },
+        "prompt_tokens_known": 7642,
+        "prompt_tokens_unknown_calls": 0,
+        "completion_tokens_known": 6453,
+        "completion_tokens_unknown_calls": 0,
+        "total_tokens_known": 14095,
+        "total_tokens_unknown_calls": 0,
+        "cached_prompt_tokens_known": 5447,
+        "cached_prompt_tokens_unknown_calls": 0,
+        "uncached_prompt_tokens_known": 2195,
+        "uncached_prompt_tokens_unknown_calls": 0,
+        "wall_seconds_known": 113.7397098330257,
+        "wall_seconds_unknown_calls": 0,
+        "money_usd": null,
+        "money_status": "unknown; no price schedule is recorded for this serving path",
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      "failed27b": {
+        "calls": 1,
+        "completed_calls": 0,
+        "failed_or_incomplete_calls": 1,
+        "status_counts": {
+          "empty": 1
+        },
+        "prompt_tokens_known": 912,
+        "prompt_tokens_unknown_calls": 0,
+        "completion_tokens_known": 4096,
+        "completion_tokens_unknown_calls": 0,
+        "total_tokens_known": 5008,
+        "total_tokens_unknown_calls": 0,
+        "cached_prompt_tokens_known": 0,
+        "cached_prompt_tokens_unknown_calls": 0,
+        "uncached_prompt_tokens_known": 912,
+        "uncached_prompt_tokens_unknown_calls": 0,
+        "wall_seconds_known": 232.76318320899736,
+        "wall_seconds_unknown_calls": 0,
+        "money_usd": null,
+        "money_status": "unknown; no price schedule is recorded for this serving path",
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      "deployed-cheap": {
+        "calls": 2,
+        "completed_calls": 2,
+        "failed_or_incomplete_calls": 0,
+        "status_counts": {
+          "completed": 2
+        },
+        "prompt_tokens_known": 1695,
+        "prompt_tokens_unknown_calls": 0,
+        "completion_tokens_known": 3486,
+        "completion_tokens_unknown_calls": 0,
+        "total_tokens_known": 5181,
+        "total_tokens_unknown_calls": 0,
+        "cached_prompt_tokens_known": 0,
+        "cached_prompt_tokens_unknown_calls": 0,
+        "uncached_prompt_tokens_known": 1695,
+        "uncached_prompt_tokens_unknown_calls": 0,
+        "wall_seconds_known": 194.12983125000028,
+        "wall_seconds_unknown_calls": 0,
+        "money_usd": null,
+        "money_status": "unknown; no price schedule is recorded for this serving path",
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      "deployed-paid": {
+        "calls": 2,
+        "completed_calls": 2,
+        "failed_or_incomplete_calls": 0,
+        "status_counts": {
+          "completed": 2
+        },
+        "prompt_tokens_known": 2322,
+        "prompt_tokens_unknown_calls": 0,
+        "completion_tokens_known": 3806,
+        "completion_tokens_unknown_calls": 0,
+        "total_tokens_known": 6128,
+        "total_tokens_unknown_calls": 0,
+        "cached_prompt_tokens_known": 48,
+        "cached_prompt_tokens_unknown_calls": 0,
+        "uncached_prompt_tokens_known": 2274,
+        "uncached_prompt_tokens_unknown_calls": 0,
+        "wall_seconds_known": 215.12694233297952,
+        "wall_seconds_unknown_calls": 0,
+        "money_usd": null,
+        "money_status": "unknown; no price schedule is recorded for this serving path",
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      "later-raw-initial": {
+        "calls": 6,
+        "completed_calls": 6,
+        "failed_or_incomplete_calls": 0,
+        "status_counts": {
+          "completed": 6
+        },
+        "prompt_tokens_known": 4897,
+        "prompt_tokens_unknown_calls": 0,
+        "completion_tokens_known": 690,
+        "completion_tokens_unknown_calls": 0,
+        "total_tokens_known": 5587,
+        "total_tokens_unknown_calls": 0,
+        "cached_prompt_tokens_known": 96,
+        "cached_prompt_tokens_unknown_calls": 0,
+        "uncached_prompt_tokens_known": 4801,
+        "uncached_prompt_tokens_unknown_calls": 0,
+        "wall_seconds_known": 64.06274579308229,
+        "wall_seconds_unknown_calls": 0,
+        "money_usd": null,
+        "money_status": "unknown; no price schedule is recorded for this serving path",
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      "later-raw-revision": {
+        "calls": 6,
+        "completed_calls": 6,
+        "failed_or_incomplete_calls": 0,
+        "status_counts": {
+          "completed": 6
+        },
+        "prompt_tokens_known": 6455,
+        "prompt_tokens_unknown_calls": 0,
+        "completion_tokens_known": 4545,
+        "completion_tokens_unknown_calls": 0,
+        "total_tokens_known": 11000,
+        "total_tokens_unknown_calls": 0,
+        "cached_prompt_tokens_known": 144,
+        "cached_prompt_tokens_unknown_calls": 0,
+        "uncached_prompt_tokens_known": 6311,
+        "uncached_prompt_tokens_unknown_calls": 0,
+        "wall_seconds_known": 275.68878283401136,
+        "wall_seconds_unknown_calls": 0,
+        "money_usd": null,
+        "money_status": "unknown; no price schedule is recorded for this serving path",
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      "later-cheap-initial": {
+        "calls": 6,
+        "completed_calls": 6,
+        "failed_or_incomplete_calls": 0,
+        "status_counts": {
+          "completed": 6
+        },
+        "prompt_tokens_known": 17236,
+        "prompt_tokens_unknown_calls": 0,
+        "completion_tokens_known": 831,
+        "completion_tokens_unknown_calls": 0,
+        "total_tokens_known": 18067,
+        "total_tokens_unknown_calls": 0,
+        "cached_prompt_tokens_known": 144,
+        "cached_prompt_tokens_unknown_calls": 0,
+        "uncached_prompt_tokens_known": 17092,
+        "uncached_prompt_tokens_unknown_calls": 0,
+        "wall_seconds_known": 136.65336920903064,
+        "wall_seconds_unknown_calls": 0,
+        "money_usd": null,
+        "money_status": "unknown; no price schedule is recorded for this serving path",
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      "later-cheap-revision": {
+        "calls": 6,
+        "completed_calls": 6,
+        "failed_or_incomplete_calls": 0,
+        "status_counts": {
+          "completed": 6
+        },
+        "prompt_tokens_known": 18929,
+        "prompt_tokens_unknown_calls": 0,
+        "completion_tokens_known": 3080,
+        "completion_tokens_unknown_calls": 0,
+        "total_tokens_known": 22009,
+        "total_tokens_unknown_calls": 0,
+        "cached_prompt_tokens_known": 144,
+        "cached_prompt_tokens_unknown_calls": 0,
+        "uncached_prompt_tokens_known": 18785,
+        "uncached_prompt_tokens_unknown_calls": 0,
+        "wall_seconds_known": 264.89596670799074,
+        "wall_seconds_unknown_calls": 0,
+        "money_usd": null,
+        "money_status": "unknown; no price schedule is recorded for this serving path",
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      "later-paid-initial": {
+        "calls": 6,
+        "completed_calls": 6,
+        "failed_or_incomplete_calls": 0,
+        "status_counts": {
+          "completed": 6
+        },
+        "prompt_tokens_known": 20149,
+        "prompt_tokens_unknown_calls": 0,
+        "completion_tokens_known": 850,
+        "completion_tokens_unknown_calls": 0,
+        "total_tokens_known": 20999,
+        "total_tokens_unknown_calls": 0,
+        "cached_prompt_tokens_known": 144,
+        "cached_prompt_tokens_unknown_calls": 0,
+        "uncached_prompt_tokens_known": 20005,
+        "uncached_prompt_tokens_unknown_calls": 0,
+        "wall_seconds_known": 153.06989183399128,
+        "wall_seconds_unknown_calls": 0,
+        "money_usd": null,
+        "money_status": "unknown; no price schedule is recorded for this serving path",
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      "later-paid-revision": {
+        "calls": 6,
+        "completed_calls": 6,
+        "failed_or_incomplete_calls": 0,
+        "status_counts": {
+          "completed": 6
+        },
+        "prompt_tokens_known": 21865,
+        "prompt_tokens_unknown_calls": 0,
+        "completion_tokens_known": 3613,
+        "completion_tokens_unknown_calls": 0,
+        "total_tokens_known": 25478,
+        "total_tokens_unknown_calls": 0,
+        "cached_prompt_tokens_known": 144,
+        "cached_prompt_tokens_unknown_calls": 0,
+        "uncached_prompt_tokens_known": 21721,
+        "uncached_prompt_tokens_unknown_calls": 0,
+        "wall_seconds_known": 310.48516524996376,
+        "wall_seconds_unknown_calls": 0,
+        "money_usd": null,
+        "money_status": "unknown; no price schedule is recorded for this serving path",
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      "followup": {
+        "calls": 0,
+        "completed_calls": 0,
+        "failed_or_incomplete_calls": 0,
+        "status_counts": {},
+        "prompt_tokens_known": 0,
+        "prompt_tokens_unknown_calls": 0,
+        "completion_tokens_known": 0,
+        "completion_tokens_unknown_calls": 0,
+        "total_tokens_known": 0,
+        "total_tokens_unknown_calls": 0,
+        "cached_prompt_tokens_known": 0,
+        "cached_prompt_tokens_unknown_calls": 0,
+        "uncached_prompt_tokens_known": 0,
+        "uncached_prompt_tokens_unknown_calls": 0,
+        "wall_seconds_known": 0.0,
+        "wall_seconds_unknown_calls": 0,
+        "money_usd": null,
+        "money_status": "unknown; no price schedule is recorded for this serving path",
+        "unknown": []
+      },
+      "unclassified": {
+        "calls": 0,
+        "completed_calls": 0,
+        "failed_or_incomplete_calls": 0,
+        "status_counts": {},
+        "prompt_tokens_known": 0,
+        "prompt_tokens_unknown_calls": 0,
+        "completion_tokens_known": 0,
+        "completion_tokens_unknown_calls": 0,
+        "total_tokens_known": 0,
+        "total_tokens_unknown_calls": 0,
+        "cached_prompt_tokens_known": 0,
+        "cached_prompt_tokens_unknown_calls": 0,
+        "uncached_prompt_tokens_known": 0,
+        "uncached_prompt_tokens_unknown_calls": 0,
+        "wall_seconds_known": 0.0,
+        "wall_seconds_unknown_calls": 0,
+        "money_usd": null,
+        "money_status": "unknown; no price schedule is recorded for this serving path",
+        "unknown": []
+      }
+    },
+    "records": [
+      {
+        "artifact": "evidence/pilot-v1/calls/attendance-cheap-27b-direct.json",
+        "category": "deployed-cheap",
+        "history": "attendance",
+        "arm": "cheap",
+        "stage": "acceptance",
+        "seed": null,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-mBYp0eocsHKgwvi23mz8DjaHn7106Aii",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "a7d4d3cf018427d4846c478cfb3cb0d6db9c928403f81dacd185598c25c0b61f",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 819,
+          "completion": 1543,
+          "total": 2362,
+          "cached_prompt": 0,
+          "uncached_prompt": 819,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 86.36136437498499,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/attendance-cheap-developed.json",
+        "category": "search8b",
+        "history": "attendance",
+        "arm": "cheap",
+        "stage": "search",
+        "seed": null,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3:8B-Q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/79fa56c07429f64f41950fe2f524937cf3ae9ea9bd3d7ada72170b036ea3cc85/model/model.gguf",
+        "response_id": "chatcmpl-lQkplgWnxr7xPHSFLIpsEKY06H4Web2V",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "d0aca289f5104437d3855fdff1ba0c1c191c1c6d4f180c5584f01f45a6570ea6",
+        "request_sha256_derived": true,
+        "tokens": {
+          "prompt": 812,
+          "completion": 1071,
+          "total": 1883,
+          "cached_prompt": 676,
+          "uncached_prompt": 136,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 17.62020458301413,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/attendance-cheap.json",
+        "category": "search8b",
+        "history": "attendance",
+        "arm": "cheap",
+        "stage": "search",
+        "seed": null,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3:8B-Q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/79fa56c07429f64f41950fe2f524937cf3ae9ea9bd3d7ada72170b036ea3cc85/model/model.gguf",
+        "response_id": "chatcmpl-omGL2KSAEoqjSXvxdJzNHGru9CijrZc0",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "c9638d6a9a0f5260ee8c72d7e486d480d30bd216cb823e8e305603aa377b8edd",
+        "request_sha256_derived": true,
+        "tokens": {
+          "prompt": 731,
+          "completion": 488,
+          "total": 1219,
+          "cached_prompt": 430,
+          "uncached_prompt": 301,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 8.262694749981165,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/attendance-paid-27b-direct.json",
+        "category": "deployed-paid",
+        "history": "attendance",
+        "arm": "paid",
+        "stage": "acceptance",
+        "seed": null,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-MgIzFXLBaUlye0H4cjMWQPjuhYIPY0zi",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "728633d2e862ef6a30f882119d1394dfa24cc67115c18a26f93f906a8ed92645",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 1129,
+          "completion": 1922,
+          "total": 3051,
+          "cached_prompt": 24,
+          "uncached_prompt": 1105,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 108.85043249998125,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/attendance-paid-developed.json",
+        "category": "search8b",
+        "history": "attendance",
+        "arm": "paid",
+        "stage": "search",
+        "seed": null,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3:8B-Q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/79fa56c07429f64f41950fe2f524937cf3ae9ea9bd3d7ada72170b036ea3cc85/model/model.gguf",
+        "response_id": "chatcmpl-HfGk8DBibuS6HRkonAqWrkfQblzDdalc",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "8feb0b6587c3e33b8d25502605d3a40d82124ce5f9caf2e044380cc53a5e6bc1",
+        "request_sha256_derived": true,
+        "tokens": {
+          "prompt": 1121,
+          "completion": 1302,
+          "total": 2423,
+          "cached_prompt": 806,
+          "uncached_prompt": 315,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 21.818023833999177,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/attendance-paid.json",
+        "category": "search8b",
+        "history": "attendance",
+        "arm": "paid",
+        "stage": "search",
+        "seed": null,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3:8B-Q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/79fa56c07429f64f41950fe2f524937cf3ae9ea9bd3d7ada72170b036ea3cc85/model/model.gguf",
+        "response_id": "chatcmpl-GQ4U9P9wOY2aURBRCXunYO2sloRrkFgJ",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "e8390221ee9f20eb0b4e41cfeaa94326edd663bc0c0d8211a5420985bb86bcd3",
+        "request_sha256_derived": true,
+        "tokens": {
+          "prompt": 1040,
+          "completion": 493,
+          "total": 1533,
+          "cached_prompt": 725,
+          "uncached_prompt": 315,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 8.383273707993794,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/attendance-proposal.json",
+        "category": "shared-proposal",
+        "history": "attendance",
+        "arm": null,
+        "stage": "proposal",
+        "seed": null,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3:8B-Q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/79fa56c07429f64f41950fe2f524937cf3ae9ea9bd3d7ada72170b036ea3cc85/model/model.gguf",
+        "response_id": "chatcmpl-VZbuA6UZCGIteejK8N1BX84T5Ku4UYse",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "1d2d7ce329cdbc8e67c1ed2c3c2a3bd3f0b8979b7d48447e732d13adc8cfbe01",
+        "request_sha256_derived": true,
+        "tokens": {
+          "prompt": 460,
+          "completion": 236,
+          "total": 696,
+          "cached_prompt": 0,
+          "uncached_prompt": 460,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 5.561229290993651,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/attendance-source.json",
+        "category": "shared-source",
+        "history": "attendance",
+        "arm": null,
+        "stage": "source",
+        "seed": null,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3:8B-Q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/79fa56c07429f64f41950fe2f524937cf3ae9ea9bd3d7ada72170b036ea3cc85/model/model.gguf",
+        "response_id": "chatcmpl-wMgjSXVhL9JCIMg748yDOzpksFKoYtLY",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "8a1ef1b328d594da9eb3c3235322f1d18ba9993de3524ceb781b5fda5e9a1891",
+        "request_sha256_derived": true,
+        "tokens": {
+          "prompt": 239,
+          "completion": 118,
+          "total": 357,
+          "cached_prompt": 28,
+          "uncached_prompt": 211,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 2.206599874974927,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/billing-cheap-27b-direct.json",
+        "category": "deployed-cheap",
+        "history": "billing",
+        "arm": "cheap",
+        "stage": "acceptance",
+        "seed": null,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-25nd221afdfA7jY2qf7qmkPirVzXvsYX",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "1d5b5dcf8f3d380fca0dd1455639d191ba7dbb6773fbce3f0af34cefff186a10",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 876,
+          "completion": 1943,
+          "total": 2819,
+          "cached_prompt": 0,
+          "uncached_prompt": 876,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 107.76846687501529,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/billing-cheap-27b.json",
+        "category": "failed27b",
+        "history": "billing",
+        "arm": "cheap",
+        "stage": "attempt",
+        "seed": null,
+        "status": "empty",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-9V9fAPI1DIlXwuOJOpKeWKeT0J1VrPIe",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "caf46207a85904a632b3a7c62db9aa8701b264f8965af60ac68e9ef026d7a84d",
+        "request_sha256_derived": true,
+        "tokens": {
+          "prompt": 912,
+          "completion": 4096,
+          "total": 5008,
+          "cached_prompt": 0,
+          "uncached_prompt": 912,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 232.76318320899736,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/billing-cheap-developed.json",
+        "category": "search8b",
+        "history": "billing",
+        "arm": "cheap",
+        "stage": "search",
+        "seed": null,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3:8B-Q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/79fa56c07429f64f41950fe2f524937cf3ae9ea9bd3d7ada72170b036ea3cc85/model/model.gguf",
+        "response_id": "chatcmpl-UEg1ifZpmpigUghLUjdDh1ZtijJP5jXn",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "12fcde082877b72eedf072cb817439b4eb7f79c93f4e24cdc0eb6776ef289cb6",
+        "request_sha256_derived": true,
+        "tokens": {
+          "prompt": 867,
+          "completion": 831,
+          "total": 1698,
+          "cached_prompt": 731,
+          "uncached_prompt": 136,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 13.839925042004324,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/billing-cheap.json",
+        "category": "search8b",
+        "history": "billing",
+        "arm": "cheap",
+        "stage": "search",
+        "seed": null,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3:8B-Q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/79fa56c07429f64f41950fe2f524937cf3ae9ea9bd3d7ada72170b036ea3cc85/model/model.gguf",
+        "response_id": "chatcmpl-uEXedA1kY3gPT7PosRk2yhG4QM6J3E2d",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "3530cdd694d3dc7e372e416ab2199018ce1e217e49e105bebe45c577c084e255",
+        "request_sha256_derived": true,
+        "tokens": {
+          "prompt": 786,
+          "completion": 407,
+          "total": 1193,
+          "cached_prompt": 438,
+          "uncached_prompt": 348,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 6.98314433300402,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/billing-paid-27b-direct.json",
+        "category": "deployed-paid",
+        "history": "billing",
+        "arm": "paid",
+        "stage": "acceptance",
+        "seed": null,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-hSVNoPOgpVCmn1Ic1OdNSAomV45R9XtU",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "df508e380d39dd2d074289ddc77d19b132b9750f77418826f9211e9b8fcbd2b7",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 1193,
+          "completion": 1884,
+          "total": 3077,
+          "cached_prompt": 24,
+          "uncached_prompt": 1169,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 106.27650983299827,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/billing-paid-developed.json",
+        "category": "search8b",
+        "history": "billing",
+        "arm": "paid",
+        "stage": "search",
+        "seed": null,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3:8B-Q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/79fa56c07429f64f41950fe2f524937cf3ae9ea9bd3d7ada72170b036ea3cc85/model/model.gguf",
+        "response_id": "chatcmpl-qupd90tR8vxq4SzN8nMlW8Q4jT3jpeYr",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "06c1677f4bcafbfd6a6cd160aecb00a5c39cf487f9443021b0a7e979dc74b868",
+        "request_sha256_derived": true,
+        "tokens": {
+          "prompt": 1183,
+          "completion": 1158,
+          "total": 2341,
+          "cached_prompt": 861,
+          "uncached_prompt": 322,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 25.03843150002649,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/billing-paid.json",
+        "category": "search8b",
+        "history": "billing",
+        "arm": "paid",
+        "stage": "search",
+        "seed": null,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3:8B-Q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/79fa56c07429f64f41950fe2f524937cf3ae9ea9bd3d7ada72170b036ea3cc85/model/model.gguf",
+        "response_id": "chatcmpl-S2kD5rRa6aWQfkwhfjwkTpzjKFi1CEPv",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "8ed2caa4b440f8f1a0814abaf7877a5b9e4b7d599d65643cedb1f20080c37f95",
+        "request_sha256_derived": true,
+        "tokens": {
+          "prompt": 1102,
+          "completion": 703,
+          "total": 1805,
+          "cached_prompt": 780,
+          "uncached_prompt": 322,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 11.794012083002599,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/billing-proposal.json",
+        "category": "shared-proposal",
+        "history": "billing",
+        "arm": null,
+        "stage": "proposal",
+        "seed": null,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3:8B-Q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/79fa56c07429f64f41950fe2f524937cf3ae9ea9bd3d7ada72170b036ea3cc85/model/model.gguf",
+        "response_id": "chatcmpl-0Gwp62GWMIBCQslG8syT9IIxNmwEnFwd",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "6cf31cc4fa4b80b2ac201464495a1fcac446f558565531c2e986a42377ffa71b",
+        "request_sha256_derived": true,
+        "tokens": {
+          "prompt": 468,
+          "completion": 283,
+          "total": 751,
+          "cached_prompt": 0,
+          "uncached_prompt": 468,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 5.150614834012231,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/billing-source.json",
+        "category": "shared-source",
+        "history": "billing",
+        "arm": null,
+        "stage": "source",
+        "seed": null,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3:8B-Q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/79fa56c07429f64f41950fe2f524937cf3ae9ea9bd3d7ada72170b036ea3cc85/model/model.gguf",
+        "response_id": "chatcmpl-FDSwfGqYzjpsVuKcZpEEIvyqK59Pi5Ug",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "276e2d12b2284e227f4da7221d3a4b402f2ebf066410b845e6ce9f0d9a358e93",
+        "request_sha256_derived": true,
+        "tokens": {
+          "prompt": 242,
+          "completion": 120,
+          "total": 362,
+          "cached_prompt": 0,
+          "uncached_prompt": 242,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 4.952967749995878,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-attendance-801-cheap-initial.json",
+        "category": "later-cheap-initial",
+        "history": "attendance",
+        "arm": "cheap",
+        "stage": "initial",
+        "seed": 801,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-3793aXOFnM6AtOZi4S2yCv4dQZADOMkS",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "4b62eca8f9ff88d18329cf050011711e8e22c7d0cf341c5410687c8f55bf212e",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 2578,
+          "completion": 133,
+          "total": 2711,
+          "cached_prompt": 24,
+          "uncached_prompt": 2554,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 20.730440917017404,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-attendance-801-cheap-revision.json",
+        "category": "later-cheap-revision",
+        "history": "attendance",
+        "arm": "cheap",
+        "stage": "revision",
+        "seed": 801,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-Dtm7X0gOBbmgSh3Y4MuHaHodcvn1I0Mx",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "ec7fe207192f9f5006b65f6d9cead707ba9b93a3870837d842e095f72b0624f3",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 2852,
+          "completion": 132,
+          "total": 2984,
+          "cached_prompt": 24,
+          "uncached_prompt": 2828,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 22.226312542014057,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-attendance-801-paid-initial.json",
+        "category": "later-paid-initial",
+        "history": "attendance",
+        "arm": "paid",
+        "stage": "initial",
+        "seed": 801,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-w6K2alsMj0gpnLBgnB6rZOjK16iTSa14",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "1745a3aaf3b0fd7ae2509a298d423378bce850e4cc8e127c59e32655e5874950",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 3287,
+          "completion": 136,
+          "total": 3423,
+          "cached_prompt": 24,
+          "uncached_prompt": 3263,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 24.713406750001013,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-attendance-801-paid-revision.json",
+        "category": "later-paid-revision",
+        "history": "attendance",
+        "arm": "paid",
+        "stage": "revision",
+        "seed": 801,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-wIblkvWKJhurN8Kube22bMQ3l2HR8DoA",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "c82b099213cb693975800cc350c564ad5fec988538bc38c79f18f66b7c04af74",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 3565,
+          "completion": 136,
+          "total": 3701,
+          "cached_prompt": 24,
+          "uncached_prompt": 3541,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 26.209753957984503,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-attendance-801-raw-initial.json",
+        "category": "later-raw-initial",
+        "history": "attendance",
+        "arm": "raw",
+        "stage": "initial",
+        "seed": 801,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-qJNRob7RHqXBVR0cBgn1N7JIFXgjskHi",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "affbc7676666acd39a552a8b2b9ec3351d0e8dba754e0a7f19fc97ab1cfecd63",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 751,
+          "completion": 114,
+          "total": 865,
+          "cached_prompt": 0,
+          "uncached_prompt": 751,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 10.435568375018192,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-attendance-801-raw-revision.json",
+        "category": "later-raw-revision",
+        "history": "attendance",
+        "arm": "raw",
+        "stage": "revision",
+        "seed": 801,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-ztngofmafZSLZSECqBIdPHwYwzIFWglY",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "eae4690fb30e21feccfc210d1926d863c9fe5a1640923e4b76a2f912fe42b6b2",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 1007,
+          "completion": 2197,
+          "total": 3204,
+          "cached_prompt": 24,
+          "uncached_prompt": 983,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 122.0103825830156,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-attendance-802-cheap-initial.json",
+        "category": "later-cheap-initial",
+        "history": "attendance",
+        "arm": "cheap",
+        "stage": "initial",
+        "seed": 802,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-86QA5tVnDdTycyLok6uKlLNVki990pgH",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "d5153a1d43838a23e8c3488c48389d9e70a0f516e0a02764436549405f2f9904",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 2654,
+          "completion": 133,
+          "total": 2787,
+          "cached_prompt": 24,
+          "uncached_prompt": 2630,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 21.39040025000577,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-attendance-802-cheap-revision.json",
+        "category": "later-cheap-revision",
+        "history": "attendance",
+        "arm": "cheap",
+        "stage": "revision",
+        "seed": 802,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-bi4ElEBcnyHwDLjpyGKYisx2VbQnXAuW",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "e3faafa335631bcb33e925279d890b99abfff06bcde7aacdfbb5a78cfcd24122",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 2930,
+          "completion": 713,
+          "total": 3643,
+          "cached_prompt": 24,
+          "uncached_prompt": 2906,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 53.51262583301286,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-attendance-802-paid-initial.json",
+        "category": "later-paid-initial",
+        "history": "attendance",
+        "arm": "paid",
+        "stage": "initial",
+        "seed": 802,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-QTlRjYra5zyBeIlugiI4MU7GBbx5g7ji",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "851fb98028f383a910986c570d7b346ccbf3dc130620a238003824a8d8f0aaff",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 3363,
+          "completion": 136,
+          "total": 3499,
+          "cached_prompt": 24,
+          "uncached_prompt": 3339,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 25.25476300000446,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-attendance-802-paid-revision.json",
+        "category": "later-paid-revision",
+        "history": "attendance",
+        "arm": "paid",
+        "stage": "revision",
+        "seed": 802,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-DTYr9uiHK9hGhoYgPzJvWxPZT1zqMZaw",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "db6af21af9f4e304c073aad9c2fb9a257f0cc971b9581de38266a43f9f6a27ff",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 3643,
+          "completion": 1154,
+          "total": 4797,
+          "cached_prompt": 24,
+          "uncached_prompt": 3619,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 81.41265124999336,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-attendance-802-raw-initial.json",
+        "category": "later-raw-initial",
+        "history": "attendance",
+        "arm": "raw",
+        "stage": "initial",
+        "seed": 802,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-lRDNO1rvuDhqLfOTcx1kAQl2nrlgnRXv",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "9a82c12faee50c5143ef254a43d15dfe6b1a94d2223515cbc0931160dbb03e08",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 827,
+          "completion": 114,
+          "total": 941,
+          "cached_prompt": 24,
+          "uncached_prompt": 803,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 10.456613209011266,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-attendance-802-raw-revision.json",
+        "category": "later-raw-revision",
+        "history": "attendance",
+        "arm": "raw",
+        "stage": "revision",
+        "seed": 802,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-PHZp1ZPtGoslCMFj0WlQzCGp2LSemjNx",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "0c71e4bc082a0d4592b15289a2aca0f7ed3cbfef4cea91936fe0530a62f3a0c5",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 1085,
+          "completion": 307,
+          "total": 1392,
+          "cached_prompt": 24,
+          "uncached_prompt": 1061,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 22.111484334018314,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-attendance-803-cheap-initial.json",
+        "category": "later-cheap-initial",
+        "history": "attendance",
+        "arm": "cheap",
+        "stage": "initial",
+        "seed": 803,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-8KyHUPJqzOwImwakeN1TE7Ri8yQxq2T2",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "86ef7d4349a9fc02efd1b2320d9c2051a08540408dacbd74f024b5427bff9ecd",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 2692,
+          "completion": 133,
+          "total": 2825,
+          "cached_prompt": 24,
+          "uncached_prompt": 2668,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 21.550247917009983,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-attendance-803-cheap-revision.json",
+        "category": "later-cheap-revision",
+        "history": "attendance",
+        "arm": "cheap",
+        "stage": "revision",
+        "seed": 803,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-TfZNYYpPeVZIu9rOQcpna8NevEmiJ9bQ",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "fdb0c372d4c3c78797d592b47dda6f1240aa23198145bb81f44348752a2aead0",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 2967,
+          "completion": 677,
+          "total": 3644,
+          "cached_prompt": 24,
+          "uncached_prompt": 2943,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 51.80013904199586,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-attendance-803-paid-initial.json",
+        "category": "later-paid-initial",
+        "history": "attendance",
+        "arm": "paid",
+        "stage": "initial",
+        "seed": 803,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-rWhA9wVbqe2klvhTxtj5sU5y7aiQz1yB",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "29d8c65c91274c61ec68cd441cb0ec7097cbebb7f9a2ddd63e16e6d113b76a51",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 3401,
+          "completion": 136,
+          "total": 3537,
+          "cached_prompt": 24,
+          "uncached_prompt": 3377,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 25.36804800000391,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-attendance-803-paid-revision.json",
+        "category": "later-paid-revision",
+        "history": "attendance",
+        "arm": "paid",
+        "stage": "revision",
+        "seed": 803,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-wRwhIwvDWUSEA4yMOHJZWMagfGbI7ARC",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "9c93f4a992a792873080ef14ba8b49d801d9d93d44b8083ffeceddcd92d56985",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 3680,
+          "completion": 683,
+          "total": 4363,
+          "cached_prompt": 24,
+          "uncached_prompt": 3656,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 56.27139683399582,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-attendance-803-raw-initial.json",
+        "category": "later-raw-initial",
+        "history": "attendance",
+        "arm": "raw",
+        "stage": "initial",
+        "seed": 803,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-WkRZi4RVZQROgpwCMIwuWhWj34Wded1X",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "b714eac9ee8b32851ae0236c98b461e6f8004637e89ef4174920178936bfcd2b",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 865,
+          "completion": 114,
+          "total": 979,
+          "cached_prompt": 24,
+          "uncached_prompt": 841,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 10.816011959017487,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-attendance-803-raw-revision.json",
+        "category": "later-raw-revision",
+        "history": "attendance",
+        "arm": "raw",
+        "stage": "revision",
+        "seed": 803,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-rHYYwRvqOj5sizLDgThFCSYAxRm00kJa",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "a9b1e7a5330dc5b8bf66314fa285c184cae5598b2fcd08d90d7e987bc52dce80",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 1122,
+          "completion": 525,
+          "total": 1647,
+          "cached_prompt": 24,
+          "uncached_prompt": 1098,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 33.825192292017164,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-billing-801-cheap-initial.json",
+        "category": "later-cheap-initial",
+        "history": "billing",
+        "arm": "cheap",
+        "stage": "initial",
+        "seed": 801,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-awSUKc1c8sW2CMIQDnbvnG9riFzI9mQT",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "7bd2d992eac8cc48dc534c485fd9df674839c752620c325c7c83622f6ddb43e7",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 3041,
+          "completion": 144,
+          "total": 3185,
+          "cached_prompt": 24,
+          "uncached_prompt": 3017,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 24.089780083013466,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-billing-801-cheap-revision.json",
+        "category": "later-cheap-revision",
+        "history": "billing",
+        "arm": "cheap",
+        "stage": "revision",
+        "seed": 801,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-biYdSurmqmJQpQdeNoizvdJHCccO2zwv",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "b1af8f210784041e08dafaa02a4bf2f5b426447b33466883e46076a5e8d534e8",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 3327,
+          "completion": 144,
+          "total": 3471,
+          "cached_prompt": 24,
+          "uncached_prompt": 3303,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 25.65379616699647,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-billing-801-paid-initial.json",
+        "category": "later-paid-initial",
+        "history": "billing",
+        "arm": "paid",
+        "stage": "initial",
+        "seed": 801,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-C3WvADEMI85x9HgqxkvgDaZeKZYjFNui",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "38bec1ebf9cb1d5f82882d5b432d118f6b8b1c0c510d99884562809eadad44b5",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 3303,
+          "completion": 148,
+          "total": 3451,
+          "cached_prompt": 24,
+          "uncached_prompt": 3279,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 25.80823287498788,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-billing-801-paid-revision.json",
+        "category": "later-paid-revision",
+        "history": "billing",
+        "arm": "paid",
+        "stage": "revision",
+        "seed": 801,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-V9m212J5KFaulI4AV91JtU478GLwe0Cd",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "b98a8440df3e8133140761a02fc63ca0fa3d5fe29bea620d001968fa2c97fc8c",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 3594,
+          "completion": 148,
+          "total": 3742,
+          "cached_prompt": 24,
+          "uncached_prompt": 3570,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 27.233471124985954,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-billing-801-raw-initial.json",
+        "category": "later-raw-initial",
+        "history": "billing",
+        "arm": "raw",
+        "stage": "initial",
+        "seed": 801,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-EfohFxJKaRABPuRAReDEpQv6xshwEoGC",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "abc22bd66f59f0c5e749f465d94a896a88807b4f7ea714a98cd8cec966ec70da",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 755,
+          "completion": 116,
+          "total": 871,
+          "cached_prompt": 0,
+          "uncached_prompt": 755,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 10.634259334008675,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-billing-801-raw-revision.json",
+        "category": "later-raw-revision",
+        "history": "billing",
+        "arm": "raw",
+        "stage": "revision",
+        "seed": 801,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-kEAzpTD87bVb5fTjqoIvrXfnlOtl9F6y",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "5e810df671657a31ba3c60876c071d97a6f7405e2fea131fdd8a16689125f893",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 1014,
+          "completion": 116,
+          "total": 1130,
+          "cached_prompt": 24,
+          "uncached_prompt": 990,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 11.568335374991875,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-billing-802-cheap-initial.json",
+        "category": "later-cheap-initial",
+        "history": "billing",
+        "arm": "cheap",
+        "stage": "initial",
+        "seed": 802,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-zpeeJEHsFNieCKRR6Sy046sBxAicpsbU",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "c06a2d1c602d36543f034cb1ba22210bc2d12f131b6e0dffebec49cb5bd8d570",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 3118,
+          "completion": 144,
+          "total": 3262,
+          "cached_prompt": 24,
+          "uncached_prompt": 3094,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 24.379727583989734,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-billing-802-cheap-revision.json",
+        "category": "later-cheap-revision",
+        "history": "billing",
+        "arm": "cheap",
+        "stage": "revision",
+        "seed": 802,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-ZXsamQ9rqLMbl7SInYouidAhJzi7JSbP",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "4a229f596072a71c004b68cb6afb570e2b553dd2bba2f5ddabdff4a4ebcfd9a0",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 3409,
+          "completion": 618,
+          "total": 4027,
+          "cached_prompt": 24,
+          "uncached_prompt": 3385,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 51.11308079099399,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-billing-802-paid-initial.json",
+        "category": "later-paid-initial",
+        "history": "billing",
+        "arm": "paid",
+        "stage": "initial",
+        "seed": 802,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-wJCZscepLYSUulZqbNimNMNM23nbLYii",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "46b9278b055ecf2d8b657f50b4d83eace5ccf688cdf6d1bf70e05e9ed3ecfc29",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 3380,
+          "completion": 146,
+          "total": 3526,
+          "cached_prompt": 24,
+          "uncached_prompt": 3356,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 25.828242166986456,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-billing-802-paid-revision.json",
+        "category": "later-paid-revision",
+        "history": "billing",
+        "arm": "paid",
+        "stage": "revision",
+        "seed": 802,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-zUnV01N02oqWS6rBcLJhbNSWa6WP57Aw",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "8a9e18f46cab0eec2116c4383fe14cd8faf84e3716bb7057243de096416df6c3",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 3673,
+          "completion": 742,
+          "total": 4415,
+          "cached_prompt": 24,
+          "uncached_prompt": 3649,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 59.31431895800051,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-billing-802-raw-initial.json",
+        "category": "later-raw-initial",
+        "history": "billing",
+        "arm": "raw",
+        "stage": "initial",
+        "seed": 802,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-YeyLsmDfFJx1lmR5R2kzv2YJECPlOjTA",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "1b88fc8e1dffba8bad53e6750cd3299b098233e39b33d22efc6094240f89c822",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 832,
+          "completion": 116,
+          "total": 948,
+          "cached_prompt": 24,
+          "uncached_prompt": 808,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 10.818711958010681,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-billing-802-raw-revision.json",
+        "category": "later-raw-revision",
+        "history": "billing",
+        "arm": "raw",
+        "stage": "revision",
+        "seed": 802,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-7S0SSLu2raBNhBm4dnQIdVGNGVPRN0bJ",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "1d965fd4327e65ac35956a2b5f65db7ed3ee2eeaebf1e0e8d55fa13dad8f79d9",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 1095,
+          "completion": 635,
+          "total": 1730,
+          "cached_prompt": 24,
+          "uncached_prompt": 1071,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 39.63639137498103,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-billing-803-cheap-initial.json",
+        "category": "later-cheap-initial",
+        "history": "billing",
+        "arm": "cheap",
+        "stage": "initial",
+        "seed": 803,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-X1AqUXbA1y3ASQ1IDoyT7NEEfGzNwJ68",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "135f725a1ea07d726c4d4ce97eee774afec1076380b8b400174946bfb81c9999",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 3153,
+          "completion": 144,
+          "total": 3297,
+          "cached_prompt": 24,
+          "uncached_prompt": 3129,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 24.512772457994288,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-billing-803-cheap-revision.json",
+        "category": "later-cheap-revision",
+        "history": "billing",
+        "arm": "cheap",
+        "stage": "revision",
+        "seed": 803,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-C9BCTWWEYy1dVWGD7ABzF616DGUDTbGb",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "ab348137e8d7ab062a2eba2a1a0a137cf5922029dcd639f96c97df32f266ebf3",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 3444,
+          "completion": 796,
+          "total": 4240,
+          "cached_prompt": 24,
+          "uncached_prompt": 3420,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 60.590012332977494,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-billing-803-paid-initial.json",
+        "category": "later-paid-initial",
+        "history": "billing",
+        "arm": "paid",
+        "stage": "initial",
+        "seed": 803,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-cEQqD9P12tjz4OJRVuOXNV9qgfCAJAqb",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "b24d193c1c7a31e3cf935c63e3655ef3028e7ffed005b725a34c911869a80a66",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 3415,
+          "completion": 148,
+          "total": 3563,
+          "cached_prompt": 24,
+          "uncached_prompt": 3391,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 26.09719904200756,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-billing-803-paid-revision.json",
+        "category": "later-paid-revision",
+        "history": "billing",
+        "arm": "paid",
+        "stage": "revision",
+        "seed": 803,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-lrtAFKendXwPymufCXANeIlBBeckAvlp",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "9a6fa47b0f85a80e23c47317f0b35fea3c4b8a26660b31f422c3cadbdacff98e",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 3710,
+          "completion": 750,
+          "total": 4460,
+          "cached_prompt": 24,
+          "uncached_prompt": 3686,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 60.043573125003604,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-billing-803-raw-initial.json",
+        "category": "later-raw-initial",
+        "history": "billing",
+        "arm": "raw",
+        "stage": "initial",
+        "seed": 803,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-Fxgado46lnUrMGiacP2EruuqcnAI9YN1",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "ce3683ccecee5d9179f6e850a3c5b84fa8590b3a7726c7a007163b600fabfe04",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 867,
+          "completion": 116,
+          "total": 983,
+          "cached_prompt": 24,
+          "uncached_prompt": 843,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 10.901580958015984,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "artifact": "evidence/pilot-v1/calls/final-billing-803-raw-revision.json",
+        "category": "later-raw-revision",
+        "history": "billing",
+        "arm": "raw",
+        "stage": "revision",
+        "seed": 803,
+        "status": "completed",
+        "request_model": "docker.io/ai/qwen3.8:27b-q4_K_M",
+        "response_model": "/Users/macos-user/.docker/models/bundles/sha256/f04d0a543b642a6f0d06590973b124bc4e8700ddf7e99b669ec6c4ab1ef561ef/model/Qwen3.8-27B-UD-Q4_K_M.gguf",
+        "response_id": "chatcmpl-GXE4ifJA7F1kzLJnW5IlwyveXwEp3iKx",
+        "system_fingerprint": "b1-72874f5",
+        "request_sha256": "cab132a86bd0d756ca424ba756df30fa70588e63378faf393d771fe761e276ab",
+        "request_sha256_derived": false,
+        "tokens": {
+          "prompt": 1132,
+          "completion": 765,
+          "total": 1897,
+          "cached_prompt": 24,
+          "uncached_prompt": 1108,
+          "uncached_prompt_derived": false
+        },
+        "wall_seconds": 46.53699687498738,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      }
+    ],
+    "serving_interruption": {
+      "records": [
+        {
+          "artifact": "evidence/pilot-v1/serving-interruption.json",
+          "attempt": "billing-paid-27b",
+          "status": "client interrupted after prior call returned empty content at length limit",
+          "calls": 1,
+          "tokens": null,
+          "wall_seconds": null,
+          "money_usd": null,
+          "server_cancellation_confirmed": false,
+          "unknown": [
+            "consumed tokens unknown",
+            "wall time unknown",
+            "money in USD unknown",
+            "server cancellation not confirmed"
+          ]
+        }
+      ],
+      "calls_known": 1,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "total_tokens": null,
+      "cached_prompt_tokens": null,
+      "wall_seconds": null,
+      "money_usd": null,
+      "unknown": [
+        "serving interruption is recorded separately from failed27b and deployed calls",
+        "consumed tokens, wall time and money are unknown"
+      ]
+    },
+    "unknown": [
+      "delegated investigator and engineering time",
+      "remote serving price, energy and hardware occupancy",
+      "network and queue costs not exposed by the endpoint"
+    ]
+  },
+  "sqlite_checks": {
+    "categories": {
+      "source": {
+        "executions": 2,
+        "successful_or_returned_executions": 2,
+        "error_executions": 0,
+        "wall_seconds_known": 0.0025720839912537485,
+        "wall_seconds_unknown_executions": 0,
+        "money_usd": null,
+        "money_status": "unknown; local SQLite has no assigned monetary price",
+        "unknown": []
+      },
+      "probe": {
+        "executions": 2,
+        "successful_or_returned_executions": 2,
+        "error_executions": 0,
+        "wall_seconds_known": 0.0014734999858774245,
+        "wall_seconds_unknown_executions": 0,
+        "money_usd": null,
+        "money_status": "unknown; local SQLite has no assigned monetary price",
+        "unknown": []
+      },
+      "grades_initial": {
+        "executions": 18,
+        "successful_or_returned_executions": 18,
+        "error_executions": 0,
+        "wall_seconds_known": 0.022381290094926953,
+        "wall_seconds_unknown_executions": 0,
+        "money_usd": null,
+        "money_status": "unknown; local SQLite has no assigned monetary price",
+        "unknown": []
+      },
+      "grades_final": {
+        "executions": 18,
+        "successful_or_returned_executions": 18,
+        "error_executions": 0,
+        "wall_seconds_known": 0.019292543991468847,
+        "wall_seconds_unknown_executions": 0,
+        "money_usd": null,
+        "money_status": "unknown; local SQLite has no assigned monetary price",
+        "unknown": []
+      },
+      "fixed_program_replay": {
+        "executions": 18,
+        "successful_or_returned_executions": 18,
+        "error_executions": 0,
+        "wall_seconds_known": 0.0017886269779410213,
+        "wall_seconds_unknown_executions": 0,
+        "money_usd": null,
+        "money_status": "unknown; local SQLite has no assigned monetary price",
+        "unknown": []
+      },
+      "offline": {
+        "executions": 85,
+        "successful_or_returned_executions": 85,
+        "error_executions": 0,
+        "wall_seconds_known": 0.008888789918273687,
+        "wall_seconds_unknown_executions": 0,
+        "money_usd": null,
+        "money_status": "unknown; local SQLite has no assigned monetary price",
+        "unknown": []
+      }
+    },
+    "records": [
+      {
+        "category": "source",
+        "artifact": "evidence/pilot-v1/attendance-source.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/attendance-source.json"
+        ],
+        "history": "attendance",
+        "arm": null,
+        "seed": null,
+        "stage": "source",
+        "status": "returned",
+        "wall_seconds": 0.0015795840008649975,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "source",
+        "artifact": "evidence/pilot-v1/billing-source.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/billing-source.json"
+        ],
+        "history": "billing",
+        "arm": null,
+        "seed": null,
+        "stage": "source",
+        "status": "returned",
+        "wall_seconds": 0.000992499990388751,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "probe",
+        "artifact": "evidence/pilot-v1/attendance-27b.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/attendance-27b.json",
+          "evidence/pilot-v1/attendance-acceptance.json",
+          "evidence/pilot-v1/attendance-developed.json"
+        ],
+        "history": "attendance",
+        "arm": null,
+        "seed": null,
+        "stage": "probe",
+        "status": "returned",
+        "wall_seconds": 0.0011856249766424298,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "probe",
+        "artifact": "evidence/pilot-v1/billing-27b.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/billing-27b.json",
+          "evidence/pilot-v1/billing-acceptance.json",
+          "evidence/pilot-v1/billing-developed.json"
+        ],
+        "history": "billing",
+        "arm": null,
+        "seed": null,
+        "stage": "probe",
+        "status": "returned",
+        "wall_seconds": 0.00028787500923499465,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_initial",
+        "artifact": "evidence/pilot-v1/grades/attendance-801-cheap.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/attendance-801-cheap.json"
+        ],
+        "history": "attendance",
+        "arm": "cheap",
+        "seed": 801,
+        "stage": "initial",
+        "status": "returned",
+        "wall_seconds": 0.0014654160186182708,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_final",
+        "artifact": "evidence/pilot-v1/grades/attendance-801-cheap.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/attendance-801-cheap.json"
+        ],
+        "history": "attendance",
+        "arm": "cheap",
+        "seed": 801,
+        "stage": "revision",
+        "status": "returned",
+        "wall_seconds": 0.0010300409921910614,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_initial",
+        "artifact": "evidence/pilot-v1/grades/attendance-801-paid.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/attendance-801-paid.json"
+        ],
+        "history": "attendance",
+        "arm": "paid",
+        "seed": 801,
+        "stage": "initial",
+        "status": "returned",
+        "wall_seconds": 0.0017546669987495989,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_final",
+        "artifact": "evidence/pilot-v1/grades/attendance-801-paid.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/attendance-801-paid.json"
+        ],
+        "history": "attendance",
+        "arm": "paid",
+        "seed": 801,
+        "stage": "revision",
+        "status": "returned",
+        "wall_seconds": 0.0013846670044586062,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_initial",
+        "artifact": "evidence/pilot-v1/grades/attendance-801-raw.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/attendance-801-raw.json"
+        ],
+        "history": "attendance",
+        "arm": "raw",
+        "seed": 801,
+        "stage": "initial",
+        "status": "returned",
+        "wall_seconds": 0.0016367910138797015,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_final",
+        "artifact": "evidence/pilot-v1/grades/attendance-801-raw.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/attendance-801-raw.json"
+        ],
+        "history": "attendance",
+        "arm": "raw",
+        "seed": 801,
+        "stage": "revision",
+        "status": "returned",
+        "wall_seconds": 0.0007701670110691339,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_initial",
+        "artifact": "evidence/pilot-v1/grades/attendance-802-cheap.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/attendance-802-cheap.json"
+        ],
+        "history": "attendance",
+        "arm": "cheap",
+        "seed": 802,
+        "stage": "initial",
+        "status": "returned",
+        "wall_seconds": 0.0014317500172182918,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_final",
+        "artifact": "evidence/pilot-v1/grades/attendance-802-cheap.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/attendance-802-cheap.json"
+        ],
+        "history": "attendance",
+        "arm": "cheap",
+        "seed": 802,
+        "stage": "revision",
+        "status": "returned",
+        "wall_seconds": 0.0007282090082298964,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_initial",
+        "artifact": "evidence/pilot-v1/grades/attendance-802-paid.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/attendance-802-paid.json"
+        ],
+        "history": "attendance",
+        "arm": "paid",
+        "seed": 802,
+        "stage": "initial",
+        "status": "returned",
+        "wall_seconds": 0.0015119579911697656,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_final",
+        "artifact": "evidence/pilot-v1/grades/attendance-802-paid.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/attendance-802-paid.json"
+        ],
+        "history": "attendance",
+        "arm": "paid",
+        "seed": 802,
+        "stage": "revision",
+        "status": "returned",
+        "wall_seconds": 0.0006893749814480543,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_initial",
+        "artifact": "evidence/pilot-v1/grades/attendance-802-raw.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/attendance-802-raw.json"
+        ],
+        "history": "attendance",
+        "arm": "raw",
+        "seed": 802,
+        "stage": "initial",
+        "status": "returned",
+        "wall_seconds": 0.0014891669852659106,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_final",
+        "artifact": "evidence/pilot-v1/grades/attendance-802-raw.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/attendance-802-raw.json"
+        ],
+        "history": "attendance",
+        "arm": "raw",
+        "seed": 802,
+        "stage": "revision",
+        "status": "returned",
+        "wall_seconds": 0.0017930419999174774,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_initial",
+        "artifact": "evidence/pilot-v1/grades/attendance-803-cheap.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/attendance-803-cheap.json"
+        ],
+        "history": "attendance",
+        "arm": "cheap",
+        "seed": 803,
+        "stage": "initial",
+        "status": "returned",
+        "wall_seconds": 0.0015465830219909549,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_final",
+        "artifact": "evidence/pilot-v1/grades/attendance-803-cheap.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/attendance-803-cheap.json"
+        ],
+        "history": "attendance",
+        "arm": "cheap",
+        "seed": 803,
+        "stage": "revision",
+        "status": "returned",
+        "wall_seconds": 0.0010235000227112323,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_initial",
+        "artifact": "evidence/pilot-v1/grades/attendance-803-paid.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/attendance-803-paid.json"
+        ],
+        "history": "attendance",
+        "arm": "paid",
+        "seed": 803,
+        "stage": "initial",
+        "status": "returned",
+        "wall_seconds": 0.0013294579985085875,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_final",
+        "artifact": "evidence/pilot-v1/grades/attendance-803-paid.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/attendance-803-paid.json"
+        ],
+        "history": "attendance",
+        "arm": "paid",
+        "seed": 803,
+        "stage": "revision",
+        "status": "returned",
+        "wall_seconds": 0.0010860000038519502,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_initial",
+        "artifact": "evidence/pilot-v1/grades/attendance-803-raw.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/attendance-803-raw.json"
+        ],
+        "history": "attendance",
+        "arm": "raw",
+        "seed": 803,
+        "stage": "initial",
+        "status": "returned",
+        "wall_seconds": 0.0003126670198980719,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_final",
+        "artifact": "evidence/pilot-v1/grades/attendance-803-raw.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/attendance-803-raw.json"
+        ],
+        "history": "attendance",
+        "arm": "raw",
+        "seed": 803,
+        "stage": "revision",
+        "status": "returned",
+        "wall_seconds": 0.0014743329957127571,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_initial",
+        "artifact": "evidence/pilot-v1/grades/billing-801-cheap.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/billing-801-cheap.json"
+        ],
+        "history": "billing",
+        "arm": "cheap",
+        "seed": 801,
+        "stage": "initial",
+        "status": "returned",
+        "wall_seconds": 0.001486541994381696,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_final",
+        "artifact": "evidence/pilot-v1/grades/billing-801-cheap.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/billing-801-cheap.json"
+        ],
+        "history": "billing",
+        "arm": "cheap",
+        "seed": 801,
+        "stage": "revision",
+        "status": "returned",
+        "wall_seconds": 0.000977999996393919,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_initial",
+        "artifact": "evidence/pilot-v1/grades/billing-801-paid.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/billing-801-paid.json"
+        ],
+        "history": "billing",
+        "arm": "paid",
+        "seed": 801,
+        "stage": "initial",
+        "status": "returned",
+        "wall_seconds": 0.0005926250014454126,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_final",
+        "artifact": "evidence/pilot-v1/grades/billing-801-paid.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/billing-801-paid.json"
+        ],
+        "history": "billing",
+        "arm": "paid",
+        "seed": 801,
+        "stage": "revision",
+        "status": "returned",
+        "wall_seconds": 0.0012973749835509807,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_initial",
+        "artifact": "evidence/pilot-v1/grades/billing-801-raw.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/billing-801-raw.json"
+        ],
+        "history": "billing",
+        "arm": "raw",
+        "seed": 801,
+        "stage": "initial",
+        "status": "returned",
+        "wall_seconds": 0.0018734589975792915,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_final",
+        "artifact": "evidence/pilot-v1/grades/billing-801-raw.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/billing-801-raw.json"
+        ],
+        "history": "billing",
+        "arm": "raw",
+        "seed": 801,
+        "stage": "revision",
+        "status": "returned",
+        "wall_seconds": 0.0007998340006452054,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_initial",
+        "artifact": "evidence/pilot-v1/grades/billing-802-cheap.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/billing-802-cheap.json"
+        ],
+        "history": "billing",
+        "arm": "cheap",
+        "seed": 802,
+        "stage": "initial",
+        "status": "returned",
+        "wall_seconds": 0.0012245829857420176,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_final",
+        "artifact": "evidence/pilot-v1/grades/billing-802-cheap.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/billing-802-cheap.json"
+        ],
+        "history": "billing",
+        "arm": "cheap",
+        "seed": 802,
+        "stage": "revision",
+        "status": "returned",
+        "wall_seconds": 0.0008211249951273203,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_initial",
+        "artifact": "evidence/pilot-v1/grades/billing-802-paid.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/billing-802-paid.json"
+        ],
+        "history": "billing",
+        "arm": "paid",
+        "seed": 802,
+        "stage": "initial",
+        "status": "returned",
+        "wall_seconds": 0.0010691250208765268,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_final",
+        "artifact": "evidence/pilot-v1/grades/billing-802-paid.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/billing-802-paid.json"
+        ],
+        "history": "billing",
+        "arm": "paid",
+        "seed": 802,
+        "stage": "revision",
+        "status": "returned",
+        "wall_seconds": 0.0007718330016359687,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_initial",
+        "artifact": "evidence/pilot-v1/grades/billing-802-raw.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/billing-802-raw.json"
+        ],
+        "history": "billing",
+        "arm": "raw",
+        "seed": 802,
+        "stage": "initial",
+        "status": "returned",
+        "wall_seconds": 0.0008940830011852086,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_final",
+        "artifact": "evidence/pilot-v1/grades/billing-802-raw.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/billing-802-raw.json"
+        ],
+        "history": "billing",
+        "arm": "raw",
+        "seed": 802,
+        "stage": "revision",
+        "status": "returned",
+        "wall_seconds": 0.00120995900942944,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_initial",
+        "artifact": "evidence/pilot-v1/grades/billing-803-cheap.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/billing-803-cheap.json"
+        ],
+        "history": "billing",
+        "arm": "cheap",
+        "seed": 803,
+        "stage": "initial",
+        "status": "returned",
+        "wall_seconds": 0.0014131249918136746,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_final",
+        "artifact": "evidence/pilot-v1/grades/billing-803-cheap.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/billing-803-cheap.json"
+        ],
+        "history": "billing",
+        "arm": "cheap",
+        "seed": 803,
+        "stage": "revision",
+        "status": "returned",
+        "wall_seconds": 0.0011348339903634042,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_initial",
+        "artifact": "evidence/pilot-v1/grades/billing-803-paid.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/billing-803-paid.json"
+        ],
+        "history": "billing",
+        "arm": "paid",
+        "seed": 803,
+        "stage": "initial",
+        "status": "returned",
+        "wall_seconds": 0.0010499580239411443,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_final",
+        "artifact": "evidence/pilot-v1/grades/billing-803-paid.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/billing-803-paid.json"
+        ],
+        "history": "billing",
+        "arm": "paid",
+        "seed": 803,
+        "stage": "revision",
+        "status": "returned",
+        "wall_seconds": 0.0015620419871993363,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_initial",
+        "artifact": "evidence/pilot-v1/grades/billing-803-raw.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/billing-803-raw.json"
+        ],
+        "history": "billing",
+        "arm": "raw",
+        "seed": 803,
+        "stage": "initial",
+        "status": "returned",
+        "wall_seconds": 0.00029933301266282797,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "grades_final",
+        "artifact": "evidence/pilot-v1/grades/billing-803-raw.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/grades/billing-803-raw.json"
+        ],
+        "history": "billing",
+        "arm": "raw",
+        "seed": 803,
+        "stage": "revision",
+        "status": "returned",
+        "wall_seconds": 0.0007382080075331032,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "billing",
+        "arm": null,
+        "seed": null,
+        "stage": "source-0",
+        "status": "returned",
+        "wall_seconds": 0.00016112500452436507,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "billing",
+        "arm": null,
+        "seed": null,
+        "stage": "independent-oracle",
+        "status": "returned",
+        "wall_seconds": 0.0003449999785516411,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "billing",
+        "arm": null,
+        "seed": null,
+        "stage": "probe-1",
+        "status": "returned",
+        "wall_seconds": 0.00010804200428538024,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "billing",
+        "arm": null,
+        "seed": null,
+        "stage": "independent-oracle",
+        "status": "returned",
+        "wall_seconds": 0.00010587499127723277,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "attendance",
+        "arm": null,
+        "seed": null,
+        "stage": "source-2",
+        "status": "returned",
+        "wall_seconds": 0.00010229198960587382,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "attendance",
+        "arm": null,
+        "seed": null,
+        "stage": "independent-oracle",
+        "status": "returned",
+        "wall_seconds": 0.0001066249969881028,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "attendance",
+        "arm": null,
+        "seed": null,
+        "stage": "probe-3",
+        "status": "returned",
+        "wall_seconds": 9.399998816661537e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "attendance",
+        "arm": null,
+        "seed": null,
+        "stage": "independent-oracle",
+        "status": "returned",
+        "wall_seconds": 8.616599370725453e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[0].oracle_execution",
+        "status": "returned",
+        "wall_seconds": 0.00010320899309590459,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[0].replay_execution",
+        "status": "returned",
+        "wall_seconds": 0.00013954201131127775,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[0].behavior_executions[0].execution",
+        "status": "returned",
+        "wall_seconds": 0.0001102499954868108,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[0].behavior_executions[1].execution",
+        "status": "returned",
+        "wall_seconds": 0.00010475001181475818,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[1].oracle_execution",
+        "status": "returned",
+        "wall_seconds": 9.045799379236996e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[1].replay_execution",
+        "status": "returned",
+        "wall_seconds": 9.679197682999074e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[1].behavior_executions[0].execution",
+        "status": "returned",
+        "wall_seconds": 0.0001010000123642385,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[1].behavior_executions[1].execution",
+        "status": "returned",
+        "wall_seconds": 9.812499047257006e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[2].oracle_execution",
+        "status": "returned",
+        "wall_seconds": 8.754199370741844e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[2].replay_execution",
+        "status": "returned",
+        "wall_seconds": 8.270802209153771e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[2].behavior_executions[0].execution",
+        "status": "returned",
+        "wall_seconds": 8.549998165108263e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[2].behavior_executions[1].execution",
+        "status": "returned",
+        "wall_seconds": 8.49170028232038e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[3].oracle_execution",
+        "status": "returned",
+        "wall_seconds": 8.704100036993623e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[3].replay_execution",
+        "status": "returned",
+        "wall_seconds": 9.545800276100636e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[3].behavior_executions[0].execution",
+        "status": "returned",
+        "wall_seconds": 9.920800221152604e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[3].behavior_executions[1].execution",
+        "status": "returned",
+        "wall_seconds": 9.608297841623425e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[4].oracle_execution",
+        "status": "returned",
+        "wall_seconds": 8.908400195650756e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[4].replay_execution",
+        "status": "returned",
+        "wall_seconds": 9.579199831932783e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[4].behavior_executions[0].execution",
+        "status": "returned",
+        "wall_seconds": 9.549999958835542e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[4].behavior_executions[1].execution",
+        "status": "returned",
+        "wall_seconds": 9.74580179899931e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[5].oracle_execution",
+        "status": "returned",
+        "wall_seconds": 8.62079905346036e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[5].replay_execution",
+        "status": "returned",
+        "wall_seconds": 9.38749872148037e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[5].behavior_executions[0].execution",
+        "status": "returned",
+        "wall_seconds": 9.495799895375967e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[5].behavior_executions[1].execution",
+        "status": "returned",
+        "wall_seconds": 9.904199396260083e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[6].oracle_execution",
+        "status": "returned",
+        "wall_seconds": 8.754100417718291e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[6].replay_execution",
+        "status": "returned",
+        "wall_seconds": 9.49589884839952e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[6].behavior_executions[0].execution",
+        "status": "returned",
+        "wall_seconds": 9.812501957640052e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[6].behavior_executions[1].execution",
+        "status": "returned",
+        "wall_seconds": 0.00010116701014339924,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[7].oracle_execution",
+        "status": "returned",
+        "wall_seconds": 9.23750048968941e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[7].replay_execution",
+        "status": "returned",
+        "wall_seconds": 9.575000149197876e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[7].behavior_executions[0].execution",
+        "status": "returned",
+        "wall_seconds": 9.412498911842704e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[7].behavior_executions[1].execution",
+        "status": "returned",
+        "wall_seconds": 9.420898277312517e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[8].oracle_execution",
+        "status": "returned",
+        "wall_seconds": 8.774999878369272e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[8].replay_execution",
+        "status": "returned",
+        "wall_seconds": 9.804198634810746e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[8].behavior_executions[0].execution",
+        "status": "returned",
+        "wall_seconds": 9.575000149197876e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[8].behavior_executions[1].execution",
+        "status": "returned",
+        "wall_seconds": 9.56250005401671e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[9].oracle_execution",
+        "status": "returned",
+        "wall_seconds": 8.779100608080626e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[9].replay_execution",
+        "status": "returned",
+        "wall_seconds": 9.954100823961198e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[9].behavior_executions[0].execution",
+        "status": "returned",
+        "wall_seconds": 0.00010024997754953802,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[9].behavior_executions[1].execution",
+        "status": "returned",
+        "wall_seconds": 9.920800221152604e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[10].oracle_execution",
+        "status": "returned",
+        "wall_seconds": 8.508400060236454e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[10].replay_execution",
+        "status": "returned",
+        "wall_seconds": 9.308301378041506e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[10].behavior_executions[0].execution",
+        "status": "returned",
+        "wall_seconds": 9.59169992711395e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[10].behavior_executions[1].execution",
+        "status": "returned",
+        "wall_seconds": 9.654101449996233e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[11].oracle_execution",
+        "status": "returned",
+        "wall_seconds": 8.445800631307065e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[11].replay_execution",
+        "status": "returned",
+        "wall_seconds": 9.116702130995691e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[11].behavior_executions[0].execution",
+        "status": "returned",
+        "wall_seconds": 9.445799514651299e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[11].behavior_executions[1].execution",
+        "status": "returned",
+        "wall_seconds": 9.449999197386205e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[12].oracle_execution",
+        "status": "returned",
+        "wall_seconds": 8.591701043769717e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[12].replay_execution",
+        "status": "returned",
+        "wall_seconds": 9.545902139507234e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[12].behavior_executions[0].execution",
+        "status": "returned",
+        "wall_seconds": 9.56250005401671e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[12].behavior_executions[1].execution",
+        "status": "returned",
+        "wall_seconds": 9.687498095445335e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[13].oracle_execution",
+        "status": "returned",
+        "wall_seconds": 8.741600322537124e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[13].replay_execution",
+        "status": "returned",
+        "wall_seconds": 9.499999578110874e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[13].behavior_executions[0].execution",
+        "status": "returned",
+        "wall_seconds": 9.600000339560211e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[13].behavior_executions[1].execution",
+        "status": "returned",
+        "wall_seconds": 9.499999578110874e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[14].oracle_execution",
+        "status": "returned",
+        "wall_seconds": 8.645799243822694e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[14].replay_execution",
+        "status": "returned",
+        "wall_seconds": 9.391698404215276e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[14].behavior_executions[0].execution",
+        "status": "returned",
+        "wall_seconds": 9.487502393312752e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[14].behavior_executions[1].execution",
+        "status": "returned",
+        "wall_seconds": 9.50419926084578e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[15].oracle_execution",
+        "status": "returned",
+        "wall_seconds": 8.666599751450121e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[15].replay_execution",
+        "status": "returned",
+        "wall_seconds": 9.499999578110874e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[15].behavior_executions[0].execution",
+        "status": "returned",
+        "wall_seconds": 9.449999197386205e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[15].behavior_executions[1].execution",
+        "status": "returned",
+        "wall_seconds": 9.362498531118035e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[16].oracle_execution",
+        "status": "returned",
+        "wall_seconds": 8.608298958279192e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[16].replay_execution",
+        "status": "returned",
+        "wall_seconds": 9.491699165664613e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[16].behavior_executions[0].execution",
+        "status": "returned",
+        "wall_seconds": 9.383400902152061e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[16].behavior_executions[1].execution",
+        "status": "returned",
+        "wall_seconds": 9.516699356026947e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[17].oracle_execution",
+        "status": "returned",
+        "wall_seconds": 8.741600322537124e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[17].replay_execution",
+        "status": "returned",
+        "wall_seconds": 9.587500244379044e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[17].behavior_executions[0].execution",
+        "status": "returned",
+        "wall_seconds": 9.424999007023871e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "final_checks[17].behavior_executions[1].execution",
+        "status": "returned",
+        "wall_seconds": 9.74999857135117e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "fixed_program_replay",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "attendance",
+        "arm": "raw",
+        "seed": 801,
+        "stage": "fixed-program-replay",
+        "status": "returned",
+        "wall_seconds": 0.00010812500840984285,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ],
+        "program_pass": true,
+        "query_sha256": "2d708d7341026b7a204257dc136c3c9a6708311e30352039786e92cb8f51785a"
+      },
+      {
+        "category": "fixed_program_replay",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "attendance",
+        "arm": "cheap",
+        "seed": 801,
+        "stage": "fixed-program-replay",
+        "status": "returned",
+        "wall_seconds": 0.00010370899690315127,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ],
+        "program_pass": true,
+        "query_sha256": "1d65d74ea909d99dfe99095c6170663026319869cb90290381b36fe1ff777911"
+      },
+      {
+        "category": "fixed_program_replay",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "attendance",
+        "arm": "paid",
+        "seed": 801,
+        "stage": "fixed-program-replay",
+        "status": "returned",
+        "wall_seconds": 9.529199451208115e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ],
+        "program_pass": true,
+        "query_sha256": "f990183a610e1462511fde8700e976c0ad1e3d15cb4e61a4ded5cf8a7f0dffa4"
+      },
+      {
+        "category": "fixed_program_replay",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "attendance",
+        "arm": "raw",
+        "seed": 802,
+        "stage": "fixed-program-replay",
+        "status": "returned",
+        "wall_seconds": 0.00010404101340100169,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ],
+        "program_pass": false,
+        "query_sha256": "2d708d7341026b7a204257dc136c3c9a6708311e30352039786e92cb8f51785a"
+      },
+      {
+        "category": "fixed_program_replay",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "attendance",
+        "arm": "cheap",
+        "seed": 802,
+        "stage": "fixed-program-replay",
+        "status": "returned",
+        "wall_seconds": 9.891699301078916e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ],
+        "program_pass": true,
+        "query_sha256": "1d65d74ea909d99dfe99095c6170663026319869cb90290381b36fe1ff777911"
+      },
+      {
+        "category": "fixed_program_replay",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "attendance",
+        "arm": "paid",
+        "seed": 802,
+        "stage": "fixed-program-replay",
+        "status": "returned",
+        "wall_seconds": 0.00010545901022851467,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ],
+        "program_pass": true,
+        "query_sha256": "f990183a610e1462511fde8700e976c0ad1e3d15cb4e61a4ded5cf8a7f0dffa4"
+      },
+      {
+        "category": "fixed_program_replay",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "attendance",
+        "arm": "raw",
+        "seed": 803,
+        "stage": "fixed-program-replay",
+        "status": "returned",
+        "wall_seconds": 0.00010299999848939478,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ],
+        "program_pass": false,
+        "query_sha256": "2d708d7341026b7a204257dc136c3c9a6708311e30352039786e92cb8f51785a"
+      },
+      {
+        "category": "fixed_program_replay",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "attendance",
+        "arm": "cheap",
+        "seed": 803,
+        "stage": "fixed-program-replay",
+        "status": "returned",
+        "wall_seconds": 9.929199586622417e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ],
+        "program_pass": true,
+        "query_sha256": "1d65d74ea909d99dfe99095c6170663026319869cb90290381b36fe1ff777911"
+      },
+      {
+        "category": "fixed_program_replay",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "attendance",
+        "arm": "paid",
+        "seed": 803,
+        "stage": "fixed-program-replay",
+        "status": "returned",
+        "wall_seconds": 9.67090018093586e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ],
+        "program_pass": true,
+        "query_sha256": "f990183a610e1462511fde8700e976c0ad1e3d15cb4e61a4ded5cf8a7f0dffa4"
+      },
+      {
+        "category": "fixed_program_replay",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "billing",
+        "arm": "raw",
+        "seed": 801,
+        "stage": "fixed-program-replay",
+        "status": "returned",
+        "wall_seconds": 9.354099165648222e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ],
+        "program_pass": true,
+        "query_sha256": "ec46e38f35e0c6f837b47383ef2fc9b122d4bba08095018f8bbef227e5f35a05"
+      },
+      {
+        "category": "fixed_program_replay",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "billing",
+        "arm": "cheap",
+        "seed": 801,
+        "stage": "fixed-program-replay",
+        "status": "returned",
+        "wall_seconds": 9.704101830720901e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ],
+        "program_pass": true,
+        "query_sha256": "a71b5fc0c92051442e2bc1ad2e21442bcc6e756866265af2ee555dd14ba573c6"
+      },
+      {
+        "category": "fixed_program_replay",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "billing",
+        "arm": "paid",
+        "seed": 801,
+        "stage": "fixed-program-replay",
+        "status": "returned",
+        "wall_seconds": 9.445799514651299e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ],
+        "program_pass": true,
+        "query_sha256": "81dd8a186b9ceb9702b3e6c925c51bcc3616d18bdedea3051a4d3fd35f801ac3"
+      },
+      {
+        "category": "fixed_program_replay",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "billing",
+        "arm": "raw",
+        "seed": 802,
+        "stage": "fixed-program-replay",
+        "status": "returned",
+        "wall_seconds": 9.945899364538491e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ],
+        "program_pass": false,
+        "query_sha256": "ec46e38f35e0c6f837b47383ef2fc9b122d4bba08095018f8bbef227e5f35a05"
+      },
+      {
+        "category": "fixed_program_replay",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "billing",
+        "arm": "cheap",
+        "seed": 802,
+        "stage": "fixed-program-replay",
+        "status": "returned",
+        "wall_seconds": 9.716599015519023e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ],
+        "program_pass": true,
+        "query_sha256": "a71b5fc0c92051442e2bc1ad2e21442bcc6e756866265af2ee555dd14ba573c6"
+      },
+      {
+        "category": "fixed_program_replay",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "billing",
+        "arm": "paid",
+        "seed": 802,
+        "stage": "fixed-program-replay",
+        "status": "returned",
+        "wall_seconds": 9.47499938774854e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ],
+        "program_pass": true,
+        "query_sha256": "81dd8a186b9ceb9702b3e6c925c51bcc3616d18bdedea3051a4d3fd35f801ac3"
+      },
+      {
+        "category": "fixed_program_replay",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "billing",
+        "arm": "raw",
+        "seed": 803,
+        "stage": "fixed-program-replay",
+        "status": "returned",
+        "wall_seconds": 0.00010204198770225048,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ],
+        "program_pass": false,
+        "query_sha256": "ec46e38f35e0c6f837b47383ef2fc9b122d4bba08095018f8bbef227e5f35a05"
+      },
+      {
+        "category": "fixed_program_replay",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "billing",
+        "arm": "cheap",
+        "seed": 803,
+        "stage": "fixed-program-replay",
+        "status": "returned",
+        "wall_seconds": 9.854199015535414e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ],
+        "program_pass": true,
+        "query_sha256": "a71b5fc0c92051442e2bc1ad2e21442bcc6e756866265af2ee555dd14ba573c6"
+      },
+      {
+        "category": "fixed_program_replay",
+        "artifact": "evidence/pilot-v1/offline-verification.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/offline-verification.json"
+        ],
+        "history": "billing",
+        "arm": "paid",
+        "seed": 803,
+        "stage": "fixed-program-replay",
+        "status": "returned",
+        "wall_seconds": 9.708400466479361e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ],
+        "program_pass": true,
+        "query_sha256": "81dd8a186b9ceb9702b3e6c925c51bcc3616d18bdedea3051a4d3fd35f801ac3"
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/verification-history/1789863758850070000.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/verification-history/1789863758850070000.json"
+        ],
+        "history": "billing",
+        "arm": null,
+        "seed": null,
+        "stage": "prior-source-probe-recheck",
+        "status": "returned",
+        "wall_seconds": 0.0001908330013975501,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/verification-history/1789863758850070000.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/verification-history/1789863758850070000.json"
+        ],
+        "history": "billing",
+        "arm": null,
+        "seed": null,
+        "stage": "prior-source-probe-recheck",
+        "status": "returned",
+        "wall_seconds": 0.00011979101691395044,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/verification-history/1789863758850070000.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/verification-history/1789863758850070000.json"
+        ],
+        "history": "attendance",
+        "arm": null,
+        "seed": null,
+        "stage": "prior-source-probe-recheck",
+        "status": "returned",
+        "wall_seconds": 0.00011250001261942089,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/verification-history/1789863758850070000.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/verification-history/1789863758850070000.json"
+        ],
+        "history": "attendance",
+        "arm": null,
+        "seed": null,
+        "stage": "prior-source-probe-recheck",
+        "status": "returned",
+        "wall_seconds": 9.90410044323653e-05,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      },
+      {
+        "category": "offline",
+        "artifact": "evidence/pilot-v1/cheap-repair-diagnostic.json",
+        "snapshot_paths": [
+          "evidence/pilot-v1/cheap-repair-diagnostic.json"
+        ],
+        "history": null,
+        "arm": null,
+        "seed": null,
+        "stage": "cheap-repair-diagnostic",
+        "status": "returned",
+        "wall_seconds": 0.0004531670128926635,
+        "money_usd": null,
+        "unknown": [
+          "money in USD has no recorded price"
+        ]
+      }
+    ],
+    "deduplication": {
+      "probe_snapshots": "identical probe rows/query/output are counted once; snapshot_paths records every copied acceptance snapshot",
+      "source_snapshots": "identical source rows/query/output are counted once",
+      "grades": "initial and revision executions are separate checks",
+      "fixed_program_replay": "fixed-program replays are separate from grade executions and final/offline checks",
+      "offline": "offline rechecks are separate from source/probe snapshots"
+    },
+    "unknown": [
+      "SQLite wall time is an execution measure, not a monetary price",
+      "investigator time for constructing fixtures and reference rows is unknown"
+    ]
+  },
+  "deployment_cumulative_horizon3": {
+    "planned_horizon_tasks_per_history": 3,
+    "by_history_arm": {
+      "attendance": {
+        "raw": {
+          "planned_horizon_tasks": 3,
+          "observed_horizon_seeds": [
+            801,
+            802,
+            803
+          ],
+          "model": {
+            "calls": 7,
+            "completed_calls": 7,
+            "failed_or_incomplete_calls": 0,
+            "status_counts": {
+              "completed": 7
+            },
+            "prompt_tokens_known": 5896,
+            "prompt_tokens_unknown_calls": 0,
+            "completion_tokens_known": 3489,
+            "completion_tokens_unknown_calls": 0,
+            "total_tokens_known": 9385,
+            "total_tokens_unknown_calls": 0,
+            "cached_prompt_tokens_known": 148,
+            "cached_prompt_tokens_unknown_calls": 0,
+            "uncached_prompt_tokens_known": 5748,
+            "uncached_prompt_tokens_unknown_calls": 0,
+            "wall_seconds_known": 211.86185262707295,
+            "wall_seconds_unknown_calls": 0,
+            "money_usd": null,
+            "money_status": "unknown; no price schedule is recorded for this serving path",
+            "unknown": [
+              "money in USD has no recorded price"
+            ]
+          },
+          "sqlite": {
+            "executions": 7,
+            "successful_or_returned_executions": 7,
+            "error_executions": 0,
+            "wall_seconds_known": 0.00905575102660805,
+            "wall_seconds_unknown_executions": 0,
+            "money_usd": null,
+            "money_status": "unknown; local SQLite has no assigned monetary price",
+            "unknown": []
+          },
+          "money_usd": null,
+          "unknown": []
+        },
+        "cheap": {
+          "planned_horizon_tasks": 3,
+          "observed_horizon_seeds": [
+            801,
+            802,
+            803
+          ],
+          "model": {
+            "calls": 9,
+            "completed_calls": 9,
+            "failed_or_incomplete_calls": 0,
+            "status_counts": {
+              "completed": 9
+            },
+            "prompt_tokens_known": 18191,
+            "prompt_tokens_unknown_calls": 0,
+            "completion_tokens_known": 3818,
+            "completion_tokens_unknown_calls": 0,
+            "total_tokens_known": 22009,
+            "total_tokens_unknown_calls": 0,
+            "cached_prompt_tokens_known": 172,
+            "cached_prompt_tokens_unknown_calls": 0,
+            "uncached_prompt_tokens_known": 18019,
+            "uncached_prompt_tokens_unknown_calls": 0,
+            "wall_seconds_known": 285.3393600420095,
+            "wall_seconds_unknown_calls": 0,
+            "money_usd": null,
+            "money_status": "unknown; no price schedule is recorded for this serving path",
+            "unknown": [
+              "money in USD has no recorded price"
+            ]
+          },
+          "sqlite": {
+            "executions": 7,
+            "successful_or_returned_executions": 7,
+            "error_executions": 0,
+            "wall_seconds_known": 0.008805083081824705,
+            "wall_seconds_unknown_executions": 0,
+            "money_usd": null,
+            "money_status": "unknown; local SQLite has no assigned monetary price",
+            "unknown": []
+          },
+          "money_usd": null,
+          "unknown": []
+        },
+        "paid": {
+          "planned_horizon_tasks": 3,
+          "observed_horizon_seeds": [
+            801,
+            802,
+            803
+          ],
+          "model": {
+            "calls": 9,
+            "completed_calls": 9,
+            "failed_or_incomplete_calls": 0,
+            "status_counts": {
+              "completed": 9
+            },
+            "prompt_tokens_known": 22767,
+            "prompt_tokens_unknown_calls": 0,
+            "completion_tokens_known": 4657,
+            "completion_tokens_unknown_calls": 0,
+            "total_tokens_known": 27424,
+            "total_tokens_unknown_calls": 0,
+            "cached_prompt_tokens_known": 196,
+            "cached_prompt_tokens_unknown_calls": 0,
+            "uncached_prompt_tokens_known": 22571,
+            "uncached_prompt_tokens_unknown_calls": 0,
+            "wall_seconds_known": 355.8482814579329,
+            "wall_seconds_unknown_calls": 0,
+            "money_usd": null,
+            "money_status": "unknown; no price schedule is recorded for this serving path",
+            "unknown": [
+              "money in USD has no recorded price"
+            ]
+          },
+          "sqlite": {
+            "executions": 8,
+            "successful_or_returned_executions": 8,
+            "error_executions": 0,
+            "wall_seconds_known": 0.01052133395569399,
+            "wall_seconds_unknown_executions": 0,
+            "money_usd": null,
+            "money_status": "unknown; local SQLite has no assigned monetary price",
+            "unknown": []
+          },
+          "money_usd": null,
+          "unknown": []
+        }
+      },
+      "billing": {
+        "raw": {
+          "planned_horizon_tasks": 3,
+          "observed_horizon_seeds": [
+            801,
+            802,
+            803
+          ],
+          "model": {
+            "calls": 7,
+            "completed_calls": 7,
+            "failed_or_incomplete_calls": 0,
+            "status_counts": {
+              "completed": 7
+            },
+            "prompt_tokens_known": 5937,
+            "prompt_tokens_unknown_calls": 0,
+            "completion_tokens_known": 1984,
+            "completion_tokens_unknown_calls": 0,
+            "total_tokens_known": 7921,
+            "total_tokens_unknown_calls": 0,
+            "cached_prompt_tokens_known": 120,
+            "cached_prompt_tokens_unknown_calls": 0,
+            "uncached_prompt_tokens_known": 5817,
+            "uncached_prompt_tokens_unknown_calls": 0,
+            "wall_seconds_known": 135.0492436249915,
+            "wall_seconds_unknown_calls": 0,
+            "money_usd": null,
+            "money_status": "unknown; no price schedule is recorded for this serving path",
+            "unknown": [
+              "money in USD has no recorded price"
+            ]
+          },
+          "sqlite": {
+            "executions": 7,
+            "successful_or_returned_executions": 7,
+            "error_executions": 0,
+            "wall_seconds_known": 0.0068073760194238275,
+            "wall_seconds_unknown_executions": 0,
+            "money_usd": null,
+            "money_status": "unknown; local SQLite has no assigned monetary price",
+            "unknown": []
+          },
+          "money_usd": null,
+          "unknown": []
+        },
+        "cheap": {
+          "planned_horizon_tasks": 3,
+          "observed_horizon_seeds": [
+            801,
+            802,
+            803
+          ],
+          "model": {
+            "calls": 9,
+            "completed_calls": 9,
+            "failed_or_incomplete_calls": 0,
+            "status_counts": {
+              "completed": 9
+            },
+            "prompt_tokens_known": 21078,
+            "prompt_tokens_unknown_calls": 0,
+            "completion_tokens_known": 4336,
+            "completion_tokens_unknown_calls": 0,
+            "total_tokens_known": 25414,
+            "total_tokens_unknown_calls": 0,
+            "cached_prompt_tokens_known": 144,
+            "cached_prompt_tokens_unknown_calls": 0,
+            "uncached_prompt_tokens_known": 20934,
+            "uncached_prompt_tokens_unknown_calls": 0,
+            "wall_seconds_known": 328.21121887498884,
+            "wall_seconds_unknown_calls": 0,
+            "money_usd": null,
+            "money_status": "unknown; no price schedule is recorded for this serving path",
+            "unknown": [
+              "money in USD has no recorded price"
+            ]
+          },
+          "sqlite": {
+            "executions": 7,
+            "successful_or_returned_executions": 7,
+            "error_executions": 0,
+            "wall_seconds_known": 0.008050708944210783,
+            "wall_seconds_unknown_executions": 0,
+            "money_usd": null,
+            "money_status": "unknown; local SQLite has no assigned monetary price",
+            "unknown": []
+          },
+          "money_usd": null,
+          "unknown": []
+        },
+        "paid": {
+          "planned_horizon_tasks": 3,
+          "observed_horizon_seeds": [
+            801,
+            802,
+            803
+          ],
+          "model": {
+            "calls": 9,
+            "completed_calls": 9,
+            "failed_or_incomplete_calls": 0,
+            "status_counts": {
+              "completed": 9
+            },
+            "prompt_tokens_known": 22978,
+            "prompt_tokens_unknown_calls": 0,
+            "completion_tokens_known": 4369,
+            "completion_tokens_unknown_calls": 0,
+            "total_tokens_known": 27347,
+            "total_tokens_unknown_calls": 0,
+            "cached_prompt_tokens_known": 168,
+            "cached_prompt_tokens_unknown_calls": 0,
+            "uncached_prompt_tokens_known": 22810,
+            "uncached_prompt_tokens_unknown_calls": 0,
+            "wall_seconds_known": 340.70512970897835,
+            "wall_seconds_unknown_calls": 0,
+            "money_usd": null,
+            "money_status": "unknown; no price schedule is recorded for this serving path",
+            "unknown": [
+              "money in USD has no recorded price"
+            ]
+          },
+          "sqlite": {
+            "executions": 8,
+            "successful_or_returned_executions": 8,
+            "error_executions": 0,
+            "wall_seconds_known": 0.007623333018273115,
+            "wall_seconds_unknown_executions": 0,
+            "money_usd": null,
+            "money_status": "unknown; local SQLite has no assigned monetary price",
+            "unknown": []
+          },
+          "money_usd": null,
+          "unknown": []
+        }
+      }
+    },
+    "allocation_note": "Each arm view allocates shared source work once, and allocates the proposal only to cheap and paid. These arm views are hypothetical standalone reuse accounts; do not sum them as an experiment grand total. No arm is selected here and no precise dollar repayment claim is made.",
+    "unknown": [
+      "investigator and engineering time",
+      "delegated model or teacher costs not present in records",
+      "remote energy, hardware occupancy and network costs",
+      "monetary serving price is not recorded"
+    ]
+  },
+  "deployment_fixed_program": {
+    "by_history_arm": {
+      "attendance": {
+        "raw": {
+          "replay_seeds": [
+            801,
+            802,
+            803
+          ],
+          "model": {
+            "calls": 1,
+            "completed_calls": 1,
+            "failed_or_incomplete_calls": 0,
+            "status_counts": {
+              "completed": 1
+            },
+            "prompt_tokens_known": 239,
+            "prompt_tokens_unknown_calls": 0,
+            "completion_tokens_known": 118,
+            "completion_tokens_unknown_calls": 0,
+            "total_tokens_known": 357,
+            "total_tokens_unknown_calls": 0,
+            "cached_prompt_tokens_known": 28,
+            "cached_prompt_tokens_unknown_calls": 0,
+            "uncached_prompt_tokens_known": 211,
+            "uncached_prompt_tokens_unknown_calls": 0,
+            "wall_seconds_known": 2.206599874974927,
+            "wall_seconds_unknown_calls": 0,
+            "money_usd": null,
+            "money_status": "unknown; no price schedule is recorded for this serving path",
+            "unknown": [
+              "money in USD has no recorded price"
+            ]
+          },
+          "sqlite": {
+            "executions": 4,
+            "successful_or_returned_executions": 4,
+            "error_executions": 0,
+            "wall_seconds_known": 0.0018947500211652368,
+            "wall_seconds_unknown_executions": 0,
+            "money_usd": null,
+            "money_status": "unknown; local SQLite has no assigned monetary price",
+            "unknown": []
+          },
+          "money_usd": null,
+          "unknown": []
+        },
+        "cheap": {
+          "replay_seeds": [
+            801,
+            802,
+            803
+          ],
+          "model": {
+            "calls": 3,
+            "completed_calls": 3,
+            "failed_or_incomplete_calls": 0,
+            "status_counts": {
+              "completed": 3
+            },
+            "prompt_tokens_known": 1518,
+            "prompt_tokens_unknown_calls": 0,
+            "completion_tokens_known": 1897,
+            "completion_tokens_unknown_calls": 0,
+            "total_tokens_known": 3415,
+            "total_tokens_unknown_calls": 0,
+            "cached_prompt_tokens_known": 28,
+            "cached_prompt_tokens_unknown_calls": 0,
+            "uncached_prompt_tokens_known": 1490,
+            "uncached_prompt_tokens_unknown_calls": 0,
+            "wall_seconds_known": 94.12919354095357,
+            "wall_seconds_unknown_calls": 0,
+            "money_usd": null,
+            "money_status": "unknown; no price schedule is recorded for this serving path",
+            "unknown": [
+              "money in USD has no recorded price"
+            ]
+          },
+          "sqlite": {
+            "executions": 4,
+            "successful_or_returned_executions": 4,
+            "error_executions": 0,
+            "wall_seconds_known": 0.001881501986645162,
+            "wall_seconds_unknown_executions": 0,
+            "money_usd": null,
+            "money_status": "unknown; local SQLite has no assigned monetary price",
+            "unknown": []
+          },
+          "money_usd": null,
+          "unknown": []
+        },
+        "paid": {
+          "replay_seeds": [
+            801,
+            802,
+            803
+          ],
+          "model": {
+            "calls": 3,
+            "completed_calls": 3,
+            "failed_or_incomplete_calls": 0,
+            "status_counts": {
+              "completed": 3
+            },
+            "prompt_tokens_known": 1828,
+            "prompt_tokens_unknown_calls": 0,
+            "completion_tokens_known": 2276,
+            "completion_tokens_unknown_calls": 0,
+            "total_tokens_known": 4104,
+            "total_tokens_unknown_calls": 0,
+            "cached_prompt_tokens_known": 52,
+            "cached_prompt_tokens_unknown_calls": 0,
+            "uncached_prompt_tokens_known": 1776,
+            "uncached_prompt_tokens_unknown_calls": 0,
+            "wall_seconds_known": 116.61826166594983,
+            "wall_seconds_unknown_calls": 0,
+            "money_usd": null,
+            "money_status": "unknown; no price schedule is recorded for this serving path",
+            "unknown": [
+              "money in USD has no recorded price"
+            ]
+          },
+          "sqlite": {
+            "executions": 5,
+            "successful_or_returned_executions": 5,
+            "error_executions": 0,
+            "wall_seconds_known": 0.0030626689840573817,
+            "wall_seconds_unknown_executions": 0,
+            "money_usd": null,
+            "money_status": "unknown; local SQLite has no assigned monetary price",
+            "unknown": []
+          },
+          "money_usd": null,
+          "unknown": []
+        }
+      },
+      "billing": {
+        "raw": {
+          "replay_seeds": [
+            801,
+            802,
+            803
+          ],
+          "model": {
+            "calls": 1,
+            "completed_calls": 1,
+            "failed_or_incomplete_calls": 0,
+            "status_counts": {
+              "completed": 1
+            },
+            "prompt_tokens_known": 242,
+            "prompt_tokens_unknown_calls": 0,
+            "completion_tokens_known": 120,
+            "completion_tokens_unknown_calls": 0,
+            "total_tokens_known": 362,
+            "total_tokens_unknown_calls": 0,
+            "cached_prompt_tokens_known": 0,
+            "cached_prompt_tokens_unknown_calls": 0,
+            "uncached_prompt_tokens_known": 242,
+            "uncached_prompt_tokens_unknown_calls": 0,
+            "wall_seconds_known": 4.952967749995878,
+            "wall_seconds_unknown_calls": 0,
+            "money_usd": null,
+            "money_status": "unknown; no price schedule is recorded for this serving path",
+            "unknown": [
+              "money in USD has no recorded price"
+            ]
+          },
+          "sqlite": {
+            "executions": 4,
+            "successful_or_returned_executions": 4,
+            "error_executions": 0,
+            "wall_seconds_known": 0.0012875419633928686,
+            "wall_seconds_unknown_executions": 0,
+            "money_usd": null,
+            "money_status": "unknown; local SQLite has no assigned monetary price",
+            "unknown": []
+          },
+          "money_usd": null,
+          "unknown": []
+        },
+        "cheap": {
+          "replay_seeds": [
+            801,
+            802,
+            803
+          ],
+          "model": {
+            "calls": 3,
+            "completed_calls": 3,
+            "failed_or_incomplete_calls": 0,
+            "status_counts": {
+              "completed": 3
+            },
+            "prompt_tokens_known": 1586,
+            "prompt_tokens_unknown_calls": 0,
+            "completion_tokens_known": 2346,
+            "completion_tokens_unknown_calls": 0,
+            "total_tokens_known": 3932,
+            "total_tokens_unknown_calls": 0,
+            "cached_prompt_tokens_known": 0,
+            "cached_prompt_tokens_unknown_calls": 0,
+            "uncached_prompt_tokens_known": 1586,
+            "uncached_prompt_tokens_unknown_calls": 0,
+            "wall_seconds_known": 117.8720494590234,
+            "wall_seconds_unknown_calls": 0,
+            "money_usd": null,
+            "money_status": "unknown; no price schedule is recorded for this serving path",
+            "unknown": [
+              "money in USD has no recorded price"
+            ]
+          },
+          "sqlite": {
+            "executions": 4,
+            "successful_or_returned_executions": 4,
+            "error_executions": 0,
+            "wall_seconds_known": 0.0012852489890065044,
+            "wall_seconds_unknown_executions": 0,
+            "money_usd": null,
+            "money_status": "unknown; local SQLite has no assigned monetary price",
+            "unknown": []
+          },
+          "money_usd": null,
+          "unknown": []
+        },
+        "paid": {
+          "replay_seeds": [
+            801,
+            802,
+            803
+          ],
+          "model": {
+            "calls": 3,
+            "completed_calls": 3,
+            "failed_or_incomplete_calls": 0,
+            "status_counts": {
+              "completed": 3
+            },
+            "prompt_tokens_known": 1903,
+            "prompt_tokens_unknown_calls": 0,
+            "completion_tokens_known": 2287,
+            "completion_tokens_unknown_calls": 0,
+            "total_tokens_known": 4190,
+            "total_tokens_unknown_calls": 0,
+            "cached_prompt_tokens_known": 24,
+            "cached_prompt_tokens_unknown_calls": 0,
+            "uncached_prompt_tokens_known": 1879,
+            "uncached_prompt_tokens_unknown_calls": 0,
+            "wall_seconds_known": 116.38009241700638,
+            "wall_seconds_unknown_calls": 0,
+            "money_usd": null,
+            "money_status": "unknown; no price schedule is recorded for this serving path",
+            "unknown": [
+              "money in USD has no recorded price"
+            ]
+          },
+          "sqlite": {
+            "executions": 5,
+            "successful_or_returned_executions": 5,
+            "error_executions": 0,
+            "wall_seconds_known": 0.0015666669933125377,
+            "wall_seconds_unknown_executions": 0,
+            "money_usd": null,
+            "money_status": "unknown; local SQLite has no assigned monetary price",
+            "unknown": []
+          },
+          "money_usd": null,
+          "unknown": []
+        }
+      }
+    },
+    "allocation_note": "This view includes source collection once, proposal and direct cheap/paid curation only for those arms, the paid probe only for paid, and fixed-program replay executions. It excludes all later model calls and is separate from the cumulative horizon view. Arm views must not be summed.",
+    "unknown": [
+      "investigator and engineering time",
+      "delegated model or teacher costs not present in records",
+      "remote energy, hardware occupancy and network costs",
+      "monetary serving price is not recorded"
+    ]
+  }
+}

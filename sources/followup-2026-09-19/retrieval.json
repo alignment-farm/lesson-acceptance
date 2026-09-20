@@ -1,0 +1,20 @@
+{
+  "retrieved_at": "2026-09-19T23:45:48Z",
+  "endpoint": "https://export.arxiv.org/api/query?id_list=2609.11060v1%2C2606.08275v1&start=0&max_results=10",
+  "method": "GET",
+  "user_agent": "lesson-acceptance-study/2026-09-19 (+research-methods; contact=local-study)",
+  "http_status": 200,
+  "retry_after": "not returned; no retry was needed",
+  "connection_note": "One API request; no second arXiv API client or overlapping request was used.",
+  "cached_response": "metadata.xml",
+  "cached_sha256": "e39f093faa26d988318572f939f16b14bb737073a8270f2f7127887292d58603",
+  "entries": [
+    "2609.11060v1",
+    "2606.08275v1"
+  ],
+  "official_method_pages": [
+    "https://arxiv.org/html/2609.11060v1",
+    "https://arxiv.org/html/2606.08275v1",
+    "https://github.com/jaineet17/causal-agent-replay"
+  ]
+}

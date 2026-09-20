@@ -1,0 +1,197 @@
+{
+  "source_and_probe": [
+    {
+      "history": "billing",
+      "split": "source",
+      "oracle": [
+        [
+          1,
+          "Ada",
+          100,
+          40
+        ],
+        [
+          2,
+          "Ben",
+          0,
+          15
+        ],
+        [
+          3,
+          "Cy",
+          0,
+          0
+        ]
+      ],
+      "acquired": {
+        "columns": [
+          "customer_id",
+          "name",
+          "billed",
+          "paid"
+        ],
+        "rows": [
+          [
+            1,
+            "Ada",
+            100,
+            40
+          ],
+          [
+            2,
+            "Ben",
+            0,
+            15
+          ],
+          [
+            3,
+            "Cy",
+            0,
+            0
+          ]
+        ],
+        "wall_seconds": 0.0001908330013975501
+      },
+      "pass": true
+    },
+    {
+      "history": "billing",
+      "split": "probe",
+      "oracle": [
+        [
+          11,
+          "Probe",
+          50,
+          14
+        ],
+        [
+          12,
+          "Empty",
+          0,
+          0
+        ]
+      ],
+      "acquired": {
+        "columns": [
+          "customer_id",
+          "name",
+          "billed",
+          "paid"
+        ],
+        "rows": [
+          [
+            11,
+            "Probe",
+            100,
+            42
+          ],
+          [
+            12,
+            "Empty",
+            0,
+            0
+          ]
+        ],
+        "wall_seconds": 0.00011979101691395044
+      },
+      "pass": false
+    },
+    {
+      "history": "attendance",
+      "split": "source",
+      "oracle": [
+        [
+          1,
+          "Talk",
+          5,
+          1
+        ],
+        [
+          2,
+          "Lab",
+          0,
+          1
+        ],
+        [
+          3,
+          "Walk",
+          0,
+          0
+        ]
+      ],
+      "acquired": {
+        "columns": [
+          "id",
+          "title",
+          "seats",
+          "tags"
+        ],
+        "rows": [
+          [
+            1,
+            "Talk",
+            5,
+            1
+          ],
+          [
+            2,
+            "Lab",
+            0,
+            1
+          ],
+          [
+            3,
+            "Walk",
+            0,
+            0
+          ]
+        ],
+        "wall_seconds": 0.00011250001261942089
+      },
+      "pass": true
+    },
+    {
+      "history": "attendance",
+      "split": "probe",
+      "oracle": [
+        [
+          11,
+          "Probe",
+          9,
+          2
+        ],
+        [
+          12,
+          "Empty",
+          0,
+          0
+        ]
+      ],
+      "acquired": {
+        "columns": [
+          "id",
+          "title",
+          "seats",
+          "tags"
+        ],
+        "rows": [
+          [
+            11,
+            "Probe",
+            18,
+            6
+          ],
+          [
+            12,
+            "Empty",
+            0,
+            0
+          ]
+        ],
+        "wall_seconds": 9.90410044323653e-05
+      },
+      "pass": false
+    }
+  ],
+  "final_checks": []
+}
